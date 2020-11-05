@@ -11,6 +11,8 @@ namespace CRUD_Desafio2
             Console.WriteLine("Exercício de CRUD do Desafio 2! TRILHA BACKEND!\r");
             Console.WriteLine("------------------------\n");
 
+            Cliente cliente = new Cliente();
+
 
             // Ask the user to choose an option.
             Console.WriteLine("Escolha a opção que deseja executar:");
@@ -18,6 +20,7 @@ namespace CRUD_Desafio2
             Console.WriteLine("\tr - Read");
             Console.WriteLine("\tu - Update");
             Console.WriteLine("\td - Delete");
+            Console.WriteLine("\ts - Sair");
             Console.Write("O que deseja executar? ");
 
             // Use a switch statement to call the methods.
@@ -35,20 +38,19 @@ namespace CRUD_Desafio2
                 case "d":
                     Delete();
                     break;
+                case "s":
+                    Console.WriteLine("\nSaindo da aplicação");
+                    break;
             }
             // Wait for the user to respond before closing.
             Console.Write("Press any key to close the CRUD console app...");
             Console.ReadKey();
 
 
-
             #region [CRUD methods]
             void Create()
             {
-                //List<Cliente> clientes = new List<Cliente>();
-                Cliente cliente = new Cliente();
-
-                //nome, idade, CPF, e-mail, telefone e endereço
+                //A operação de Create deve popular o cadastro de um cliente e inserir na estrutura.
                 Console.WriteLine("\nVocê escolheu adicionar um novo cliente.\n");
                 Console.Write("Digite o nome do novo cliente: ");
                 cliente.Nome = Console.ReadLine();
@@ -67,22 +69,26 @@ namespace CRUD_Desafio2
 
                 Console.Write("Digite o endereço do novo cliente: ");
                 cliente.Endereco = Console.ReadLine();
+
+                Console.WriteLine("\nNovo cliente cadastrado com sucesso.\n");
             }
 
             void Read()
             {
-
+                //A operação de Read  deve permitir visualizar todos os clientes ou um só pelo CPF.
             }
 
             void Update()
             {
+                //A operação de Update deve permitir alterar um ou mais dos dados de um cliente a partir do CPF dele(O campo CPF não pode ser alterado).
 
             }
 
             void Delete()
             {
+                //A operação de Delete deve permitir excluir um cliente da estrutura pelo CPF dele.
 
-            } 
+            }
             #endregion
         }
     }
