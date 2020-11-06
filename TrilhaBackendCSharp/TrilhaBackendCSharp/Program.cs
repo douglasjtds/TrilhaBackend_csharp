@@ -15,34 +15,41 @@ namespace TrilhaBackendCSharp
             List<Cliente> clientes = new List<Cliente>();
             Cliente cliente = new Cliente();
 
-            // Ask the user to choose an option.
-            Console.WriteLine("Escolha a opção que deseja executar:");
-            Console.WriteLine("\tc - Create");
-            Console.WriteLine("\tr - Read");
-            Console.WriteLine("\tu - Update");
-            Console.WriteLine("\td - Delete");
-            Console.WriteLine("\ts - Sair");
-            Console.Write("O que deseja executar? ");
+            int menuControl;
 
-            // Use a switch statement to call the methods.
-            switch (Console.ReadLine())
+            do
             {
-                case "c":
-                    Create();
-                    break;
-                case "r":
-                    Read();
-                    break;
-                case "u":
-                    Update();
-                    break;
-                case "d":
-                    Delete();
-                    break;
-                case "s":
-                    Console.WriteLine("\nSaindo da aplicação");
-                    break;
-            }
+                // Ask the user to choose an option.
+                Console.WriteLine("Escolha a opção que deseja executar:");
+                Console.WriteLine("\t1 - Create");
+                Console.WriteLine("\t2 - Read");
+                Console.WriteLine("\t3 - Update");
+                Console.WriteLine("\t4 - Delete");
+                Console.WriteLine("\t0 - Sair do programa");
+                Console.Write("O que deseja executar? ");
+
+                // Use a switch statement to call the methods.
+                menuControl = Int32.Parse(Console.ReadLine());
+                switch (menuControl)
+                {
+                    case 1:
+                        Create();
+                        break;
+                    case 2:
+                        Read();
+                        break;
+                    case 3:
+                        Update();
+                        break;
+                    case 4:
+                        Delete();
+                        break;
+                    default:
+                        Console.WriteLine("\nSaindo da aplicação");
+                        CloseConsole();
+                        break;
+                }
+            } while (menuControl != 0);
             // Wait for the user to respond before closing.
             Console.Write("Press any key to close the CRUD console app...");
             Console.ReadKey();
@@ -74,6 +81,8 @@ namespace TrilhaBackendCSharp
                 clientes.Add(cliente);
 
                 Console.WriteLine("\nNovo cliente cadastrado com sucesso.\n");
+
+                Console.Clear();
             }
 
             void Read()
@@ -90,13 +99,16 @@ namespace TrilhaBackendCSharp
                     case "t":
                         foreach (var item in clientes)
                         {
-                            Console.WriteLine("Nome: ", item.Nome);
-                            Console.WriteLine("Idade: ", item.Idade);
-                            Console.WriteLine("CPF: ", item.CPF);
-                            Console.WriteLine("Email: ", item.Email);
-                            Console.WriteLine("Telefone: ", item.Telefone);
-                            Console.WriteLine("Endereco: ", item.Endereco);
+                            Console.WriteLine("Nome: {0}", item.Nome);
+                            Console.WriteLine("Idade: {0}", item.Idade);
+                            Console.WriteLine("CPF: {0}", item.CPF);
+                            Console.WriteLine("Email: {0}", item.Email);
+                            Console.WriteLine("Telefone: {0}", item.Telefone);
+                            Console.WriteLine("Endereco: {0}", item.Endereco);
                         }
+
+                        Console.WriteLine("Pressione Enter para continuar...");
+                        Console.ReadKey();
                         break;
                     case "e":
                         Console.WriteLine("Digite o CPF do cliente que deseja visualizar: ");
@@ -106,16 +118,20 @@ namespace TrilhaBackendCSharp
                         {
                             if (item.CPF == cpfBuscado)
                             {
-                                Console.WriteLine("Nome: ", item.Nome);
-                                Console.WriteLine("Idade: ", item.Idade);
-                                Console.WriteLine("CPF: ", item.CPF);
-                                Console.WriteLine("Email: ", item.Email);
-                                Console.WriteLine("Telefone: ", item.Telefone);
-                                Console.WriteLine("Endereco: ", item.Endereco);
+                                Console.WriteLine("Nome: {0}", item.Nome);
+                                Console.WriteLine("Idade: {0}", item.Idade);
+                                Console.WriteLine("CPF: {0}", item.CPF);
+                                Console.WriteLine("Email: {0}", item.Email);
+                                Console.WriteLine("Telefone: {0}", item.Telefone);
+                                Console.WriteLine("Endereco: {0}", item.Endereco);
                             }
                         }
+                        Console.WriteLine("Pressione Enter para continuar...");
+                        Console.ReadKey();
                         break;
                 }
+
+                Console.Clear();
             }
 
             void Update()
@@ -123,7 +139,7 @@ namespace TrilhaBackendCSharp
                 //A operação de Update deve permitir alterar um ou mais dos dados de um cliente a partir do CPF dele(O campo CPF não pode ser alterado).
                 Console.WriteLine("\nVocê escolheu a opção de atualizar os dados de um cliente.\n");
                 Console.WriteLine("Digite o CPF do cliente que deseja atualizar (O campo CPF não pode ser alterado): ");
-                
+
                 var cpfCliente = Console.ReadLine();
                 foreach (var item in clientes)
                 {
@@ -146,7 +162,7 @@ namespace TrilhaBackendCSharp
                     }
                     clientes.Add(item); //acho que não posso fazer isso pq vai ficar dois clientes com o mesmo CPF e dados diferentes
                 }
-
+                Console.Clear();
             }
 
             void Delete()
@@ -161,6 +177,16 @@ namespace TrilhaBackendCSharp
                     if (cpfCliente == item.CPF)
                         clientes.Remove(item);
                 }
+
+                Console.Clear();
+            }
+            #endregion
+
+            #region para fechar o programa
+            static void CloseConsole()
+            {
+                Console.WriteLine();
+                Console.WriteLine("Você saiu do programa. Clique qualquer tecla para fechar...");
             }
             #endregion
         }
