@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace CRUD_Desafio2
+namespace TrilhaBackendCSharp
 {
     public class Cliente
     {

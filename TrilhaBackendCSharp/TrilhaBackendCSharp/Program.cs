@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Dynamic;
 using System.Linq;
 
-namespace CRUD_Desafio2
+namespace TrilhaBackendCSharp
 {
     public class Program
     {
