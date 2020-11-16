@@ -5,6 +5,7 @@ using System.Text;
 using TrilhaBackendCSharp.Dominio.Entidades;
 using TrilhaBackendCSharp.Dominio.Repositorios;
 using TrilhaBackendCSharp.Infraestrutura.DatabaseInMemory;
+using System.Linq;
 
 namespace TrilhaBackendCSharp.Infraestrutura.Repositorios
 {
@@ -18,12 +19,14 @@ namespace TrilhaBackendCSharp.Infraestrutura.Repositorios
 
         public List<Cliente> Consultar(string cpf = "")
         {
-            const string consulta = "SELECT * FROM CLIENTES";
+            var consulta = new StringBuilder()
+                .Append("select * from clientes")
+                .Append(string.IsNullOrEmpty(cpf) ? "" : " WHERE CPF = @CPF").ToString();
+
             using (var connection = _database.Connection)
             {
-                //return connection.Query<Cliente>(consulta).ToList();
+                return connection.Query<Cliente>(consulta, new { CPF = new DbString() { Value = cpf, IsAnsi = true, Length = 15, IsFixedLength = true } }).ToList();
             }
-            throw new NotImplementedException();
         }
 
         public void Salvar(Cliente cliente)
