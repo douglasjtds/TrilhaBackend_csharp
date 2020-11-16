@@ -9,7 +9,11 @@ namespace TrilhaBackendCSharp
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Exercício de CRUD do Desafio 2! TRILHA BACKEND!\r");
+            //var repository = new ClienteRepositorio();
+            //foreach (var cliente  in repository.Consultar())
+            //    Console.WriteLine(cliente.Imprimir);
+
+            /*Console.WriteLine("Exercício de CRUD do Desafio 2! TRILHA BACKEND!\r");
             Console.WriteLine("------------------------\n");
 
             List<Cliente> clientes = new List<Cliente>();
@@ -189,6 +193,7 @@ namespace TrilhaBackendCSharp
                 Console.WriteLine("Você saiu do programa. Clique qualquer tecla para fechar...");
             }
             #endregion
+            */
         }
     }
 }

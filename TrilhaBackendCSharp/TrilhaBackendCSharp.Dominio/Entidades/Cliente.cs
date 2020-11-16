@@ -21,5 +21,7 @@ namespace TrilhaBackendCSharp.Dominio.Entidades
         public string Email { get; set; }
         public string Telefone { get; set; }
         public string Endereco { get; set; }
+
+        public string Imprimir => string.Concat("Nome: ", Nome, "\nIdade: ", Idade, "\nCPF: ", CPF, "\nE-mail: ", Email, "\nTelefone: ", Telefone, "\nEndereço: ", Endereco);
     }
 }

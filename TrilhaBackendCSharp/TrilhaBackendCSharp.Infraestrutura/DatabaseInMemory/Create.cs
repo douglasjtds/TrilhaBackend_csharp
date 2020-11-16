@@ -9,7 +9,7 @@
                 CPF [CHAR](15) NOT NULL,
                 EMAIL VARCHAR(50) NOT NULL,
                 TELEFONE VARCHAR(20) NOT NULL,
-                ENDERECO VARCHAR(100) NOT NULL,
+                ENDERECO VARCHAR(100) NOT NULL
             );
 
             INSERT INTO CLIENTES VALUES ('Fulano', 60, '12161543', 'teste@teste', '31919118196', 'Rua tal...');
