@@ -35,10 +35,18 @@ namespace TrilhaBackendCSharp.Infraestrutura.Repositorios
             if (Consultar(cliente.CPF).Count > 0)
             {
                 // update
+                var update = "UPDATE CLIENTES SET WHERE CPF = @CPF";
+
+                using (var connection = _database.Connection)
+                {
+                    //return connection.Query(update, new { cliente.Nome =  });
+                }
             }
             else
             {
                 //insert
+                var insert = $"INSERT INTO CLIENTES (NOME, IDADE, CPF, EMAIL, TELEFONE, ENDERECO) " +
+                                $"VALUES({cliente.Nome}, {cliente.Idade}, {cliente.CPF}, {cliente.Email}, {cliente.Telefone}, {cliente.Endereco}); ";
             }
             throw new NotImplementedException();
         }
