@@ -50,6 +50,17 @@ namespace TrilhaBackendCSharp.Infraestrutura.Repositorios
         public bool Remover(string cpf)
         {
             //2 - Missão 2, fazer script de Delete.
+
+            //var delete = new StringBuilder()
+            //    .Append("DELETE FROM CLIENTES WHERE CPF = @CPF").ToString();
+
+            //using (var connection = _database.Connection)
+            //{
+            //    return connection.Query<Cliente>(delete, new { CPF = new DbString() { Value = cpf, IsAnsi = true, Length = 15, IsFixedLength = true } });
+            //}
+
+            var delete = $"DELETE FROM CLIENTES WHERE CPF = {cpf}";
+
             throw new NotImplementedException();
         }
     }
