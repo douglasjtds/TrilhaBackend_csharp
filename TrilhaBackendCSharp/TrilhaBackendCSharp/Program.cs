@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Dynamic;
 using System.Linq;
+using TrilhaBackendCSharp.Dominio.Entidades;
 using TrilhaBackendCSharp.Infraestrutura.Repositorios;
+//using Dominio.Entidades;
 
 namespace TrilhaBackendCSharp
 {
@@ -11,8 +13,20 @@ namespace TrilhaBackendCSharp
         static void Main(string[] args)
         {
             var repository = new ClienteRepositorio();
-            foreach (var cliente in repository.Consultar("6666666"))
-                Console.WriteLine(cliente.Imprimir);
+
+            //teste consultar
+            //foreach (var cliente in repository.Consultar("6666666"))
+            //    Console.WriteLine(cliente.Imprimir);
+
+            //teste salvar
+            //Cliente cliente2 = new Cliente("Douglas", 25, "666", "teste@teste.com", "2345678", "Rua 1");
+            //repository.Salvar(cliente2);
+
+            //teste remover
+            repository.Remover("12161543");
+
+
+
 
             /*Console.WriteLine("Exercício de CRUD do Desafio 2! TRILHA BACKEND!\r");
             Console.WriteLine("------------------------\n");

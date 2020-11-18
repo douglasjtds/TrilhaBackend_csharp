@@ -36,32 +36,41 @@ namespace TrilhaBackendCSharp.Infraestrutura.Repositorios
             {
                 // update
                 var update = $"UPDATE CLIENTES " +
-                                $"SET NOME = '{cliente.Nome}', IDADE = {cliente.Idade}, EMAIL = {cliente.CPF}, TELEFONE = {cliente.Telefone}, ENDERECO = {cliente.Endereco}" +
+                                $"SET NOME = '{cliente.Nome}', IDADE = '{cliente.Idade}', EMAIL = '{cliente.CPF}', TELEFONE = '{cliente.Telefone}', ENDERECO = '{cliente.Endereco}'" +
                                 $"WHERE CPF = @CPF";
+
+                _database.Connection.Execute(update);
             }
             else
             {
                 //insert
                 var insert = $"INSERT INTO CLIENTES (NOME, IDADE, CPF, EMAIL, TELEFONE, ENDERECO) " +
-                                $"VALUES({cliente.Nome}, {cliente.Idade}, {cliente.CPF}, {cliente.Email}, {cliente.Telefone}, {cliente.Endereco});";
+                                $"VALUES('{cliente.Nome}', '{cliente.Idade}', '{cliente.CPF}', '{cliente.Email}', '{cliente.Telefone}', '{cliente.Endereco}');";
+
+                using (var connection = _database.Connection)
+                {
+                    connection.Execute(insert);
+                }
             }
         }
 
         public bool Remover(string cpf)
         {
             //2 - Missão 2, fazer script de Delete.
+            var delete = $"DELETE FROM CLIENTES WHERE CPF = '{cpf}'";
 
-            //var delete = new StringBuilder()
-            //    .Append("DELETE FROM CLIENTES WHERE CPF = @CPF").ToString();
+            var numeroDeLinhasAfetasdas = 0;
 
-            //using (var connection = _database.Connection)
-            //{
-            //    return connection.Query<Cliente>(delete, new { CPF = new DbString() { Value = cpf, IsAnsi = true, Length = 15, IsFixedLength = true } });
-            //}
+            using (var connection = _database.Connection)
+            {
+                numeroDeLinhasAfetasdas = connection.Execute(delete);
+            }
 
-            var delete = $"DELETE FROM CLIENTES WHERE CPF = {cpf}";
-
-            throw new NotImplementedException();
+            if (numeroDeLinhasAfetasdas > 0)
+                return true;
+            else
+                return false;
+            
         }
     }
 }
