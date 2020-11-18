@@ -35,21 +35,60 @@ namespace TrilhaBackendCSharp.Infraestrutura.Repositorios
             if (Consultar(cliente.CPF).Count > 0)
             {
                 // update
-                var update = $"UPDATE CLIENTES " +
-                                $"SET NOME = '{cliente.Nome}', IDADE = '{cliente.Idade}', EMAIL = '{cliente.CPF}', TELEFONE = '{cliente.Telefone}', ENDERECO = '{cliente.Endereco}'" +
-                                $"WHERE CPF = @CPF";
+                var update = @"UPDATE CLIENTES
+                                SET NOME = @NOME,
+                                        IDADE = @IDADE,
+                                        EMAIL = @EMAIL,
+                                        TELEFONE = @TELEFONE,
+                                        ENDERECO = @ENDERECO
+                                WHERE CPF = @CPF";
 
-                _database.Connection.Execute(update);
+                using (var connection = _database.Connection)
+                {
+                    connection.Query<Cliente>(update,
+                            new
+                            {
+                                NOME = new DbString() { Value = cliente.Nome, IsAnsi = true },
+                                IDADE = cliente.Idade,
+                                EMAIL = new DbString() { Value = cliente.Email, IsAnsi = true },
+                                CPF = new DbString() { Value = cliente.CPF, IsAnsi = true, Length = 15, IsFixedLength = true },
+                                TELEFONE = new DbString() { Value = cliente.Telefone, IsAnsi = true },
+                                ENDERECO = new DbString() { Value = cliente.Endereco, IsAnsi = true }
+                            }
+                        ).ToList();
+                }
+
             }
             else
             {
                 //insert
-                var insert = $"INSERT INTO CLIENTES (NOME, IDADE, CPF, EMAIL, TELEFONE, ENDERECO) " +
-                                $"VALUES('{cliente.Nome}', '{cliente.Idade}', '{cliente.CPF}', '{cliente.Email}', '{cliente.Telefone}', '{cliente.Endereco}');";
+                var insert = @"INSERT INTO CLIENTES 
+                                    (NOME, 
+                                    IDADE, 
+                                    CPF, 
+                                    EMAIL, 
+                                    TELEFONE, 
+                                    ENDERECO) 
+                                VALUES(@NOME, 
+                                    @IDADE, 
+                                    @CPF, 
+                                    @EMAIL, 
+                                    @TELEFONE, 
+                                    @ENDERECO)";
 
                 using (var connection = _database.Connection)
                 {
-                    connection.Execute(insert);
+                    connection.Query<Cliente>(insert,
+                            new
+                            {
+                                NOME = new DbString() { Value = cliente.Nome, IsAnsi = true },
+                                IDADE = cliente.Idade,
+                                EMAIL = new DbString() { Value = cliente.Email, IsAnsi = true },
+                                CPF = new DbString() { Value = cliente.CPF, IsAnsi = true, Length = 15, IsFixedLength = true },
+                                TELEFONE = new DbString() { Value = cliente.Telefone, IsAnsi = true },
+                                ENDERECO = new DbString() { Value = cliente.Endereco, IsAnsi = true }
+                            }
+                        ).ToList();
                 }
             }
         }
@@ -57,20 +96,19 @@ namespace TrilhaBackendCSharp.Infraestrutura.Repositorios
         public bool Remover(string cpf)
         {
             //2 - Missão 2, fazer script de Delete.
-            var delete = $"DELETE FROM CLIENTES WHERE CPF = '{cpf}'";
+            var delete = @"DELETE FROM CLIENTES WHERE CPF = @CPF";
 
             var numeroDeLinhasAfetasdas = 0;
 
             using (var connection = _database.Connection)
             {
-                numeroDeLinhasAfetasdas = connection.Execute(delete);
+                numeroDeLinhasAfetasdas = connection.Execute(delete, new { CPF = new DbString() { Value = cpf, IsAnsi = true, Length = 15, IsFixedLength = true } });
             }
 
             if (numeroDeLinhasAfetasdas > 0)
                 return true;
             else
                 return false;
-            
         }
     }
 }

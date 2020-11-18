@@ -4,7 +4,6 @@ using System.Dynamic;
 using System.Linq;
 using TrilhaBackendCSharp.Dominio.Entidades;
 using TrilhaBackendCSharp.Infraestrutura.Repositorios;
-//using Dominio.Entidades;
 
 namespace TrilhaBackendCSharp
 {
@@ -19,11 +18,16 @@ namespace TrilhaBackendCSharp
             //    Console.WriteLine(cliente.Imprimir);
 
             //teste salvar
-            //Cliente cliente2 = new Cliente("Douglas", 25, "666", "teste@teste.com", "2345678", "Rua 1");
-            //repository.Salvar(cliente2);
+            //Cliente novoCliente = new Cliente("Douglas", 25, "1", "teste@teste.com", "2345678", "Rua 1");
+            //repository.Salvar(novoCliente);
+            //foreach (var cliente in repository.Consultar(""))
+            //    Console.WriteLine(cliente.Imprimir);
+
 
             //teste remover
             repository.Remover("12161543");
+            foreach (var cliente in repository.Consultar("12161543"))
+                Console.WriteLine(cliente.Imprimir);
 
 
 
