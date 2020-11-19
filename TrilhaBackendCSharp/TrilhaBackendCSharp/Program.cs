@@ -14,8 +14,8 @@ namespace TrilhaBackendCSharp
             var repository = new ClienteRepositorio();
 
             //teste consultar
-            //foreach (var cliente in repository.Consultar("6666666"))
-            //    Console.WriteLine(cliente.Imprimir);
+            foreach (var cliente in repository.Consultar(""))
+                Console.WriteLine(cliente.Imprimir);
 
             //teste salvar
             //Cliente novoCliente = new Cliente("Douglas", 25, "1", "teste@teste.com", "2345678", "Rua 1");
@@ -25,12 +25,15 @@ namespace TrilhaBackendCSharp
 
 
             //teste remover
-            repository.Remover("12161543");
-            foreach (var cliente in repository.Consultar("12161543"))
+            //repository.Remover("12161543");
+            //foreach (var cliente in repository.Consultar("12161543"))
+            //    Console.WriteLine(cliente.Imprimir);
+
+            Console.WriteLine("----------teste update----------");
+            Cliente atualizarCliente = new Cliente("Douglas", 25, "123456789", "douglas.tertuliano@zup.com.br", "91848090", "Rua São Geraldo");
+            repository.Salvar(atualizarCliente);
+            foreach (var cliente in repository.Consultar())
                 Console.WriteLine(cliente.Imprimir);
-
-
-
 
             /*Console.WriteLine("Exercício de CRUD do Desafio 2! TRILHA BACKEND!\r");
             Console.WriteLine("------------------------\n");
