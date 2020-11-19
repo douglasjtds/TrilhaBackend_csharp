@@ -32,66 +32,47 @@ namespace TrilhaBackendCSharp.Infraestrutura.Repositorios
         public void Salvar(Cliente cliente)
         {
             //1 - Missão 1, fazer script de Insert e Update de acordo com a situação.
-            if (Consultar(cliente.CPF).Count > 0)
+            string script = Consultar(cliente.CPF).Count > 0 ?
+
+                @"UPDATE CLIENTES
+                    SET NOME = @NOME,
+                        IDADE = @IDADE,
+                        EMAIL = @EMAIL,
+                        TELEFONE = @TELEFONE,
+                        ENDERECO = @ENDERECO
+                    WHERE CPF = @CPF" :
+
+                @"INSERT INTO CLIENTES 
+                    (NOME, 
+                    IDADE, 
+                    CPF, 
+                    EMAIL, 
+                    TELEFONE, 
+                    ENDERECO) 
+                VALUES(@NOME, 
+                    @IDADE, 
+                    @CPF, 
+                    @EMAIL, 
+                    @TELEFONE, 
+                    @ENDERECO)";
+
+            using (var connection = _database.Connection)
             {
-                // update
-                var update = @"UPDATE CLIENTES
-                                SET NOME = @NOME,
-                                        IDADE = @IDADE,
-                                        EMAIL = @EMAIL,
-                                        TELEFONE = @TELEFONE,
-                                        ENDERECO = @ENDERECO
-                                WHERE CPF = @CPF";
-
-                using (var connection = _database.Connection)
-                {
-                    connection.Query<Cliente>(update,
-                            new
-                            {
-                                NOME = new DbString() { Value = cliente.Nome, IsAnsi = true },
-                                IDADE = cliente.Idade,
-                                EMAIL = new DbString() { Value = cliente.Email, IsAnsi = true },
-                                CPF = new DbString() { Value = cliente.CPF, IsAnsi = true, Length = 15, IsFixedLength = true },
-                                TELEFONE = new DbString() { Value = cliente.Telefone, IsAnsi = true },
-                                ENDERECO = new DbString() { Value = cliente.Endereco, IsAnsi = true }
-                            }
-                        ).ToList();
-                }
-
+                connection.Execute(script,
+                        param: new
+                        {
+                            NOME = new DbString() { Value = cliente.Nome, IsAnsi = true },
+                            IDADE = cliente.Idade,
+                            EMAIL = new DbString() { Value = cliente.Email, IsAnsi = true },
+                            CPF = new DbString() { Value = cliente.CPF, IsAnsi = true, Length = 15, IsFixedLength = true },
+                            TELEFONE = new DbString() { Value = cliente.Telefone, IsAnsi = true },
+                            ENDERECO = new DbString() { Value = cliente.Endereco, IsAnsi = true }
+                        }
+                    );
             }
-            else
-            {
-                //insert
-                var insert = @"INSERT INTO CLIENTES 
-                                    (NOME, 
-                                    IDADE, 
-                                    CPF, 
-                                    EMAIL, 
-                                    TELEFONE, 
-                                    ENDERECO) 
-                                VALUES(@NOME, 
-                                    @IDADE, 
-                                    @CPF, 
-                                    @EMAIL, 
-                                    @TELEFONE, 
-                                    @ENDERECO)";
 
-                using (var connection = _database.Connection)
-                {
-                    connection.Query<Cliente>(insert,
-                            new
-                            {
-                                NOME = new DbString() { Value = cliente.Nome, IsAnsi = true },
-                                IDADE = cliente.Idade,
-                                EMAIL = new DbString() { Value = cliente.Email, IsAnsi = true },
-                                CPF = new DbString() { Value = cliente.CPF, IsAnsi = true, Length = 15, IsFixedLength = true },
-                                TELEFONE = new DbString() { Value = cliente.Telefone, IsAnsi = true },
-                                ENDERECO = new DbString() { Value = cliente.Endereco, IsAnsi = true }
-                            }
-                        ).ToList();
-                }
-            }
         }
+
 
         public bool Remover(string cpf)
         {
@@ -105,10 +86,7 @@ namespace TrilhaBackendCSharp.Infraestrutura.Repositorios
                 numeroDeLinhasAfetasdas = connection.Execute(delete, new { CPF = new DbString() { Value = cpf, IsAnsi = true, Length = 15, IsFixedLength = true } });
             }
 
-            if (numeroDeLinhasAfetasdas > 0)
-                return true;
-            else
-                return false;
+            return numeroDeLinhasAfetasdas > 0;
         }
     }
 }
