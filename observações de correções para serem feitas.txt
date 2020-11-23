@@ -1,3 +1,0 @@
-- read - faltou o else do read para o caso de não achar cpf
-- read - faltou o else do update para o caso de não achar cpf
-- update - "acho que não posso fazer isso pq vai ficar dois clientes com o mesmo CPF e dados diferentes", realmente, deu ruim
