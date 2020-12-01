@@ -6,15 +6,17 @@ using TrilhaBackendCSharp.Dominio.Entidades;
 using TrilhaBackendCSharp.Dominio.Repositorios;
 using TrilhaBackendCSharp.Infraestrutura.DatabaseInMemory;
 using System.Linq;
+using System.Data.SqlClient;
 
 namespace TrilhaBackendCSharp.Infraestrutura.Repositorios
 {
     public class ClienteRepositorio : IClienteRepositorio
     {
-        private readonly InMemoryDatabase _database;
+        public const string CONNECTION_STRING = "Data Source=(local);Initial Catalog=dbClientes;Integrated Security=true";
+        //private readonly InMemoryDatabase _database;
         public ClienteRepositorio()
         {
-            _database = new InMemoryDatabase();
+            //_database = new InMemoryDatabase();
         }
 
         public List<Cliente> Consultar(string cpf = "")
@@ -23,7 +25,9 @@ namespace TrilhaBackendCSharp.Infraestrutura.Repositorios
                 .Append("select * from clientes")
                 .Append(string.IsNullOrEmpty(cpf) ? "" : " WHERE CPF = @CPF").ToString();
 
-            using (var connection = _database.Connection)
+
+            //using (var connection = _database.Connection)
+            using (var connection = new SqlConnection(CONNECTION_STRING))
             {
                 return connection.Query<Cliente>(consulta, new { CPF = new DbString() { Value = cpf, IsAnsi = true, Length = 15, IsFixedLength = true } }).ToList();
             }
@@ -56,7 +60,8 @@ namespace TrilhaBackendCSharp.Infraestrutura.Repositorios
                     @TELEFONE, 
                     @ENDERECO)";
 
-            using (var connection = _database.Connection)
+            //using (var connection = _database.Connection)
+            using (var connection = new SqlConnection(CONNECTION_STRING))
             {
                 connection.Execute(script,
                         param: new
@@ -81,7 +86,8 @@ namespace TrilhaBackendCSharp.Infraestrutura.Repositorios
 
             var numeroDeLinhasAfetasdas = 0;
 
-            using (var connection = _database.Connection)
+            //using (var connection = _database.Connection)
+            using (var connection = new SqlConnection(CONNECTION_STRING))
             {
                 numeroDeLinhasAfetasdas = connection.Execute(delete, new { CPF = new DbString() { Value = cpf, IsAnsi = true, Length = 15, IsFixedLength = true } });
             }
