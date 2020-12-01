@@ -1,7 +1,7 @@
 # TrilhaBackend_csharp
-1. [Desafio 1](#desafio1)
-2. [Desafio 2](#desafio2)
-2. [Desafio 3](#desafio3)
+1. [Desafio 1](https://github.com/douglasjtds/TrilhaBackend_csharp/tree/feature/basico/desafio3#desafio-1)
+2. [Desafio 2](https://github.com/douglasjtds/TrilhaBackend_csharp/tree/feature/basico/desafio3#desafio-2)
+2. [Desafio 3](https://github.com/douglasjtds/TrilhaBackend_csharp/tree/feature/basico/desafio3#desafio-3)
 
 ## Desafio 1
 https://classroom.google.com/u/1/c/NjE3NTE1NjY5MTha/a/NjI2MjQ0MjE3NTJa/details
