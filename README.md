@@ -16,7 +16,7 @@ Branch: /feature/basico/desafio2
 
 ## Desafio 3
 
-Branch: /feature/basico/desafio3 (__em construção__)
+Branch: /feature/basico/desafio3
 
 ### How to
 para executar testes nesse banco de dados execute os seguintes comandos para criação do banco,
