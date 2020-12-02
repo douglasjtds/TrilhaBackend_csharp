@@ -19,130 +19,14 @@ Branch: /feature/basico/desafio2
 Branch: /feature/basico/desafio3 (__em construção__)
 
 ### How to
-para executar testes nesse banco de dados execute os seguintes comandos para criação do banco:
+para executar testes nesse banco de dados execute os seguintes comandos para criação do banco,
+para criação da tabela de clientes e alguns inserts de exemplo:
 
 ~~~
 USE [master]
-GO
 
-/****** Object:  Database [dbClientes]    Script Date: 01/12/2020 19:38:47 ******/
-CREATE DATABASE [dbClientes]
- CONTAINMENT = NONE
- ON  PRIMARY 
-( NAME = N'dbClientes', FILENAME = N'D:\Program Files\Microsoft SQL Server\MSSQL15.MSSQLSERVER\MSSQL\DATA\dbClientes.mdf' , SIZE = 8192KB , MAXSIZE = UNLIMITED, FILEGROWTH = 65536KB )
- LOG ON 
-( NAME = N'dbClientes_log', FILENAME = N'D:\Program Files\Microsoft SQL Server\MSSQL15.MSSQLSERVER\MSSQL\DATA\dbClientes_log.ldf' , SIZE = 8192KB , MAXSIZE = 2048GB , FILEGROWTH = 65536KB )
- WITH CATALOG_COLLATION = DATABASE_DEFAULT
-GO
+CREATE DATABASE [dbClientes];
 
-IF (1 = FULLTEXTSERVICEPROPERTY('IsFullTextInstalled'))
-begin
-EXEC [dbClientes].[dbo].[sp_fulltext_database] @action = 'enable'
-end
-GO
-
-ALTER DATABASE [dbClientes] SET ANSI_NULL_DEFAULT OFF 
-GO
-
-ALTER DATABASE [dbClientes] SET ANSI_NULLS OFF 
-GO
-
-ALTER DATABASE [dbClientes] SET ANSI_PADDING OFF 
-GO
-
-ALTER DATABASE [dbClientes] SET ANSI_WARNINGS OFF 
-GO
-
-ALTER DATABASE [dbClientes] SET ARITHABORT OFF 
-GO
-
-ALTER DATABASE [dbClientes] SET AUTO_CLOSE OFF 
-GO
-
-ALTER DATABASE [dbClientes] SET AUTO_SHRINK OFF 
-GO
-
-ALTER DATABASE [dbClientes] SET AUTO_UPDATE_STATISTICS ON 
-GO
-
-ALTER DATABASE [dbClientes] SET CURSOR_CLOSE_ON_COMMIT OFF 
-GO
-
-ALTER DATABASE [dbClientes] SET CURSOR_DEFAULT  GLOBAL 
-GO
-
-ALTER DATABASE [dbClientes] SET CONCAT_NULL_YIELDS_NULL OFF 
-GO
-
-ALTER DATABASE [dbClientes] SET NUMERIC_ROUNDABORT OFF 
-GO
-
-ALTER DATABASE [dbClientes] SET QUOTED_IDENTIFIER OFF 
-GO
-
-ALTER DATABASE [dbClientes] SET RECURSIVE_TRIGGERS OFF 
-GO
-
-ALTER DATABASE [dbClientes] SET  DISABLE_BROKER 
-GO
-
-ALTER DATABASE [dbClientes] SET AUTO_UPDATE_STATISTICS_ASYNC OFF 
-GO
-
-ALTER DATABASE [dbClientes] SET DATE_CORRELATION_OPTIMIZATION OFF 
-GO
-
-ALTER DATABASE [dbClientes] SET TRUSTWORTHY OFF 
-GO
-
-ALTER DATABASE [dbClientes] SET ALLOW_SNAPSHOT_ISOLATION OFF 
-GO
-
-ALTER DATABASE [dbClientes] SET PARAMETERIZATION SIMPLE 
-GO
-
-ALTER DATABASE [dbClientes] SET READ_COMMITTED_SNAPSHOT OFF 
-GO
-
-ALTER DATABASE [dbClientes] SET HONOR_BROKER_PRIORITY OFF 
-GO
-
-ALTER DATABASE [dbClientes] SET RECOVERY FULL 
-GO
-
-ALTER DATABASE [dbClientes] SET  MULTI_USER 
-GO
-
-ALTER DATABASE [dbClientes] SET PAGE_VERIFY CHECKSUM  
-GO
-
-ALTER DATABASE [dbClientes] SET DB_CHAINING OFF 
-GO
-
-ALTER DATABASE [dbClientes] SET FILESTREAM( NON_TRANSACTED_ACCESS = OFF ) 
-GO
-
-ALTER DATABASE [dbClientes] SET TARGET_RECOVERY_TIME = 60 SECONDS 
-GO
-
-ALTER DATABASE [dbClientes] SET DELAYED_DURABILITY = DISABLED 
-GO
-
-ALTER DATABASE [dbClientes] SET ACCELERATED_DATABASE_RECOVERY = OFF  
-GO
-
-ALTER DATABASE [dbClientes] SET QUERY_STORE = OFF
-GO
-
-ALTER DATABASE [dbClientes] SET  READ_WRITE 
-GO
-
-~~~
-
-
-e rode o seguinte script para criação da tabela de clientes e alguns inserts de exemplo:
-
-~~~
 CREATE TABLE CLIENTES(
 	NOME VARCHAR(50) NOT NULL,
 	IDADE INT NOT NULL,

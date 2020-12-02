@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Dynamic;
-using System.Linq;
 using TrilhaBackendCSharp.Dominio.Entidades;
 using TrilhaBackendCSharp.Infraestrutura.Repositorios;
 
@@ -20,7 +17,7 @@ namespace TrilhaBackendCSharp
 
             do
             {
-                // Ask the user to choose an option.
+                // Pede o usuário para escolher uma opção.
                 Console.WriteLine("Escolha a opção que deseja executar:");
                 Console.WriteLine("\t1 - Create");
                 Console.WriteLine("\t2 - Read");
@@ -29,7 +26,7 @@ namespace TrilhaBackendCSharp
                 Console.WriteLine("\t0 - Sair do programa");
                 Console.Write("O que deseja executar? ");
 
-                // Use a switch statement to call the methods.
+                // Usa um switch para a chamada dos métodos.
                 menuControl = Int32.Parse(Console.ReadLine());
                 switch (menuControl)
                 {
@@ -51,8 +48,8 @@ namespace TrilhaBackendCSharp
                         break;
                 }
             } while (menuControl != 0);
-            // Wait for the user to respond before closing.
-            Console.Write("Press any key to close the CRUD console app...");
+            // Espera o usuário responder antes de fechar a aplicação.
+            Console.Write("Pressione qualquer tecla para fechar o CRUD Console App...");
             Console.ReadKey();
 
 
@@ -98,7 +95,6 @@ namespace TrilhaBackendCSharp
 
                 var valorDigitado = Console.ReadLine();
 
-                //teste consultar
                 foreach (var cliente in repository.Consultar(valorDigitado))
                     Console.WriteLine("\n" + cliente.Imprimir);
 

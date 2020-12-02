@@ -1,10 +1,8 @@
 ﻿using ServiceStack.OrmLite.Dapper;
-using System;
 using System.Collections.Generic;
 using System.Text;
 using TrilhaBackendCSharp.Dominio.Entidades;
 using TrilhaBackendCSharp.Dominio.Repositorios;
-using TrilhaBackendCSharp.Infraestrutura.DatabaseInMemory;
 using System.Linq;
 using System.Data.SqlClient;
 
@@ -13,10 +11,10 @@ namespace TrilhaBackendCSharp.Infraestrutura.Repositorios
     public class ClienteRepositorio : IClienteRepositorio
     {
         public const string CONNECTION_STRING = "Data Source=(local);Initial Catalog=dbClientes;Integrated Security=true";
-        //private readonly InMemoryDatabase _database;
+
         public ClienteRepositorio()
         {
-            //_database = new InMemoryDatabase();
+
         }
 
         public List<Cliente> Consultar(string cpf = "")
@@ -26,7 +24,6 @@ namespace TrilhaBackendCSharp.Infraestrutura.Repositorios
                 .Append(string.IsNullOrEmpty(cpf) ? "" : " WHERE CPF = @CPF").ToString();
 
 
-            //using (var connection = _database.Connection)
             using (var connection = new SqlConnection(CONNECTION_STRING))
             {
                 return connection.Query<Cliente>(consulta, new { CPF = new DbString() { Value = cpf, IsAnsi = true, Length = 15, IsFixedLength = true } }).ToList();
@@ -35,7 +32,6 @@ namespace TrilhaBackendCSharp.Infraestrutura.Repositorios
 
         public void Salvar(Cliente cliente)
         {
-            //1 - Missão 1, fazer script de Insert e Update de acordo com a situação.
             string script = Consultar(cliente.CPF).Count > 0 ?
 
                 @"UPDATE CLIENTES
@@ -60,7 +56,6 @@ namespace TrilhaBackendCSharp.Infraestrutura.Repositorios
                     @TELEFONE, 
                     @ENDERECO)";
 
-            //using (var connection = _database.Connection)
             using (var connection = new SqlConnection(CONNECTION_STRING))
             {
                 connection.Execute(script,
@@ -81,12 +76,10 @@ namespace TrilhaBackendCSharp.Infraestrutura.Repositorios
 
         public bool Remover(string cpf)
         {
-            //2 - Missão 2, fazer script de Delete.
             var delete = @"DELETE FROM CLIENTES WHERE CPF = @CPF";
 
             var numeroDeLinhasAfetasdas = 0;
 
-            //using (var connection = _database.Connection)
             using (var connection = new SqlConnection(CONNECTION_STRING))
             {
                 numeroDeLinhasAfetasdas = connection.Execute(delete, new { CPF = new DbString() { Value = cpf, IsAnsi = true, Length = 15, IsFixedLength = true } });

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace TrilhaBackendCSharp.Dominio.Entidades
+﻿namespace TrilhaBackendCSharp.Dominio.Entidades
 {
     public class Cliente
     {
