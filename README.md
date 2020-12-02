@@ -1,7 +1,8 @@
 # TrilhaBackend_csharp
-1. [Desafio 1](https://github.com/douglasjtds/TrilhaBackend_csharp/tree/feature/basico/desafio3#desafio-1)
-2. [Desafio 2](https://github.com/douglasjtds/TrilhaBackend_csharp/tree/feature/basico/desafio3#desafio-2)
-2. [Desafio 3](https://github.com/douglasjtds/TrilhaBackend_csharp/tree/feature/basico/desafio3#desafio-3)
+1. [Desafio 1](https://github.com/douglasjtds/TrilhaBackend_csharp/tree/feature/basico/desafio4#desafio-1)
+2. [Desafio 2](https://github.com/douglasjtds/TrilhaBackend_csharp/tree/feature/basico/desafio4#desafio-2)
+2. [Desafio 3](https://github.com/douglasjtds/TrilhaBackend_csharp/tree/feature/basico/desafio4#desafio-3)
+2. [Desafio 4](https://github.com/douglasjtds/TrilhaBackend_csharp/tree/feature/basico/desafio4#desafio-4)
 
 ## Desafio 1
 https://classroom.google.com/u/1/c/NjE3NTE1NjY5MTha/a/NjI2MjQ0MjE3NTJa/details
@@ -42,3 +43,7 @@ INSERT INTO CLIENTES VALUES('Caldeira',37, '07918947622','thiago.teste@teste.com
 INSERT INTO CLIENTES VALUES('Douglas',25, '123456789',   'douglas.jose@teste.com.br','31995541239','rua monteiro lobato 158');
 INSERT INTO CLIENTES VALUES ('Teste cachorro', 60, '345345', 'teste@teste', '34534', 'Rua ...');
 ~~~
+
+## Desafio 4 (__em construção__)
+
+Criação de um Worker Service para ler a tabela de Clientes, e escrever os resultados num .txt
