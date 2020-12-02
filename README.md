@@ -3,7 +3,6 @@
 2. [Desafio 2](https://github.com/douglasjtds/TrilhaBackend_csharp/tree/feature/basico/desafio4#desafio-2)
 2. [Desafio 3](https://github.com/douglasjtds/TrilhaBackend_csharp/tree/feature/basico/desafio4#desafio-3)
 2. [Desafio 4](https://github.com/douglasjtds/TrilhaBackend_csharp/tree/feature/basico/desafio4#desafio-4)
-https://github.com/douglasjtds/TrilhaBackend_csharp/tree/feature/basico/desafio4#desafio-4-em-constru%C3%A7%C3%A3o
 
 ## Desafio 1
 https://classroom.google.com/u/1/c/NjE3NTE1NjY5MTha/a/NjI2MjQ0MjE3NTJa/details
