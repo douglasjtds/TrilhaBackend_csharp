@@ -1,5 +1,7 @@
 ﻿using Dapper;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -10,11 +12,11 @@ namespace TrilhaBackendCSharp.Infraestrutura.Repositorios
 {
     public class ClienteRepositorio : IClienteRepositorio
     {
-        public const string CONNECTION_STRING = "Data Source=(local);Initial Catalog=dbClientes;Integrated Security=true";
+        private readonly Func<IDbConnection> _connection;
 
-        public ClienteRepositorio()
+        public ClienteRepositorio(Func<IDbConnection> connection)
         {
-
+            _connection = connection;
         }
 
         public List<Cliente> Consultar(string cpf = "")
@@ -24,7 +26,7 @@ namespace TrilhaBackendCSharp.Infraestrutura.Repositorios
                 .Append(string.IsNullOrEmpty(cpf) ? "" : " WHERE CPF = @CPF").ToString();
 
 
-            using (var connection = new SqlConnection(CONNECTION_STRING))
+            using (var connection = _connection.Invoke())
             {
                 return connection.Query<Cliente>(consulta, new { CPF = new DbString() { Value = cpf, IsAnsi = true, Length = 15, IsFixedLength = true } }).ToList();
             }
@@ -56,7 +58,7 @@ namespace TrilhaBackendCSharp.Infraestrutura.Repositorios
                     @TELEFONE, 
                     @ENDERECO)";
 
-            using (var connection = new SqlConnection(CONNECTION_STRING))
+            using (var connection = _connection.Invoke())
             {
                 connection.Execute(script,
                         param: new
@@ -80,7 +82,7 @@ namespace TrilhaBackendCSharp.Infraestrutura.Repositorios
 
             var numeroDeLinhasAfetasdas = 0;
 
-            using (var connection = new SqlConnection(CONNECTION_STRING))
+            using (var connection = _connection.Invoke())
             {
                 numeroDeLinhasAfetasdas = connection.Execute(delete, new { CPF = new DbString() { Value = cpf, IsAnsi = true, Length = 15, IsFixedLength = true } });
             }
