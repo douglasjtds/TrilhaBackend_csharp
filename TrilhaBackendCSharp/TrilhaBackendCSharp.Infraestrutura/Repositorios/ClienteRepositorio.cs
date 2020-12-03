@@ -1,10 +1,10 @@
-﻿using ServiceStack.OrmLite.Dapper;
+﻿using Dapper;
 using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.Linq;
 using System.Text;
 using TrilhaBackendCSharp.Dominio.Entidades;
 using TrilhaBackendCSharp.Dominio.Repositorios;
-using System.Linq;
-using System.Data.SqlClient;
 
 namespace TrilhaBackendCSharp.Infraestrutura.Repositorios
 {

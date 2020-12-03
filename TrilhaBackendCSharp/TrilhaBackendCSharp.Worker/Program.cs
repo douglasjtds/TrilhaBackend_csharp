@@ -20,6 +20,6 @@ namespace TrilhaBackendCSharp.Worker
                 .ConfigureServices((hostContext, services) =>
                 {
                     services.AddHostedService<Worker>();
-                }).GetConfiguration();
+                });
     }
 }
