@@ -1,0 +1,2 @@
+- Erro no Program.cs do console (no argument given connection)
+- Exception no Program.cs do worker (AggregateException)
