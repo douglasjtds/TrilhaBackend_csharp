@@ -75,7 +75,6 @@ namespace TrilhaBackendCSharp.Infraestrutura.Repositorios
 
         }
 
-
         public bool Remover(string cpf)
         {
             var delete = @"DELETE FROM CLIENTES WHERE CPF = @CPF";

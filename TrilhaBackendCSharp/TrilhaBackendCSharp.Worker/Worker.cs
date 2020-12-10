@@ -1,20 +1,24 @@
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using TrilhaBackendCSharp.Infraestrutura.Repositorios;
 
 namespace TrilhaBackendCSharp.Worker
 {
     public class Worker : BackgroundService
     {
         private readonly ILogger<Worker> _logger;
+        private readonly ClienteRepositorio _clienteRepositorio;
+        private readonly EscreverArquivoRepositorio _escreverArquivoRepositorio;
 
-        public Worker(ILogger<Worker> logger)
+
+        public Worker(ILogger<Worker> logger, ClienteRepositorio clienteRepositorio, EscreverArquivoRepositorio escreverArquivoRepositorio)
         {
             _logger = logger;
+            _clienteRepositorio = clienteRepositorio;
+            _escreverArquivoRepositorio = escreverArquivoRepositorio;
         }
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
@@ -26,7 +30,10 @@ namespace TrilhaBackendCSharp.Worker
             }
 
             //Desafio 1: Consultar no banco os clientes
+            var listaClientes = _clienteRepositorio.Consultar();
+
             //Desafio 2: Fazer um foreach que vai ler os clientes e escrever num txt (classe IO)
+            _escreverArquivoRepositorio.Escreve(listaClientes);
             //Desafio 3: Parametrizar no appsetings o tempo de delay e o caminho onde vai salvar o arquivo
             //Desafio 4: loggar erro caso der uma exceção usando o _logger
 
