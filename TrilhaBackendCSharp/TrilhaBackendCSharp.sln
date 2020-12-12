@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrilhaBackendCSharp.Dominio
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrilhaBackendCSharp.Infraestrutura", "TrilhaBackendCSharp.Infraestrutura\TrilhaBackendCSharp.Infraestrutura.csproj", "{AA14858F-0918-4962-928B-CEB464953851}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrilhaBackendCSharp.Worker", "TrilhaBackendCSharp.Worker\TrilhaBackendCSharp.Worker.csproj", "{6838FAED-7758-4DBA-81CE-BEE22762EED6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrilhaBackendCSharp.Worker", "TrilhaBackendCSharp.Worker\TrilhaBackendCSharp.Worker.csproj", "{6838FAED-7758-4DBA-81CE-BEE22762EED6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrilhaBackendCSharp.Application", "TrilhaBackendCSharp.Application\TrilhaBackendCSharp.Application.csproj", "{D534AEFC-ADAF-4262-B1C6-81D7A4647394}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{6838FAED-7758-4DBA-81CE-BEE22762EED6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6838FAED-7758-4DBA-81CE-BEE22762EED6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6838FAED-7758-4DBA-81CE-BEE22762EED6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D534AEFC-ADAF-4262-B1C6-81D7A4647394}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D534AEFC-ADAF-4262-B1C6-81D7A4647394}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D534AEFC-ADAF-4262-B1C6-81D7A4647394}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D534AEFC-ADAF-4262-B1C6-81D7A4647394}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

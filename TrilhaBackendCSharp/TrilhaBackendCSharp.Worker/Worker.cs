@@ -3,8 +3,9 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
+using TrilhaBackendCSharp.Application.UseCases;
+using TrilhaBackendCSharp.Dominio.Entidades;
 using TrilhaBackendCSharp.Dominio.Repositorios;
-using TrilhaBackendCSharp.Infraestrutura.Repositorios;
 
 namespace TrilhaBackendCSharp.Worker
 {
@@ -12,14 +13,16 @@ namespace TrilhaBackendCSharp.Worker
     {
         private readonly ILogger<Worker> _logger;
         private readonly IClienteRepositorio _clienteRepositorio;
-        private readonly IEscreverArquivoRepositorio _escreverArquivoRepositorio;
+        //private readonly IEscreverArquivoRepositorio _escreverArquivoRepositorio;  //---------------acho que fiz confusão nessa parte, já que tem o UseCase, melhor remover isso?
+        private readonly IUseCase<Cliente> _useCase;
 
 
-        public Worker(ILogger<Worker> logger, IClienteRepositorio clienteRepositorio, IEscreverArquivoRepositorio escreverArquivoRepositorio)
+        public Worker(ILogger<Worker> logger, IClienteRepositorio clienteRepositorio, IUseCase<Cliente> useCase) //IEscreverArquivoRepositorio escreverArquivoRepositorio)
         {
             _logger = logger;
             _clienteRepositorio = clienteRepositorio;
-            _escreverArquivoRepositorio = escreverArquivoRepositorio;
+            //_escreverArquivoRepositorio = escreverArquivoRepositorio;
+            _useCase = useCase;
         }
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
@@ -30,15 +33,8 @@ namespace TrilhaBackendCSharp.Worker
                 await Task.Delay(10000, stoppingToken);
             }
 
-            //Desafio 1: Consultar no banco os clientes
             var listaClientes = _clienteRepositorio.Consultar();
-
-            //Desafio 2: Fazer um foreach que vai ler os clientes e escrever num txt (classe IO)
-            _escreverArquivoRepositorio.Escreve(listaClientes);
-            //Desafio 3: Parametrizar no appsetings o tempo de delay e o caminho onde vai salvar o arquivo
-            //Desafio 4: loggar erro caso der uma exceção usando o _logger
-
-            //possiveis erros, caminho existir
+            _useCase.Execute(listaClientes);
         }
     }
 }

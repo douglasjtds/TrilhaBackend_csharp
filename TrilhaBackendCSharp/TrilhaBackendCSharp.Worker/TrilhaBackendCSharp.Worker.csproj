@@ -12,6 +12,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\TrilhaBackendCSharp.Application\TrilhaBackendCSharp.Application.csproj" />
+    <ProjectReference Include="..\TrilhaBackendCSharp.Dominio\TrilhaBackendCSharp.Dominio.csproj" />
     <ProjectReference Include="..\TrilhaBackendCSharp.Infraestrutura\TrilhaBackendCSharp.Infraestrutura.csproj" />
   </ItemGroup>
 </Project>

@@ -26,9 +26,6 @@ para criação da tabela de clientes e alguns inserts de exemplo:
 ~~~
 USE [master]
 
-CREATE LOGIN usuarioClientes  WITH PASSWORD = 'SUASENHA@123';  
-CREATE USER usuarioClientes FOR LOGIN usuarioClientes; 
-
 CREATE DATABASE [dbClientes];
 
 CREATE TABLE CLIENTES(
@@ -45,6 +42,10 @@ INSERT INTO CLIENTES VALUES ('ciclano', 25, '6666666', 'teste@teste', '666666', 
 INSERT INTO CLIENTES VALUES('Caldeira',37, '07918947622','thiago.teste@teste.com.br','31995541239','rua mercia 280');
 INSERT INTO CLIENTES VALUES('Douglas',25, '123456789',   'douglas.jose@teste.com.br','31995541239','rua monteiro lobato 158');
 INSERT INTO CLIENTES VALUES ('Teste cachorro', 60, '345345', 'teste@teste', '34534', 'Rua ...');
+
+CREATE LOGIN usuarioClientes  WITH PASSWORD = 'SUASENHA@123';  
+CREATE USER usuarioClientes FOR LOGIN usuarioClientes; 
+
 ~~~
 
 ## Desafio 4
