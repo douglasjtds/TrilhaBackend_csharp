@@ -15,7 +15,7 @@ __Objetivo:__ Crie um repositório para o projeto.
 
  1. Acesse o Github e crie um projeto com gitignore para a linguagem C#. 
  2. Adicione um readme construído com Markdown (https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet).
- 3.1 Construir apenas a estrutura do arquivo e evolui ao longo do projeto. 
+ 3. Construir apenas a estrutura do arquivo e evolui ao longo do projeto. 
  	3.1.2 Referências para ajudar na construção do arquivo.
 			   https://gist.github.com/PurpleBooth/109311bb0361f32d87a2	
 			   https://medium.com/@raullesteves/github-como-fazer-um-readme-md-bonit%C3%A3o-c85c8f154f8
