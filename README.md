@@ -15,8 +15,8 @@ __Objetivo:__ Crie um repositório para o projeto.
 
  1. Acesse o Github e crie um projeto com gitignore para a linguagem C#. 
  2. Adicione um readme construído com Markdown (https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet).
- 3. Construir apenas a estrutura do arquivo e evolui ao longo do projeto. 
- 	3.1.2 Referências para ajudar na construção do arquivo.
+ 3. Construir apenas a estrutura do arquivo e evolui ao longo do projeto.
+   3.1. Referências para ajudar na construção do arquivo.
 			   https://gist.github.com/PurpleBooth/109311bb0361f32d87a2	
 			   https://medium.com/@raullesteves/github-como-fazer-um-readme-md-bonit%C3%A3o-c85c8f154f8
 
@@ -31,13 +31,13 @@ __Objetivo:__ CRUD de Clientes (Banco de dados em memória)
 Em aplicações do backend, há quatro operações muito comuns a serem implementadas.
 Essas operações compõem a sigla inglesa CRUD (Create, Read, Update e Delete).
  
- 2.1. Escreva um programa do tipo Console App em .NET Core 3.1 que implemente essas quatro operações para os dados de um cliente, salvando-os em uma estrutura de dados em memória.	
-      2.2. Crie uma interface textual para as quatro operações.
-      2.3. Um cliente deve ter cadastrado pelo menos os seguintes dados: nome, idade, CPF, e-mail, telefone e endereço.  
-           A operação de Create deve popular o cadastro de um cliente e inserir na estrutura. 
-           A operação de Read   deve permitir visualizar todos os clientes ou um só pelo CPF. 
-           A operação de Update deve permitir alterar um ou mais dos dados de um cliente a partir do CPF dele (O campo CPF não pode ser alterado).
-           A operação de Delete deve permitir excluir um cliente da estrutura pelo CPF dele.
+ 1. Escreva um programa do tipo Console App em .NET Core 3.1 que implemente essas quatro operações para os dados de um cliente, salvando-os em uma estrutura de dados em memória.	
+ 2. Crie uma interface textual para as quatro operações.
+ 3. Um cliente deve ter cadastrado pelo menos os seguintes dados: nome, idade, CPF, e-mail, telefone e endereço.  
+	  - A operação de Create deve popular o cadastro de um cliente e inserir na estrutura. 
+	  - A operação de Read   deve permitir visualizar todos os clientes ou um só pelo CPF. 
+	  - A operação de Update deve permitir alterar um ou mais dos dados de um cliente a partir do CPF dele (O campo CPF não pode ser alterado).
+	  - A operação de Delete deve permitir excluir um cliente da estrutura pelo CPF dele.
 
 ## Desafio 3
 
@@ -84,7 +84,7 @@ __Branch:__ /feature/basico/desafio4 (__em construção__)
 __Objetivo:__ Worker service.
 Criar um relatório em formato de arquivo txt.
    1. Crie um novo projeto do tipo Worker Service.
-      1.a. Leia a tabela de cliente.
-	  1.b. Escreva todos registro da tabela em um arquivo TXT.
-           1.b.a. Adicione um cabeçalho com todos os campos da tabela.
-		   1.b.b. Formate o tamanho dos campos para que o layout do relatório fique apresentável.
+     1. a. Leia a tabela de cliente.
+	   1. b. Escreva todos registro da tabela em um arquivo TXT.
+	     1. b.a. Adicione um cabeçalho com todos os campos da tabela.
+		   1. b.b. Formate o tamanho dos campos para que o layout do relatório fique apresentável.
