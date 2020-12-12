@@ -1,2 +1,34 @@
 - Erro no Program.cs do console (no argument given connection)
 - Exception no Program.cs do worker (AggregateException)
+
+feito
+- fazer as interfaces e injetá-las no worker.cs
+
+
+feito
+CREATE LOGIN usuarioClientes  WITH PASSWORD = 'SUASENHA@123';  
+CREATE USER usuarioClientes FOR LOGIN usuarioClientes;  
+
+feito
+services.AddTransient<IEscreverArquivoRepositorio, EscreverArquivoRepositorio>();
+            services.AddTransient<IClienteRepositorio, ClienteRepositorio>();
+
+
+- TrilhaBackend.Appilication -> gerar relatorio use case
+
+
+
+
+------------------------
+feito
+colocar dentro do main do console:
+public static void ConfigureServices(IServiceCollection services)
+        {
+            services.AddTransient<IClienteRepositorio, ClienteRepositorio>(); 
+            services.AddScoped(provider => new Func<IDbConnection>(() => new SqlConnection("Data Source=localhost,1433;Initial Catalog=dbClientes;User ID=usuarioClientes;Password=cliente@123;")));
+        }
+feito
+ var serviceCollection = new ServiceCollection();
+            ConfigureServices(serviceCollection);
+            var serviceProvider = serviceCollection.BuildServiceProvider();
+            var repository = serviceProvider.GetService<IClienteRepositorio>();

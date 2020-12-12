@@ -1,14 +1,27 @@
 ﻿using System;
 using TrilhaBackendCSharp.Dominio.Entidades;
 using TrilhaBackendCSharp.Infraestrutura.Repositorios;
+using Microsoft.Extensions.DependencyInjection;
+using System.Data;
+using System.Data.SqlClient;
+using TrilhaBackendCSharp.Dominio.Repositorios;
 
 namespace TrilhaBackendCSharp
 {
     public class Program
     {
+        public static void ConfigureServices(IServiceCollection services)
+        {
+            services.AddTransient<IClienteRepositorio, ClienteRepositorio>();
+            services.AddScoped(provider => new Func<IDbConnection>(() => new SqlConnection("Data Source=(local);Initial Catalog=dbClientes;Integrated Security=true")));
+        }
+
         static void Main(string[] args)
         {
-            var repository = new ClienteRepositorio();
+            var serviceCollection = new ServiceCollection();
+            ConfigureServices(serviceCollection);
+            var serviceProvider = serviceCollection.BuildServiceProvider();
+            var repository = serviceProvider.GetService<IClienteRepositorio>();
 
             Console.WriteLine("Exercício de CRUD do Desafio 2! TRILHA BACKEND!\r");
             Console.WriteLine("------------------------\n");

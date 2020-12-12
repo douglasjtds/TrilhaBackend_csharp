@@ -3,6 +3,7 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
+using TrilhaBackendCSharp.Dominio.Repositorios;
 using TrilhaBackendCSharp.Infraestrutura.Repositorios;
 
 namespace TrilhaBackendCSharp.Worker
@@ -10,11 +11,11 @@ namespace TrilhaBackendCSharp.Worker
     public class Worker : BackgroundService
     {
         private readonly ILogger<Worker> _logger;
-        private readonly ClienteRepositorio _clienteRepositorio;
-        private readonly EscreverArquivoRepositorio _escreverArquivoRepositorio;
+        private readonly IClienteRepositorio _clienteRepositorio;
+        private readonly IEscreverArquivoRepositorio _escreverArquivoRepositorio;
 
 
-        public Worker(ILogger<Worker> logger, ClienteRepositorio clienteRepositorio, EscreverArquivoRepositorio escreverArquivoRepositorio)
+        public Worker(ILogger<Worker> logger, IClienteRepositorio clienteRepositorio, IEscreverArquivoRepositorio escreverArquivoRepositorio)
         {
             _logger = logger;
             _clienteRepositorio = clienteRepositorio;

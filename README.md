@@ -26,6 +26,9 @@ para criação da tabela de clientes e alguns inserts de exemplo:
 ~~~
 USE [master]
 
+CREATE LOGIN usuarioClientes  WITH PASSWORD = 'SUASENHA@123';  
+CREATE USER usuarioClientes FOR LOGIN usuarioClientes; 
+
 CREATE DATABASE [dbClientes];
 
 CREATE TABLE CLIENTES(
