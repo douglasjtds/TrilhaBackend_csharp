@@ -9,6 +9,15 @@ https://classroom.google.com/u/1/c/NjE3NTE1NjY5MTha/a/NjI2MjQ0MjE3NTJa/details
 
 Repositório __em construção__ com os desafios propostos na trilha BackEnd focada em C#, feita pela Zup.
 
+Objetivo: Crie um repositório para o projeto. 
+
+ 1. Acesse o Github e crie um projeto com gitignore para a linguagem C#. 
+ 2. Adicione um readme construído com Markdown (https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet).
+	3.1. Construir apenas a estrutura do arquivo e evolui ao longo do projeto.
+		3.1.2. Referências para ajudar na construção do arquivo.
+			   https://gist.github.com/PurpleBooth/109311bb0361f32d87a2	
+			   https://medium.com/@raullesteves/github-como-fazer-um-readme-md-bonit%C3%A3o-c85c8f154f8
+
 <em>Os desafios serão entregues em branches de acordo com cada tarefa.</em>
 
 ## Desafio 2
@@ -50,6 +59,12 @@ CREATE USER usuarioClientes FOR LOGIN usuarioClientes;
 
 ## Desafio 4
 
-Branch: /feature/basico/desafio4
+Branch: /feature/basico/desafio4 (__em construção__)
 
-Criação de um Worker Service (__em construção__) para ler a tabela de Clientes, e escrever os resultados num .txt
+Worker service.
+objetivo: Criar um relatório em formato de arquivo txt.
+   1. Crie um novo projeto do tipo Worker Service.
+      1.a. Leia a tabela de cliente.
+	  1.b. Escreva todos registro da tabela em um arquivo TXT.
+           1.b.a. Adicione um cabeçalho com todos os campos da tabela.
+		   1.b.b. Formate o tamanho dos campos para que o layout do relatório fique apresentável.

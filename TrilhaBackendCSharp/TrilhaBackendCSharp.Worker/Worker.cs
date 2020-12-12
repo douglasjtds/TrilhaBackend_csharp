@@ -33,6 +33,7 @@ namespace TrilhaBackendCSharp.Worker
                 await Task.Delay(10000, stoppingToken);
             }
 
+            //Desafio 1: Consultar no banco os clientes
             var listaClientes = _clienteRepositorio.Consultar();
             _useCase.Execute(listaClientes);
         }
