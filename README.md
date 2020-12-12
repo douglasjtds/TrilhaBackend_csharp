@@ -9,7 +9,9 @@ https://classroom.google.com/u/1/c/NjE3NTE1NjY5MTha/a/NjI2MjQ0MjE3NTJa/details
 
 Repositório __em construção__ com os desafios propostos na trilha BackEnd focada em C#, feita pela Zup.
 
-Objetivo: Crie um repositório para o projeto. 
+__Branch:__ main
+
+__Objetivo:__ Crie um repositório para o projeto. 
 
  1. Acesse o Github e crie um projeto com gitignore para a linguagem C#. 
  2. Adicione um readme construído com Markdown (https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet).
@@ -18,15 +20,33 @@ Objetivo: Crie um repositório para o projeto.
 			   https://gist.github.com/PurpleBooth/109311bb0361f32d87a2	
 			   https://medium.com/@raullesteves/github-como-fazer-um-readme-md-bonit%C3%A3o-c85c8f154f8
 
-<em>Os desafios serão entregues em branches de acordo com cada tarefa.</em>
+<em>Os desafios serão entregues em branches de acordo com cada tarefa. Navegue entre as branches para ver o resultado de cada Desafio.</em>
 
 ## Desafio 2
 
-Branch: /feature/basico/desafio2 
+__Branch:__ /feature/basico/desafio2 
+
+__Objetivo:__ CRUD de Clientes (Banco de dados em memória)
+
+Em aplicações do backend, há quatro operações muito comuns a serem implementadas.
+Essas operações compõem a sigla inglesa CRUD (Create, Read, Update e Delete).
+ 
+ 2.1. Escreva um programa do tipo Console App em .NET Core 3.1 que implemente essas quatro operações para os dados de um cliente, salvando-os em uma estrutura de dados em memória.	
+      2.2. Crie uma interface textual para as quatro operações.
+      2.3. Um cliente deve ter cadastrado pelo menos os seguintes dados: nome, idade, CPF, e-mail, telefone e endereço.  
+           A operação de Create deve popular o cadastro de um cliente e inserir na estrutura. 
+           A operação de Read   deve permitir visualizar todos os clientes ou um só pelo CPF. 
+           A operação de Update deve permitir alterar um ou mais dos dados de um cliente a partir do CPF dele (O campo CPF não pode ser alterado).
+           A operação de Delete deve permitir excluir um cliente da estrutura pelo CPF dele.
 
 ## Desafio 3
 
-Branch: /feature/basico/desafio3
+__Branch:__ /feature/basico/desafio3
+
+__Objetivo:__ Persista os clientes (Banco de dados relacional - SQLServer)
+
+É importante armazenar os dados dos clientes de forma mais duradoura. Para isso, temos mecanismos de persistência como os bancos de dados.
+Altere o CRUD para operar com o banco de dados relacional (SQLServer), ao invés da estrutura em memória. Para comunicar com o banco de dados SqlServer, utilize o (System.Data.SqlClient).
 
 ### How to
 para executar testes nesse banco de dados execute os seguintes comandos para criação do banco,
@@ -59,10 +79,10 @@ CREATE USER usuarioClientes FOR LOGIN usuarioClientes;
 
 ## Desafio 4
 
-Branch: /feature/basico/desafio4 (__em construção__)
+__Branch:__ /feature/basico/desafio4 (__em construção__)
 
-Worker service.
-objetivo: Criar um relatório em formato de arquivo txt.
+__Objetivo:__ Worker service.
+Criar um relatório em formato de arquivo txt.
    1. Crie um novo projeto do tipo Worker Service.
       1.a. Leia a tabela de cliente.
 	  1.b. Escreva todos registro da tabela em um arquivo TXT.
