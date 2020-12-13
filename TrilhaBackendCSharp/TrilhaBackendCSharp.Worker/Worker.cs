@@ -14,10 +14,10 @@ namespace TrilhaBackendCSharp.Worker
         private readonly ILogger<Worker> _logger;
         private readonly IClienteRepositorio _clienteRepositorio;
         //private readonly IEscreverArquivoRepositorio _escreverArquivoRepositorio;  //---------------acho que fiz confusão nessa parte, já que tem o UseCase, melhor remover isso?
-        private readonly IUseCase<Cliente> _useCase;
+        private readonly IGerarRelatorioUseCase _useCase;
 
 
-        public Worker(ILogger<Worker> logger, IClienteRepositorio clienteRepositorio, IUseCase<Cliente> useCase) //IEscreverArquivoRepositorio escreverArquivoRepositorio)
+        public Worker(ILogger<Worker> logger, IClienteRepositorio clienteRepositorio, IGerarRelatorioUseCase useCase) //IEscreverArquivoRepositorio escreverArquivoRepositorio)
         {
             _logger = logger;
             _clienteRepositorio = clienteRepositorio;

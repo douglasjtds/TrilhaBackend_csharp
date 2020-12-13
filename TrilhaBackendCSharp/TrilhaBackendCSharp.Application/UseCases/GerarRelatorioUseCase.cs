@@ -6,12 +6,12 @@ using Microsoft.Extensions.Logging;
 
 namespace TrilhaBackendCSharp.Application.UseCases
 {
-    public class GerarRelatorioUseCase : IUseCase<Cliente>
+    public class GerarRelatorioUseCase : IGerarRelatorioUseCase
     {
-        private readonly ILogger _logger;
+        private readonly ILogger<GerarRelatorioUseCase> _logger;
         private readonly IEscreverArquivoRepositorio _escreverArquivoRepositorio;
 
-        public GerarRelatorioUseCase(ILogger logger, IEscreverArquivoRepositorio escreverArquivoRepositorio)
+        public GerarRelatorioUseCase(ILogger<GerarRelatorioUseCase> logger, IEscreverArquivoRepositorio escreverArquivoRepositorio)
         {
             _logger = logger;
             _escreverArquivoRepositorio = escreverArquivoRepositorio;

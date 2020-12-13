@@ -22,7 +22,7 @@ namespace TrilhaBackendCSharp.Worker
         {
             services.AddTransient<IEscreverArquivoRepositorio, EscreverArquivoRepositorio>();
             services.AddTransient<IClienteRepositorio, ClienteRepositorio>();
-            services.AddTransient<IUseCase<Cliente>, GerarRelatorioUseCase>();
+            services.AddTransient<IGerarRelatorioUseCase, GerarRelatorioUseCase>();
             services.ConfigureDatabase(Configuration);
         }
 
