@@ -13,6 +13,7 @@ namespace TrilhaBackendCSharp.Infraestrutura.Repositorios
             foreach (var cliente in clientes)
             {
                 //escrever no arquivo txt
+                //TO-DO: usar caminho dinamico
                 System.IO.File.WriteAllText(@"D:\Users\douglasjtds\Projects\estudandoBackend\TrilhaBackend_csharp\clientes.txt", cliente.Imprimir);
             }
         }

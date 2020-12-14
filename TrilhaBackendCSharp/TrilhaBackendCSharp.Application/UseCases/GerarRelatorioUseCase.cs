@@ -1,8 +1,8 @@
-﻿using System;
+﻿using Microsoft.Extensions.Logging;
+using System;
 using System.Collections.Generic;
 using TrilhaBackendCSharp.Dominio.Entidades;
 using TrilhaBackendCSharp.Dominio.Repositorios;
-using Microsoft.Extensions.Logging;
 
 namespace TrilhaBackendCSharp.Application.UseCases
 {
@@ -23,6 +23,8 @@ namespace TrilhaBackendCSharp.Application.UseCases
             {
                 //Desafio 2: Fazer um foreach que vai ler os clientes e escrever num txt (classe IO)
                 _escreverArquivoRepositorio.Escreve(listaDeClientes);
+                //TO-DO: voltar isso para o UseCase
+
 
                 //Desafio 3: Parametrizar no appsetings o tempo de delay e o caminho onde vai salvar o arquivo
 
@@ -32,7 +34,7 @@ namespace TrilhaBackendCSharp.Application.UseCases
             //Desafio 4: loggar erro caso der uma exceção usando o _logger
             catch (Exception ex)
             {
-                _logger.LogError("Erro ao salvar arquivo: ", ex);
+                _logger.LogError(ex, " Erro ao salvar arquivo: {0}", ex.Message);
             }
         }
     }

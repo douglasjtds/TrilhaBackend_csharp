@@ -12,7 +12,7 @@ namespace TrilhaBackendCSharp.Worker
     public class Worker : BackgroundService
     {
         private readonly ILogger<Worker> _logger;
-        private readonly IClienteRepositorio _clienteRepositorio;
+        private readonly IClienteRepositorio _clienteRepositorio; //TO-DO: tirar
         //private readonly IEscreverArquivoRepositorio _escreverArquivoRepositorio;  //---------------acho que fiz confusão nessa parte, já que tem o UseCase, melhor remover isso?
         private readonly IGerarRelatorioUseCase _useCase;
 
@@ -30,12 +30,13 @@ namespace TrilhaBackendCSharp.Worker
             while (!stoppingToken.IsCancellationRequested)
             {
                 _logger.LogInformation("Worker running at: {time}", DateTimeOffset.Now);
-                await Task.Delay(10000, stoppingToken);
-            }
+                await Task.Delay(100000, stoppingToken);
 
-            //Desafio 1: Consultar no banco os clientes
-            var listaClientes = _clienteRepositorio.Consultar();
-            _useCase.Execute(listaClientes);
+                //TO-DO: colocar no UseCase
+                //Desafio 1: Consultar no banco os clientes
+                var listaClientes = _clienteRepositorio.Consultar();
+                _useCase.Execute(listaClientes);
+            }
         }
     }
 }
