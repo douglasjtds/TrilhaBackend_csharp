@@ -20,7 +20,6 @@ namespace TrilhaBackendCSharp.Worker
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddTransient<IEscreverArquivoRepositorio, EscreverArquivoRepositorio>();
             services.AddTransient<IClienteRepositorio, ClienteRepositorio>();
             services.AddTransient<IGerarRelatorioUseCase, GerarRelatorioUseCase>();
             services.ConfigureDatabase(Configuration);

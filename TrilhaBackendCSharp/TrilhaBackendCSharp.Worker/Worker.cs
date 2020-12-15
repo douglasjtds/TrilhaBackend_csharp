@@ -12,15 +12,14 @@ namespace TrilhaBackendCSharp.Worker
     public class Worker : BackgroundService
     {
         private readonly ILogger<Worker> _logger;
-        private readonly IClienteRepositorio _clienteRepositorio; //TO-DO: tirar
+        
         //private readonly IEscreverArquivoRepositorio _escreverArquivoRepositorio;  //---------------acho que fiz confusão nessa parte, já que tem o UseCase, melhor remover isso?
         private readonly IGerarRelatorioUseCase _useCase;
 
 
-        public Worker(ILogger<Worker> logger, IClienteRepositorio clienteRepositorio, IGerarRelatorioUseCase useCase) //IEscreverArquivoRepositorio escreverArquivoRepositorio)
+        public Worker(ILogger<Worker> logger, IGerarRelatorioUseCase useCase) //IEscreverArquivoRepositorio escreverArquivoRepositorio)
         {
             _logger = logger;
-            _clienteRepositorio = clienteRepositorio;
             //_escreverArquivoRepositorio = escreverArquivoRepositorio;
             _useCase = useCase;
         }
@@ -32,10 +31,7 @@ namespace TrilhaBackendCSharp.Worker
                 _logger.LogInformation("Worker running at: {time}", DateTimeOffset.Now);
                 await Task.Delay(100000, stoppingToken);
 
-                //TO-DO: colocar no UseCase
-                //Desafio 1: Consultar no banco os clientes
-                var listaClientes = _clienteRepositorio.Consultar();
-                _useCase.Execute(listaClientes);
+                _useCase.Execute();
             }
         }
     }
