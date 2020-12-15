@@ -1,0 +1,6 @@
+Nome: Gustavo
+Idade: 30
+CPF: 1111111111     
+E-mail: gustavo.silva
+Telefone: 64546546546
+Endereço: escritório na praia

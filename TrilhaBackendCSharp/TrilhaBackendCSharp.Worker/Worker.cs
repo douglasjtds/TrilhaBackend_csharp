@@ -29,9 +29,8 @@ namespace TrilhaBackendCSharp.Worker
             while (!stoppingToken.IsCancellationRequested)
             {
                 _logger.LogInformation("Worker running at: {time}", DateTimeOffset.Now);
-                await Task.Delay(100000, stoppingToken);
-
                 _useCase.Execute();
+                await Task.Delay(100000, stoppingToken);
             }
         }
     }
