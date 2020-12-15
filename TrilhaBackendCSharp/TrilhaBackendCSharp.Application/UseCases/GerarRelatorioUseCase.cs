@@ -1,7 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 using System;
-using System.Collections.Generic;
-using TrilhaBackendCSharp.Dominio.Entidades;
+using System.IO;
 using TrilhaBackendCSharp.Dominio.Repositorios;
 
 namespace TrilhaBackendCSharp.Application.UseCases
@@ -29,7 +28,13 @@ namespace TrilhaBackendCSharp.Application.UseCases
                 {
                     //escrever no arquivo txt
                     //TO-DO: usar caminho dinamico no appsettings
-                    System.IO.File.AppendAllText(@"D:\Users\douglasjtds\Projects\estudandoBackend\TrilhaBackend_csharp\clientes.txt", cliente.Imprimir + "\n");
+                    var filePath = Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments) +
+                        @"\TrilhaBackend_csharp\";
+
+                    Directory.CreateDirectory(filePath);
+                    filePath += "clientes.txt";
+                    File.Create(filePath);
+                    File.AppendAllText(filePath, cliente.Imprimir + "\n");
                 }
 
                 //Desafio 3: Parametrizar no appsetings o tempo de delay e o caminho onde vai salvar o arquivo
