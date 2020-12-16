@@ -28,7 +28,7 @@ namespace TrilhaBackendCSharp.Application.UseCases
                 {
                     //escrever no arquivo txt
                     //TO-DO: usar caminho dinamico no appsettings
-                    var filePath = Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments) +
+                    var filePath = Environment.GetFolderPath(Environment.SpecialFolder.CommonDocuments) +
                         @"\TrilhaBackend_csharp\";
 
                     Directory.CreateDirectory(filePath);
