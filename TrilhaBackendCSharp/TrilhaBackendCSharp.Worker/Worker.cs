@@ -27,8 +27,8 @@ namespace TrilhaBackendCSharp.Worker
             {
                 _logger.LogInformation("Worker running at: {time}", DateTimeOffset.Now);
                 _useCase.Execute();
-                var delay = _configuration.GetSection("Integracao:Delay").Value;
-                await Task.Delay(Convert.ToInt32(delay), stoppingToken);
+                var delay = Convert.ToInt32(_configuration.GetSection("Integracao:Delay").Value);
+                await Task.Delay(delay, stoppingToken);
             }
         }
     }
