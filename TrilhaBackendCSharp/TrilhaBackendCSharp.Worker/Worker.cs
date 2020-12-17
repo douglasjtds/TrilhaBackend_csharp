@@ -1,27 +1,24 @@
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
 using TrilhaBackendCSharp.Application.UseCases;
-using TrilhaBackendCSharp.Dominio.Entidades;
-using TrilhaBackendCSharp.Dominio.Repositorios;
 
 namespace TrilhaBackendCSharp.Worker
 {
     public class Worker : BackgroundService
     {
         private readonly ILogger<Worker> _logger;
-        
-        //private readonly IEscreverArquivoRepositorio _escreverArquivoRepositorio;  //---------------acho que fiz confusão nessa parte, já que tem o UseCase, melhor remover isso?
         private readonly IGerarRelatorioUseCase _useCase;
+        private readonly IConfiguration _configuration;
 
-
-        public Worker(ILogger<Worker> logger, IGerarRelatorioUseCase useCase) //IEscreverArquivoRepositorio escreverArquivoRepositorio)
+        public Worker(ILogger<Worker> logger, IGerarRelatorioUseCase useCase, IConfiguration configuration)
         {
             _logger = logger;
-            //_escreverArquivoRepositorio = escreverArquivoRepositorio;
             _useCase = useCase;
+            _configuration = configuration;
         }
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
@@ -30,7 +27,8 @@ namespace TrilhaBackendCSharp.Worker
             {
                 _logger.LogInformation("Worker running at: {time}", DateTimeOffset.Now);
                 _useCase.Execute();
-                await Task.Delay(100000, stoppingToken);
+                var delay = _configuration.GetSection("Integracao:Delay").Value;
+                await Task.Delay(Convert.ToInt32(delay), stoppingToken);
             }
         }
     }

@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 using System;
 using System.IO;
 using TrilhaBackendCSharp.Dominio.Repositorios;
@@ -9,11 +10,13 @@ namespace TrilhaBackendCSharp.Application.UseCases
     {
         private readonly ILogger<GerarRelatorioUseCase> _logger;
         private readonly IClienteRepositorio _clienteRepositorio;
+        private readonly IConfiguration _configuration;
 
-        public GerarRelatorioUseCase(ILogger<GerarRelatorioUseCase> logger, IClienteRepositorio clienteRepositorio)
+        public GerarRelatorioUseCase(ILogger<GerarRelatorioUseCase> logger, IClienteRepositorio clienteRepositorio, IConfiguration configuration)
         {
             _logger = logger;
             _clienteRepositorio = clienteRepositorio;
+            _configuration = configuration;
         }
 
         public void Execute()
@@ -27,9 +30,8 @@ namespace TrilhaBackendCSharp.Application.UseCases
                 foreach (var cliente in listaClientes)
                 {
                     //escrever no arquivo txt
-                    //TO-DO: usar caminho dinamico no appsettings
                     var filePath = Environment.GetFolderPath(Environment.SpecialFolder.CommonDocuments) +
-                        @"\TrilhaBackend_csharp\";
+                        _configuration.GetSection("Integracao:CaminhoArquivo").Value;
 
                     Directory.CreateDirectory(filePath);
                     filePath += "clientes.txt";
@@ -38,6 +40,7 @@ namespace TrilhaBackendCSharp.Application.UseCases
                 }
 
                 //Desafio 3: Parametrizar no appsetings o tempo de delay e o caminho onde vai salvar o arquivo
+                //feito
 
                 //possiveis erros, caminho existir ou não...
             }

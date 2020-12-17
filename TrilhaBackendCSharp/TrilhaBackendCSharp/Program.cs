@@ -1,10 +1,10 @@
-﻿using System;
-using TrilhaBackendCSharp.Dominio.Entidades;
-using TrilhaBackendCSharp.Infraestrutura.Repositorios;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
+using System;
 using System.Data;
 using System.Data.SqlClient;
+using TrilhaBackendCSharp.Dominio.Entidades;
 using TrilhaBackendCSharp.Dominio.Repositorios;
+using TrilhaBackendCSharp.Infraestrutura.Repositorios;
 
 namespace TrilhaBackendCSharp
 {
