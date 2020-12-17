@@ -17,4 +17,8 @@
     <ProjectReference Include="..\TrilhaBackendCSharp.Dominio\TrilhaBackendCSharp.Dominio.csproj" />
     <ProjectReference Include="..\TrilhaBackendCSharp.Infraestrutura\TrilhaBackendCSharp.Infraestrutura.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Relatorios\" />
+  </ItemGroup>
 </Project>

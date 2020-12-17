@@ -26,17 +26,19 @@ namespace TrilhaBackendCSharp.Application.UseCases
                 //Desafio 1: Consultar no banco os clientes
                 var listaClientes = _clienteRepositorio.Consultar();
 
-                //Desafio 2: Fazer um foreach que vai ler os clientes e escrever num txt (classe IO)
-                foreach (var cliente in listaClientes)
-                {
-                    //escrever no arquivo txt
-                    var filePath = Environment.GetFolderPath(Environment.SpecialFolder.CommonDocuments) +
-                        _configuration.GetSection("Integracao:CaminhoArquivo").Value;
+                var path = _configuration.GetSection(@"Integracao:CaminhoArquivo").Value;
+                var fileName = string.Concat("clientes_", DateTime.Now.ToString("ddMMyyyy"), ".txt");
 
-                    Directory.CreateDirectory(filePath);
-                    filePath += "clientes.txt";
-                    File.Create(filePath);
-                    File.AppendAllText(filePath, cliente.Imprimir + "\n");
+                if (!File.Exists(fileName))
+                    File.Create(fileName).Close();
+
+                using (StreamWriter file = new StreamWriter(string.Concat(path, fileName)))
+                {
+                    //Desafio 2: Fazer um foreach que vai ler os clientes e escrever num txt (classe IO)
+                    foreach (var cliente in listaClientes)
+                    {
+                        file.WriteLine(cliente.Imprimir);
+                    }
                 }
 
                 //Desafio 3: Parametrizar no appsetings o tempo de delay e o caminho onde vai salvar o arquivo
