@@ -29,8 +29,8 @@ namespace TrilhaBackendCSharp.Application.UseCases
                 var path = _configuration.GetSection(@"Integracao:CaminhoArquivo").Value;
                 var fileName = string.Concat("clientes_", DateTime.Now.ToString("ddMMyyyy"), ".txt");
 
-                if (!File.Exists(fileName))
-                    File.Create(fileName).Close();
+                if (!File.Exists(string.Concat(path, fileName)))
+                    File.Create(string.Concat(path, fileName)).Close();
 
                 using (StreamWriter file = new StreamWriter(string.Concat(path, fileName)))
                 {
