@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using ConsoleTables;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using System;
 using System.IO;
@@ -35,10 +36,12 @@ namespace TrilhaBackendCSharp.Application.UseCases
                 using (StreamWriter file = new StreamWriter(string.Concat(path, fileName)))
                 {
                     //Desafio 2: Fazer um foreach que vai ler os clientes e escrever num txt (classe IO)
+                    var table = new ConsoleTable("Nome", "Idade", "CPF", "Email", "Telefone", "Endereco");
                     foreach (var cliente in listaClientes)
                     {
-                        file.WriteLine(cliente.Imprimir);
+                        table.AddRow(cliente.Nome, cliente.Idade, cliente.CPF, cliente.Email, cliente.Telefone, cliente.Endereco);
                     }
+                    file.WriteLine(table);
                 }
 
                 //Desafio 3: Parametrizar no appsetings o tempo de delay e o caminho onde vai salvar o arquivo
@@ -52,5 +55,10 @@ namespace TrilhaBackendCSharp.Application.UseCases
                 _logger.LogError(ex, " Erro ao salvar arquivo: {0}", ex.Message);
             }
         }
+
+        //public void PrintAsTable()
+        //{
+
+        //}
     }
 }
