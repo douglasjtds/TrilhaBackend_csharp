@@ -43,22 +43,13 @@ namespace TrilhaBackendCSharp.Application.UseCases
                     }
                     file.WriteLine(table);
                 }
-
-                //Desafio 3: Parametrizar no appsetings o tempo de delay e o caminho onde vai salvar o arquivo
-                //feito
-
-                //possiveis erros, caminho existir ou não...
             }
+            //Desafio 3: Parametrizar no appsettings o tempo de delay e o caminho onde vai salvar o arquivo
             //Desafio 4: loggar erro caso der uma exceção usando o _logger (dá pra melhorar ainda)
             catch (Exception ex)
             {
                 _logger.LogError(ex, " Erro ao salvar arquivo: {0}", ex.Message);
             }
         }
-
-        //public void PrintAsTable()
-        //{
-
-        //}
     }
 }
