@@ -10,7 +10,7 @@
 
 
 
-## Desafio 1
+## Nível Básico - Desafio 1
 https://classroom.google.com/u/1/c/NjE3NTE1NjY5MTha/a/NjI2MjQ0MjE3NTJa/details
 
 Repositório __em construção__ com os desafios propostos na trilha BackEnd focada em C#, feita pela Zup.
@@ -28,7 +28,7 @@ __Objetivo:__ Crie um repositório para o projeto.
 
 <em>Os desafios serão entregues em branches de acordo com cada tarefa. Navegue entre as branches para ver o resultado de cada Desafio.</em>
 
-## Desafio 2
+## Nível Básico - Desafio 2
 
 __Branch:__ /feature/basico/desafio2 
 
@@ -45,7 +45,7 @@ Essas operações compõem a sigla inglesa CRUD (Create, Read, Update e Delete).
 	  - A operação de Update deve permitir alterar um ou mais dos dados de um cliente a partir do CPF dele (O campo CPF não pode ser alterado).
 	  - A operação de Delete deve permitir excluir um cliente da estrutura pelo CPF dele.
 
-## Desafio 3
+## Nível Básico - Desafio 3
 
 __Branch:__ /feature/basico/desafio3
 
@@ -83,7 +83,7 @@ CREATE USER usuarioClientes FOR LOGIN usuarioClientes;
 
 ~~~
 
-## Desafio 4
+## Nível Básico - Desafio 4
 
 __Branch:__ /feature/basico/desafio4
 
