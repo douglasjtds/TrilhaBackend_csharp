@@ -1,8 +1,17 @@
 # TrilhaBackend_csharp
-1. [Desafio 1](https://github.com/douglasjtds/TrilhaBackend_csharp/tree/feature/basico/desafio4#desafio-1)
-2. [Desafio 2](https://github.com/douglasjtds/TrilhaBackend_csharp/tree/feature/basico/desafio4#desafio-2)
-2. [Desafio 3](https://github.com/douglasjtds/TrilhaBackend_csharp/tree/feature/basico/desafio4#desafio-3)
-2. [Desafio 4](https://github.com/douglasjtds/TrilhaBackend_csharp/tree/feature/basico/desafio4#desafio-4)
+- Nível Básico
+1. [Desafio 1](https://github.com/douglasjtds/TrilhaBackend_csharp/tree/feature/nivel1/desafio1#desafio-1)
+2. [Desafio 2](https://github.com/douglasjtds/TrilhaBackend_csharp/tree/feature/nivel1/desafio1#desafio-2)
+2. [Desafio 3](https://github.com/douglasjtds/TrilhaBackend_csharp/tree/feature/nivel1/desafio1#desafio-3)
+2. [Desafio 4](https://github.com/douglasjtds/TrilhaBackend_csharp/tree/feature/nivel1/desafio1#desafio-4)
+
+- Nível 1
+1. [Desafio 1](https://github.com/douglasjtds/TrilhaBackend_csharp/tree/feature/nivel1/desafio1#desafio-1)
+2. [Desafio 2]()
+2. [Desafio 3]()
+2. [Desafio 4]()
+
+
 
 ## Desafio 1
 https://classroom.google.com/u/1/c/NjE3NTE1NjY5MTha/a/NjI2MjQ0MjE3NTJa/details
@@ -79,7 +88,7 @@ CREATE USER usuarioClientes FOR LOGIN usuarioClientes;
 
 ## Desafio 4
 
-__Branch:__ /feature/basico/desafio4 (__em construção__)
+__Branch:__ /feature/basico/desafio4
 
 __Objetivo:__ Worker service.
 Criar um relatório em formato de arquivo txt.
@@ -88,3 +97,7 @@ Criar um relatório em formato de arquivo txt.
 	   1. b. Escreva todos registro da tabela em um arquivo TXT.
 	     1. b.a. Adicione um cabeçalho com todos os campos da tabela.
 		   1. b.b. Formate o tamanho dos campos para que o layout do relatório fique apresentável.
+
+
+## Nível 1 - Desafio 1
+__Branch:__ /feature/nivel1/desafio1 (__em construção__)
