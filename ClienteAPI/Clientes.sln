@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClienteAPI", "ClienteAPI\ClienteAPI.csproj", "{60261510-1214-4A99-AC45-56EC1B6A46C4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Clientes.API", "Clientes.API\Clientes.API.csproj", "{60261510-1214-4A99-AC45-56EC1B6A46C4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClienteAPI.Dominio", "ClienteAPI.Dominio\ClienteAPI.Dominio.csproj", "{3BEEBA4D-C26A-42AD-818E-73BF6E6E0F0A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clientes.Dominio", "Clientes.Dominio\Clientes.Dominio.csproj", "{3BEEBA4D-C26A-42AD-818E-73BF6E6E0F0A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClienteAPI.Infraestrutura", "ClienteAPI.Infraestrutura\ClienteAPI.Infraestrutura.csproj", "{428668F3-976B-4A64-87B9-58EA257F35D0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clientes.Infraestrutura", "Clientes.Infraestrutura\Clientes.Infraestrutura.csproj", "{428668F3-976B-4A64-87B9-58EA257F35D0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
