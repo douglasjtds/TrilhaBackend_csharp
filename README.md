@@ -100,15 +100,16 @@ Criar um relatório em formato de arquivo txt.
 __Branch:__ /feature/nivel1/desafio1 (__em construção__)
 
 __Objetivo:__ Criar uma API REST (MVC).
-Utilizar o template do Visual Studio API com padrão MVC e Entity Framework.
-Objetivo: Realizar operações de CRUD persistindo tudo no banco de dados.
-          Utilize a mesma estrutura de tabela e dados do desafio anterior.
 
-1.1. Criar uma API REST com padrão MVC em .NET Core 3.1 que implemente as quatro operações para os dados de um cliente, persistir os dados no banco SqlServer lembre se de utilizar o Entity Framework.      
-      1.2. Utilizar Code First + Migration 
-      1.2. Exponha as operações do CRUD de clientes em uma API REST, utilizando para isso o IIS.
-      1.3. Um cliente deve ter cadastrado pelo menos os seguintes dados: nome, idade, CPF, e-mail, telefone e endereço.
-           A operação de Create deve popular o cadastro de um cliente e inserir na estrutura (método POST).
-           A operação de Read   deve permitir visualizar todos os clientes ou um só pelo CPF. (método GET) 
-           A operação de Update deve permitir alterar um ou mais dos dados de um cliente a partir do CPF dele (O campo CPF não pode ser alterado)(método PUT).
-           A operação de Delete deve permitir excluir um cliente da estrutura pelo CPF dele (método DELETE).
+- Utilizar o template do Visual Studio API com padrão MVC e Entity Framework. 
+- Realizar operações de CRUD persistindo tudo no banco de dados.
+	- Utilize a mesma estrutura de tabela e dados do desafio anterior.
+	
+1. Criar uma API REST com padrão MVC em .NET Core 3.1 que implemente as quatro operações para os dados de um cliente, persistir os dados no banco SqlServer lembre se de utilizar o Entity Framework.
+2. Utilizar Code First + Migration
+3. Exponha as operações do CRUD de clientes em uma API REST, utilizando para isso o IIS.
+4. Um cliente deve ter cadastrado pelo menos os seguintes dados: nome, idade, CPF, e-mail, telefone e endereço.
+	- A operação de Create deve popular o cadastro de um cliente e inserir na estrutura (método POST).
+	- A operação de Read   deve permitir visualizar todos os clientes ou um só pelo CPF. (método GET) 
+	- A operação de Update deve permitir alterar um ou mais dos dados de um cliente a partir do CPF dele (O campo CPF não pode ser alterado)(método PUT).
+	- A operação de Delete deve permitir excluir um cliente da estrutura pelo CPF dele (método DELETE).
