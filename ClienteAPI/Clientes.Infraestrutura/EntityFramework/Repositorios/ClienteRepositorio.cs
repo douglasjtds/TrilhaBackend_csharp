@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Text;
 
-namespace ClienteAPI.Infraestrutura
+namespace Clientes.Infraestrutura.EntityFramework.Repositorios
 {
     public class ClienteRepositorio : IClienteRepositorio
     {

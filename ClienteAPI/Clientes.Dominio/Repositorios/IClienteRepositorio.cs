@@ -1,7 +1,7 @@
-﻿using ClienteAPI.Dominio.Entidades;
+﻿using Clientes.Dominio.Entidades;
 using System.Collections.Generic;
 
-namespace ClienteAPI.Dominio.Repositorios
+namespace Clientes.Dominio.Repositorios
 {
     public interface IClienteRepositorio
     {

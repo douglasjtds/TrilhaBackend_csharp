@@ -1,4 +1,4 @@
-﻿namespace ClienteAPI.Dominio.Entidades
+﻿namespace Clientes.Dominio.Entidades
 {
     public class Cliente
     {
