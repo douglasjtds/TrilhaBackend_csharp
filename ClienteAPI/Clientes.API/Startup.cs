@@ -21,7 +21,7 @@ namespace Clientes.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            //services.AddDbContext<ClientesDbContext>(opt => opt.(""))
+            //services.AddDbContext<ClientesDbContext>(opt => opt.use)
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

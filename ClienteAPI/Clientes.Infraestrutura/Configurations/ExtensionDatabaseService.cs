@@ -11,7 +11,7 @@ namespace Clientes.Infraestrutura.Configurations
         public static IServiceCollection ConfigureDatabase(this IServiceCollection service, IConfiguration configuration)
         {
             string connectionString = configuration.GetConnectionString("ClientesDatabase");
-            service.AddSingleton(provider => new Func<IDbConnection>(() => new SqlConnection(connectionString)));
+            //service.AddSingleton(provider => new Func<IDbConnection>(() => new SqlConnection(connectionString)));
             return service;
         }
     }

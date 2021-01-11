@@ -1,9 +1,11 @@
 ﻿using Clientes.Dominio.Entidades;
 using Microsoft.EntityFrameworkCore;
+using Clientes.Infraestrutura.EntityFramework.Interfaces;
+using Clientes.Infraestrutura.EntityFramework.Mappers;
 
 namespace Clientes.Infraestrutura.EntityFramework
 {
-    public class ClientesDbContext : DbContext
+    public class ClientesDbContext : DbContext, IClientesDbContext
     {
 
         public ClientesDbContext(DbContextOptions<ClientesDbContext> options)
@@ -12,5 +14,10 @@ namespace Clientes.Infraestrutura.EntityFramework
         }
 
         public DbSet<Cliente> Clientes { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfiguration(new ClienteMap());
+        }
     }
 }
