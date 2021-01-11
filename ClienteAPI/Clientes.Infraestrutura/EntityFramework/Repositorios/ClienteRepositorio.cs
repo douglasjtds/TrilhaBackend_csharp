@@ -1,9 +1,8 @@
-﻿using ClienteAPI.Dominio.Entidades;
-using ClienteAPI.Dominio.Repositorios;
+﻿using Clientes.Dominio.Entidades;
+using Clientes.Dominio.Repositorios;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Text;
 
 namespace Clientes.Infraestrutura.EntityFramework.Repositorios
 {

@@ -14,4 +14,9 @@
     <ProjectReference Include="..\Clientes.Dominio\Clientes.Dominio.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="EntityFramework\Interfaces\" />
+    <Folder Include="EntityFramework\Mappers\" />
+  </ItemGroup>
+
 </Project>
