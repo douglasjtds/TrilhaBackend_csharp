@@ -18,6 +18,15 @@ namespace ClienteAPI.Infraestrutura
 
         public List<Cliente> Consultar(string cpf = "")
         {
+            //var consulta = new StringBuilder()
+            //    .Append("select * from clientes")
+            //    .Append(string.IsNullOrEmpty(cpf) ? "" : " WHERE CPF = @CPF").ToString();
+
+
+            //using (var connection = _connection.Invoke())
+            //{
+            //    return connection.Query<Cliente>(consulta, new { CPF = new DbString() { Value = cpf, IsAnsi = true, Length = 15, IsFixedLength = true } }).ToList();
+            //}
             throw new NotImplementedException();
         }
 
