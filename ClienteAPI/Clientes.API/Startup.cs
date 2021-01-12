@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Clientes.Infraestrutura.EntityFramework;
+using Clientes.Infraestrutura.Configurations;
 
 namespace Clientes.API
 {
@@ -21,7 +22,7 @@ namespace Clientes.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            //services.AddDbContext<ClientesDbContext>(opt => opt.use)
+            services.ConfigureDatabase(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
