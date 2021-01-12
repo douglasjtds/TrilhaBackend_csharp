@@ -1,7 +1,7 @@
 ﻿using Clientes.Dominio.Entidades;
 using System.Collections.Generic;
 
-namespace Clientes.Dominio.Repositorios
+namespace Clientes.Infraestrutura.EntityFramework.Interfaces
 {
     public interface IClienteRepositorio
     {
