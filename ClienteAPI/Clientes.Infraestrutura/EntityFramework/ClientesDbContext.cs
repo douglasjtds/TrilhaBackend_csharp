@@ -7,7 +7,6 @@ namespace Clientes.Infraestrutura.EntityFramework
 {
     public class ClientesDbContext : DbContext, IClientesDbContext
     {
-
         public ClientesDbContext(DbContextOptions<ClientesDbContext> options)
             : base(options)
         {

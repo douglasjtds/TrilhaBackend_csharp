@@ -1,9 +1,11 @@
 ﻿using Clientes.Dominio.Entidades;
 using Clientes.Dominio.Repositorios;
+using Clientes.Infraestrutura.EntityFramework.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace Clientes.Infraestrutura.EntityFramework.Repositorios
 {
@@ -19,7 +21,7 @@ namespace Clientes.Infraestrutura.EntityFramework.Repositorios
         public List<Cliente> Consultar(string cpf = "")
         {
 
-            //using (var db = new BloggingContext())
+            //using (var db = new ClientesDbContext(DbContextOptions<ClientesDbContext>options))
             //{
             //    // Read
             //    Console.WriteLine("Querying for a client");
@@ -33,7 +35,7 @@ namespace Clientes.Infraestrutura.EntityFramework.Repositorios
 
         public bool Remover(string cpf)
         {
-            //using (var db = new BloggingContext())
+            //using (var db = new ClientesDbContext(DbContextOptions<ClientesDbContext> options))
             //{
             //    // Delete
             //    Console.WriteLine("Delete the client");
@@ -46,7 +48,7 @@ namespace Clientes.Infraestrutura.EntityFramework.Repositorios
 
         public void Salvar(Cliente cliente)
         {
-            //using (var db = new BloggingContext())
+            //using (var db = new ClientesDbContext(DbContextOptions<ClientesDbContext>options))
             //{
             //    // Create
             //    Console.WriteLine("Inserting a new client");
