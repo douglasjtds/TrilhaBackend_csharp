@@ -3,6 +3,7 @@ using Clientes.Dominio.Repositorios;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Linq;
 
 namespace Clientes.Infraestrutura.EntityFramework.Repositorios
 {
@@ -17,26 +18,41 @@ namespace Clientes.Infraestrutura.EntityFramework.Repositorios
 
         public List<Cliente> Consultar(string cpf = "")
         {
-            //var consulta = new StringBuilder()
-            //    .Append("select * from clientes")
-            //    .Append(string.IsNullOrEmpty(cpf) ? "" : " WHERE CPF = @CPF").ToString();
 
-
-            //using (var connection = _connection.Invoke())
+            //using (var db = new BloggingContext())
             //{
-            //    return connection.Query<Cliente>(consulta, new { CPF = new DbString() { Value = cpf, IsAnsi = true, Length = 15, IsFixedLength = true } }).ToList();
+            //    // Read
+            //    Console.WriteLine("Querying for a client");
+            //    var client = db.Cliente
+            //        .OrderBy(b => b.cpf)
+            //        .First();
             //}
+
             throw new NotImplementedException();
         }
 
         public bool Remover(string cpf)
         {
+            //using (var db = new BloggingContext())
+            //{
+            //    // Delete
+            //    Console.WriteLine("Delete the client");
+            //    db.Remove(cpf);
+            //    db.SaveChanges();
+            //}
+
             throw new NotImplementedException();
         }
 
         public void Salvar(Cliente cliente)
         {
-            throw new NotImplementedException();
+            //using (var db = new BloggingContext())
+            //{
+            //    // Create
+            //    Console.WriteLine("Inserting a new client");
+            //    db.Add(cliente);
+            //    db.SaveChanges();
+            //}
         }
     }
 }
