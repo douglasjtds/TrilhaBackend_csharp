@@ -7,7 +7,6 @@ using System.Collections.Generic;
 namespace Clientes.API.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
     public class ClienteController : ControllerBase
     {
         private readonly ILogger<ClienteController> _logger;
@@ -19,10 +18,11 @@ namespace Clientes.API.Controllers
             _clienteRepositorio = clienteRepositorio;
         }
 
-        [HttpGet]
-        public IEnumerable<Cliente> Get(Cliente cliente)
+
+        [HttpGet("{cpf}/clientes")]
+        public Cliente Get([FromRoute] string cpf)
         {
-            return _clienteRepositorio.Consultar(cliente.CPF);
+            return _clienteRepositorio.Get(cpf);
         }
     }
 }

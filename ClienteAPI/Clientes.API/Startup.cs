@@ -6,6 +6,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Clientes.Infraestrutura.EntityFramework;
 using Clientes.Infraestrutura.Configurations;
+using Clientes.Infraestrutura.EntityFramework.Repositorios;
+using Clientes.Infraestrutura.EntityFramework.Interfaces;
 
 namespace Clientes.API
 {
@@ -23,6 +25,7 @@ namespace Clientes.API
         {
             services.AddControllers();
             services.ConfigureDatabase(Configuration);
+            services.AddTransient<IClienteRepositorio, ClienteRepositorio>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

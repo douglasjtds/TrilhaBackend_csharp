@@ -8,31 +8,43 @@ namespace Clientes.Infraestrutura.EntityFramework.Mappers
     {
         public void Configure(EntityTypeBuilder<Cliente> builder)
         {
-            builder.ToTable("dbClientes");
+            builder.ToTable("dbo.CLIENTES")
+                .HasKey(o => o.IdCliente);
+
+            builder.Property(p => p.IdCliente)
+                .HasColumnName("ID")
+                .HasColumnType("INT")
+                .IsRequired();
 
             builder.Property(p => p.Nome)
                 .HasColumnName("NOME")
-                .HasColumnType("VARCHAR(50)");
+                .HasColumnType("VARCHAR(50)")
+                .IsRequired();
 
             builder.Property(o => o.Idade)
                 .HasColumnName("IDADE")
-                .HasColumnType("INT");
+                .HasColumnType("INT")
+                .IsRequired();
 
             builder.Property(o => o.CPF)
                 .HasColumnName("CPF")
-                .HasColumnType("CHAR(15)");
+                .HasColumnType("CHAR(15)")
+                .IsRequired();
 
             builder.Property(o => o.Email)
                 .HasColumnName("EMAIL")
-                .HasColumnType("varchar(50)");
+                .HasColumnType("varchar(50)")
+                .IsRequired();
 
             builder.Property(o => o.Telefone)
                 .HasColumnName("TELEFONE")
-                .HasColumnType("VARCHAR(20)");
+                .HasColumnType("VARCHAR(20)")
+                .IsRequired();
 
             builder.Property(o => o.Endereco)
                 .HasColumnName("ENDERECO")
-                .HasColumnType("VARCHAR(100)");
+                .HasColumnType("VARCHAR(100)")
+                .IsRequired();
         }
     }
 }

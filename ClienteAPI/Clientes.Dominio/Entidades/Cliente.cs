@@ -2,8 +2,14 @@
 {
     public class Cliente
     {
-        public Cliente(string nome, int idade, string cpf, string email, string telefone, string endereco)
+        public Cliente()
         {
+
+        }
+
+        public Cliente(int idCliente, string nome, int idade, string cpf, string email, string telefone, string endereco)
+        {
+            IdCliente = idCliente;
             Nome = nome;
             Idade = idade;
             CPF = cpf;
@@ -12,6 +18,7 @@
             Endereco = endereco;
         }
 
+        public int IdCliente { get; set; }
         public string Nome { get; set; }
         public int Idade { get; set; }
         public string CPF { get; set; }
