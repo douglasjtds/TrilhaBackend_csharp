@@ -2,6 +2,7 @@
 using Clientes.Infraestrutura.EntityFramework.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using System;
 using System.Collections.Generic;
 
 namespace Clientes.API.Controllers
@@ -19,10 +20,35 @@ namespace Clientes.API.Controllers
         }
 
 
-        [HttpGet("{cpf}/clientes")]
+        [HttpGet("{cpf}/v1/clientes")]
         public Cliente Get([FromRoute] string cpf)
         {
-            return _clienteRepositorio.Get(cpf);
+            try
+            {
+                return _clienteRepositorio.Get(cpf);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message, ex);
+                return null;
+            }
         }
+
+        [HttpGet("/v1/clientes")]
+        public IEnumerable<Cliente> GetAll()
+        {
+            try
+            {
+                return _clienteRepositorio.GetAll();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message, ex);
+                return null;
+            }
+        }
+
+
+
     }
 }

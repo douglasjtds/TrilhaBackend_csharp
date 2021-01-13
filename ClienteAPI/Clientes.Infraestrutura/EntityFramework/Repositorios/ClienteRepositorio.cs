@@ -1,6 +1,7 @@
 ﻿using Clientes.Dominio.Entidades;
 using Clientes.Infraestrutura.EntityFramework.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -10,59 +11,87 @@ namespace Clientes.Infraestrutura.EntityFramework.Repositorios
 {
     public class ClienteRepositorio : IClienteRepositorio
     {
-        //private readonly Func<IDbConnection> _connection;
-        //private readonly DbContextOptions<ClientesDbContext> _options;
         private readonly ClientesDbContext _clientesDbContext;
+        private readonly ILogger<ClienteRepositorio> _logger;
 
-        //public ClienteRepositorio(DbContextOptions<ClientesDbContext> options)
-        //{
-        //    _options = options;
-        //}
-
-        public ClienteRepositorio(ClientesDbContext clientesDbContext)
+        public ClienteRepositorio(ClientesDbContext clientesDbContext, ILogger<ClienteRepositorio> logger)
         {
             _clientesDbContext = clientesDbContext;
+            _logger = logger;
         }
 
+        #region CREATE
+        public void Adicionar(Cliente cliente)
+        {
+            try
+            {
+                _clientesDbContext.Clientes.Add(cliente);
+                _logger.LogInformation("Cliente adicionado com sucesso.");
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message, ex);
+            }
+        }
+        #endregion
+
+        #region READ
         public Cliente Get(string cpf)
         {
-            return _clientesDbContext.Clientes.Where(p => p.CPF == cpf).FirstOrDefault();
+            try
+            {
+                return _clientesDbContext.Clientes.Where(p => p.CPF == cpf).FirstOrDefault();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message, ex);
+                return null;
+            }
         }
 
-        public List<Cliente> Consultar(string cpf = "")
+        public IEnumerable<Cliente> GetAll()
         {
-            //using (var db = new ClientesDbContext(_options))
-            //{
-            //    //// Read
-            //    //Console.WriteLine("Querying for a client");
-            //    //var client = db.
-            //    //    .OrderBy(b => b.cpf)
-            //    //    .First();
-            //}
-            throw new NotImplementedException();
+            try
+            {
+                return _clientesDbContext.Clientes;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message, ex);
+                return null;
+            }
         }
+        #endregion
 
-        public bool Remover(string cpf)
+        #region UPDATE
+        public void Atualizar(Cliente cliente)
         {
-            //using (var db = new ClientesDbContext(_options))
-            //{
-            //    // Delete
-            //    Console.WriteLine("Delete the client");
-            //    db.Remove(cpf);
-            //    db.SaveChanges();
-            //}
-            throw new NotImplementedException();
+            try
+            {
+                _clientesDbContext.Entry(cliente).State = EntityState.Modified;
+                _logger.LogInformation("Cliente alterado com sucesso.");
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message, ex);
+            }
         }
+        #endregion
 
-        public void Salvar(Cliente cliente)
+        #region DELETE
+        public void Excluir(Cliente cliente)
         {
-            //using (var db = new ClientesDbContext(_options))
-            //{
-            //    // Create
-            //    Console.WriteLine("Inserting a new client");
-            //    db.Add(cliente);
-            //    db.SaveChanges();
-            //}
-        }
+            try
+            {
+                _clientesDbContext.Clientes.Remove(cliente);
+                _logger.LogInformation("Cliente removido com sucesso.");
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message, ex);
+            }
+        } 
+        #endregion
+
     }
 }

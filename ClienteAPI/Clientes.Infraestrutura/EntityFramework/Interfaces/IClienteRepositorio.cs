@@ -5,9 +5,10 @@ namespace Clientes.Infraestrutura.EntityFramework.Interfaces
 {
     public interface IClienteRepositorio
     {
+        void Adicionar(Cliente cliente);
         Cliente Get(string cpf);
-        List<Cliente> Consultar(string cpf = "");
-        void Salvar(Cliente cliente);
-        bool Remover(string cpf);
+        IEnumerable<Cliente> GetAll();
+        void Atualizar(Cliente cliente);
+        void Excluir(Cliente cliente);
     }
 }
