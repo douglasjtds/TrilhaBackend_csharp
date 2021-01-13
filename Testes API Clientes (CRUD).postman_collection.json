@@ -1,0 +1,93 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Testes API Clientes (CRUD)",
+		"_postman_id": "dac87d40-debc-3ffd-be9a-e202e74c085c",
+		"description": "Zup Academy",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "CREATE",
+			"request": {
+				"url": "https://localhost:44301/v1/create/cliente",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"idCliente\":1,\n\t\"nome\":\"Fulano\",\n\t\"idade\":60,\n\t\"cpf\":\"12161543\",\n\t\"email\":\"teste@teste\",\n\t\"telefone\":\"31919118196\",\n\t\"endereco\":\"Rua tal...\"\n}"
+				},
+				"description": "POST: create"
+			},
+			"response": []
+		},
+		{
+			"name": "READ: get",
+			"request": {
+				"url": "https://localhost:44301/12161543/v1/clientes",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "Get simples"
+			},
+			"response": []
+		},
+		{
+			"name": "READ: getAll",
+			"request": {
+				"url": "https://localhost:44301/v1/clientes",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "GetAll"
+			},
+			"response": []
+		},
+		{
+			"name": "UPDATE",
+			"request": {
+				"url": "https://localhost:44301/12161543/v1/update/cliente",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"idCliente\":1,\n\t\"nome\":\"Fulano atualizado no postman\",\n\t\"idade\":21,\n\t\"cpf\":\"12161543\",\n\t\"email\":\"teste@teste\",\n\t\"telefone\":\"31919118196\",\n\t\"endereco\":\"Rua tal...\"\n}"
+				},
+				"description": "PUT: update"
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE",
+			"request": {
+				"url": "https://localhost:44301/345345/v1/delete/cliente",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"idCliente\":5,\n\t\"nome\":\"Teste cachorro\",\n\t\"idade\":60,\"cpf\":\"345345\",\n\t\"email\":\"teste@teste\",\n\t\"telefone\":\"34534\",\n\t\"endereco\":\"Rua ...\"\n}"
+				},
+				"description": "delete"
+			},
+			"response": []
+		}
+	]
+}
