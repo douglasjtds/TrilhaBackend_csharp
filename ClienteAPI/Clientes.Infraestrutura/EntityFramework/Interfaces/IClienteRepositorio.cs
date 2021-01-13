@@ -10,5 +10,6 @@ namespace Clientes.Infraestrutura.EntityFramework.Interfaces
         IEnumerable<Cliente> GetAll();
         void Atualizar(Cliente cliente);
         void Excluir(Cliente cliente);
+        void Salvar();
     }
 }

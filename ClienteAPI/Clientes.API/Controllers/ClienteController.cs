@@ -48,7 +48,52 @@ namespace Clientes.API.Controllers
             }
         }
 
+        [HttpPost("/v1/create/cliente")]
+        public ActionResult Post(Cliente cliente)
+        {
+            try
+            {
+                _clienteRepositorio.Adicionar(cliente);
+                _clienteRepositorio.Salvar();
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message, ex);
+                return null;
+            }
+        }
 
+        [HttpPut("{cpf}/v1/update/cliente")]
+        public ActionResult Put(Cliente cliente)
+        {
+            try
+            {
+                _clienteRepositorio.Atualizar(cliente);
+                _clienteRepositorio.Salvar();
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message, ex);
+                return null;
+            }
+        }
 
+        [HttpDelete("{cpf}/v1/delete/cliente")]
+        public ActionResult Delete(Cliente cliente)
+        {
+            try
+            {
+                _clienteRepositorio.Excluir(cliente);
+                _clienteRepositorio.Salvar();
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message, ex);
+                return null;
+            }
+        }
     }
 }

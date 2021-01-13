@@ -90,7 +90,12 @@ namespace Clientes.Infraestrutura.EntityFramework.Repositorios
             {
                 _logger.LogError(ex.Message, ex);
             }
-        } 
+        }
+
+        public void Salvar()
+        {
+            _clientesDbContext.SaveChanges();
+        }
         #endregion
 
     }
