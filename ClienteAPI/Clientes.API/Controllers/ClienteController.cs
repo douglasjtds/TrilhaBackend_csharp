@@ -1,5 +1,5 @@
 ﻿using Clientes.Dominio.Entidades;
-using Clientes.Infraestrutura.EntityFramework.Interfaces;
+using Clientes.Dominio.Repositorios;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -53,7 +53,6 @@ namespace Clientes.API.Controllers
             try
             {
                 _clienteRepositorio.Adicionar(cliente);
-                _clienteRepositorio.Salvar();
                 return RedirectToAction("Index");
             }
             catch (Exception ex)
@@ -69,7 +68,6 @@ namespace Clientes.API.Controllers
             try
             {
                 _clienteRepositorio.Atualizar(cliente);
-                _clienteRepositorio.Salvar();
                 return RedirectToAction("Index");
             }
             catch (Exception ex)
@@ -85,7 +83,6 @@ namespace Clientes.API.Controllers
             try
             {
                 _clienteRepositorio.Excluir(cpf);
-                _clienteRepositorio.Salvar();
                 return RedirectToAction("Index");
             }
             catch (Exception ex)

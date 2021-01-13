@@ -1,7 +1,7 @@
 ﻿using Clientes.Dominio.Entidades;
 using System.Collections.Generic;
 
-namespace Clientes.Infraestrutura.EntityFramework.Interfaces
+namespace Clientes.Dominio.Repositorios
 {
     public interface IClienteRepositorio
     {
@@ -10,6 +10,5 @@ namespace Clientes.Infraestrutura.EntityFramework.Interfaces
         IEnumerable<Cliente> GetAll();
         void Atualizar(Cliente cliente);
         void Excluir(string cpf);
-        void Salvar();
     }
 }

@@ -1,5 +1,5 @@
 ﻿using Clientes.Dominio.Entidades;
-using Clientes.Infraestrutura.EntityFramework.Interfaces;
+using Clientes.Dominio.Repositorios;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
@@ -26,6 +26,7 @@ namespace Clientes.Infraestrutura.EntityFramework.Repositorios
             try
             {
                 _clientesDbContext.Clientes.Add(cliente);
+                _clientesDbContext.SaveChanges();
                 _logger.LogInformation("Cliente adicionado com sucesso.");
             }
             catch (Exception ex)
@@ -69,6 +70,7 @@ namespace Clientes.Infraestrutura.EntityFramework.Repositorios
             try
             {
                 _clientesDbContext.Entry(cliente).State = EntityState.Modified;
+                _clientesDbContext.SaveChanges();
                 _logger.LogInformation("Cliente alterado com sucesso.");
             }
             catch (Exception ex)
@@ -85,20 +87,8 @@ namespace Clientes.Infraestrutura.EntityFramework.Repositorios
             {
                 Cliente cliente = _clientesDbContext.Clientes.Where(p => p.CPF == cpf).FirstOrDefault();
                 _clientesDbContext.Clientes.Remove(cliente);
-                _logger.LogInformation("Cliente removido com sucesso.");
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex.Message, ex);
-            }
-        }
-
-        public void Salvar()
-        {
-            try
-            {
                 _clientesDbContext.SaveChanges();
-                _logger.LogInformation("Alterações salvas com sucesso na base.");
+                _logger.LogInformation("Cliente removido com sucesso.");
             }
             catch (Exception ex)
             {

@@ -21,7 +21,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"idCliente\":1,\n\t\"nome\":\"Fulano\",\n\t\"idade\":60,\n\t\"cpf\":\"12161543\",\n\t\"email\":\"teste@teste\",\n\t\"telefone\":\"31919118196\",\n\t\"endereco\":\"Rua tal...\"\n}"
+					"raw": "{\n\t\"nome\":\"Fulano\",\n\t\"idade\":60,\n\t\"cpf\":\"12161543\",\n\t\"email\":\"teste@teste\",\n\t\"telefone\":\"31919118196\",\n\t\"endereco\":\"Rua tal...\"\n}"
 				},
 				"description": "POST: create"
 			},
@@ -63,7 +63,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"idCliente\":1,\n\t\"nome\":\"Fulano atualizado no postman\",\n\t\"idade\":21,\n\t\"cpf\":\"12161543\",\n\t\"email\":\"teste@teste\",\n\t\"telefone\":\"31919118196\",\n\t\"endereco\":\"Rua tal...\"\n}"
+					"raw": "{\n\t\"nome\":\"Fulano atualizado no postman\",\n\t\"idade\":21,\n\t\"cpf\":\"12161543\",\n\t\"email\":\"teste@teste\",\n\t\"telefone\":\"31919118196\",\n\t\"endereco\":\"Rua tal...\"\n}"
 				},
 				"description": "PUT: update"
 			},
@@ -72,7 +72,7 @@
 		{
 			"name": "DELETE",
 			"request": {
-				"url": "https://localhost:44301/345345/v1/delete/cliente",
+				"url": "https://localhost:44301/345347/v1/delete/cliente",
 				"method": "DELETE",
 				"header": [
 					{
@@ -83,7 +83,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"idCliente\":5,\n\t\"nome\":\"Teste cachorro\",\n\t\"idade\":60,\"cpf\":\"345345\",\n\t\"email\":\"teste@teste\",\n\t\"telefone\":\"34534\",\n\t\"endereco\":\"Rua ...\"\n}"
+					"raw": "{\n\t\"nome\":\"Teste cachorro\",\n\t\"idade\":60,\"cpf\":\"345345\",\n\t\"email\":\"teste@teste\",\n\t\"telefone\":\"34534\",\n\t\"endereco\":\"Rua ...\"\n}"
 				},
 				"description": "delete"
 			},

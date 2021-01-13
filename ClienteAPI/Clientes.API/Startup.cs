@@ -1,13 +1,11 @@
+using Clientes.Dominio.Repositorios;
+using Clientes.Infraestrutura.Configurations;
+using Clientes.Infraestrutura.EntityFramework.Repositorios;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.EntityFrameworkCore;
-using Clientes.Infraestrutura.EntityFramework;
-using Clientes.Infraestrutura.Configurations;
-using Clientes.Infraestrutura.EntityFramework.Repositorios;
-using Clientes.Infraestrutura.EntityFramework.Interfaces;
 
 namespace Clientes.API
 {

@@ -2,3 +2,7 @@ MELHORIAS NA API:
 - não passar o cpf na url
 - swagger
 - não permitir atualizar cpf no put
+
+- remover o salvar do ClienteRepositorio
+- ao adicionar, não permitir colocar número no nome
+- um só use case para salvar que vai decidir se vai ser atualziar ou inserir (se tem id é atualizar)
