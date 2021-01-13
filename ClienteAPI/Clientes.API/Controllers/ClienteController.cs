@@ -19,7 +19,6 @@ namespace Clientes.API.Controllers
             _clienteRepositorio = clienteRepositorio;
         }
 
-
         [HttpGet("{cpf}/v1/clientes")]
         public Cliente Get([FromRoute] string cpf)
         {
