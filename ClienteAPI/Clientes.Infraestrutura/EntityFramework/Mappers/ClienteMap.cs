@@ -8,7 +8,7 @@ namespace Clientes.Infraestrutura.EntityFramework.Mappers
     {
         public void Configure(EntityTypeBuilder<Cliente> builder)
         {
-            builder.ToTable("dbo.CLIENTES")
+            builder.ToTable("CLIENTES")
                 .HasKey(o => o.IdCliente);
 
             builder.Property(p => p.IdCliente)
