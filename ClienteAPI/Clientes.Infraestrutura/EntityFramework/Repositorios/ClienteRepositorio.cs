@@ -65,17 +65,28 @@ namespace Clientes.Infraestrutura.EntityFramework.Repositorios
         #endregion
 
         #region UPDATE
-        public void Atualizar(Cliente cliente)
+        public bool Atualizar(string cpfRecebido, Cliente cliente)
         {
             try
             {
-                _clientesDbContext.Entry(cliente).State = EntityState.Modified;
-                _clientesDbContext.SaveChanges();
-                _logger.LogInformation("Cliente alterado com sucesso.");
+                if (_clientesDbContext.Clientes.Any(c => c.CPF == cpfRecebido))
+                {
+                    //_clientesDbContext.Entry(cliente).State = EntityState.Modified;
+                    _clientesDbContext.Clientes.Update(cliente);
+                    _clientesDbContext.SaveChanges();
+                    _logger.LogInformation("Cliente alterado com sucesso.");
+                    return true;
+                }
+                else
+                {
+                    _logger.LogWarning("Não foi encontrado um cliente com esse CPF na base.");
+                    return false;
+                }
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex.Message, ex);
+                return false;
             }
         }
         #endregion

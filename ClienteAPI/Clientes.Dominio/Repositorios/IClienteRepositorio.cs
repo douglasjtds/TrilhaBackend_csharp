@@ -8,7 +8,7 @@ namespace Clientes.Dominio.Repositorios
         void Adicionar(Cliente cliente);
         Cliente Get(string cpf);
         IEnumerable<Cliente> GetAll();
-        void Atualizar(Cliente cliente);
+        bool Atualizar(string cpf, Cliente cliente);
         void Excluir(string cpf);
     }
 }

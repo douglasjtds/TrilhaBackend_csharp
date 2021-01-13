@@ -1,6 +1,6 @@
 ﻿namespace Clientes.Application
 {
-    public interface IClientesUseCase
+    public interface ISalvarClienteUseCase
     {
         void Execute();
     }

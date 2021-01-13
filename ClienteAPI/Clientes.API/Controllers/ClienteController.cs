@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
+using System.Net;
+using System.Net.Http;
 
 namespace Clientes.API.Controllers
 {
@@ -63,12 +65,16 @@ namespace Clientes.API.Controllers
         }
 
         [HttpPut("{cpf}/v1/update/cliente")]
-        public ActionResult Put(Cliente cliente)
+        public IActionResult Put([FromRoute] string cpf, [FromBody] Cliente cliente)
         {
             try
             {
-                _clienteRepositorio.Atualizar(cliente);
+                _clienteRepositorio.Atualizar(cpf, cliente);
                 return RedirectToAction("Index");
+                //return RestResult(StatusCodes.Status200Ok);
+                //vc pode retornar um  HttpResponseMessage  return new HttpResponseMessage(422); 
+                //response.Content = new StringContent("MINHA MSG QUE VEIO DO USE CASE");
+                //return new HttpResponseMessage(HttpStatusCode.OK);
             }
             catch (Exception ex)
             {

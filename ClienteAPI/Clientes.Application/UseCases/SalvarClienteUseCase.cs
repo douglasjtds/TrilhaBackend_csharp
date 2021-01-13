@@ -4,12 +4,12 @@ using System;
 
 namespace Clientes.Application.UseCases
 {
-    public class ClientesUseCase : IClientesUseCase
+    public class SalvarClienteUseCase : ISalvarClienteUseCase
     {
-        private readonly ILogger<ClientesUseCase> _logger;
+        private readonly ILogger<SalvarClienteUseCase> _logger;
         private readonly IConfiguration _configuration;
 
-        public ClientesUseCase(ILogger<ClientesUseCase> logger, IConfiguration configuration)
+        public SalvarClienteUseCase(ILogger<SalvarClienteUseCase> logger, IConfiguration configuration)
         {
             _logger = logger;
             _configuration = configuration;
