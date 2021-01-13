@@ -1,0 +1,4 @@
+MELHORIAS NA API:
+- não passar o cpf na url
+- swagger
+- não permitir atualizar cpf no put

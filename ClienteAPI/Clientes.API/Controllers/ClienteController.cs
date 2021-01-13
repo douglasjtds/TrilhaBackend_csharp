@@ -80,11 +80,11 @@ namespace Clientes.API.Controllers
         }
 
         [HttpDelete("{cpf}/v1/delete/cliente")]
-        public ActionResult Delete(Cliente cliente)
+        public ActionResult Delete([FromRoute] string cpf)
         {
             try
             {
-                _clienteRepositorio.Excluir(cliente);
+                _clienteRepositorio.Excluir(cpf);
                 _clienteRepositorio.Salvar();
                 return RedirectToAction("Index");
             }

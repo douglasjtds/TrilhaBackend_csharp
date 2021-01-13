@@ -79,10 +79,11 @@ namespace Clientes.Infraestrutura.EntityFramework.Repositorios
         #endregion
 
         #region DELETE
-        public void Excluir(Cliente cliente)
+        public void Excluir(string cpf)
         {
             try
             {
+                Cliente cliente = _clientesDbContext.Clientes.Where(p => p.CPF == cpf).FirstOrDefault();
                 _clientesDbContext.Clientes.Remove(cliente);
                 _logger.LogInformation("Cliente removido com sucesso.");
             }
@@ -94,7 +95,15 @@ namespace Clientes.Infraestrutura.EntityFramework.Repositorios
 
         public void Salvar()
         {
-            _clientesDbContext.SaveChanges();
+            try
+            {
+                _clientesDbContext.SaveChanges();
+                _logger.LogInformation("Alterações salvas com sucesso na base.");
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message, ex);
+            }
         }
         #endregion
 

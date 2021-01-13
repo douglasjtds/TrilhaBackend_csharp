@@ -1,4 +1,6 @@
-﻿namespace Clientes.Dominio.Entidades
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace Clientes.Dominio.Entidades
 {
     public class Cliente
     {
@@ -18,6 +20,7 @@
             Endereco = endereco;
         }
 
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int IdCliente { get; set; }
         public string Nome { get; set; }
         public int Idade { get; set; }
