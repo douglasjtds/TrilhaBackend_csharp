@@ -22,45 +22,45 @@ namespace Clientes.API.Controllers
         }
 
         [HttpGet("{cpf}/v1/clientes")]
-        public Cliente Get([FromRoute] string cpf)
+        public IActionResult Get([FromRoute] string cpf)
         {
             try
             {
-                return _clienteRepositorio.Get(cpf);
+                return Ok(_clienteRepositorio.Get(cpf));
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex.Message, ex);
-                return null;
+                return StatusCode((int)HttpStatusCode.InternalServerError);
             }
         }
 
         [HttpGet("/v1/clientes")]
-        public IEnumerable<Cliente> GetAll()
+        public IActionResult GetAll()
         {
             try
             {
-                return _clienteRepositorio.GetAll();
+                return Ok(_clienteRepositorio.GetAll());
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex.Message, ex);
-                return null;
+                return StatusCode((int)HttpStatusCode.InternalServerError);
             }
         }
 
         [HttpPost("/v1/create/cliente")]
-        public ActionResult Post(Cliente cliente)
+        public IActionResult Post(Cliente cliente)
         {
             try
             {
                 _clienteRepositorio.Adicionar(cliente);
-                return RedirectToAction("Index");
+                return Ok();
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex.Message, ex);
-                return null;
+                return StatusCode((int)HttpStatusCode.InternalServerError);
             }
         }
 
@@ -70,31 +70,27 @@ namespace Clientes.API.Controllers
             try
             {
                 _clienteRepositorio.Atualizar(cpf, cliente);
-                return RedirectToAction("Index");
-                //return RestResult(StatusCodes.Status200Ok);
-                //vc pode retornar um  HttpResponseMessage  return new HttpResponseMessage(422); 
-                //response.Content = new StringContent("MINHA MSG QUE VEIO DO USE CASE");
-                //return new HttpResponseMessage(HttpStatusCode.OK);
+                return Ok();
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex.Message, ex);
-                return null;
+                return StatusCode((int)HttpStatusCode.InternalServerError);
             }
         }
 
         [HttpDelete("{cpf}/v1/delete/cliente")]
-        public ActionResult Delete([FromRoute] string cpf)
+        public IActionResult Delete([FromRoute] string cpf)
         {
             try
             {
                 _clienteRepositorio.Excluir(cpf);
-                return RedirectToAction("Index");
+                return Ok();
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex.Message, ex);
-                return null;
+                return StatusCode((int)HttpStatusCode.InternalServerError);
             }
         }
     }
