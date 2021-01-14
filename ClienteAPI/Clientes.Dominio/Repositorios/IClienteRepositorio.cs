@@ -9,6 +9,6 @@ namespace Clientes.Dominio.Repositorios
         Cliente Get(string cpf);
         IEnumerable<Cliente> GetAll();
         bool Atualizar(string cpf, Cliente cliente);
-        void Excluir(string cpf);
+        bool Excluir(string cpf);
     }
 }

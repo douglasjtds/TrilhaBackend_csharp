@@ -92,18 +92,28 @@ namespace Clientes.Infraestrutura.EntityFramework.Repositorios
         #endregion
 
         #region DELETE
-        public void Excluir(string cpf)
+        public bool Excluir(string cpf)
         {
             try
             {
-                Cliente cliente = _clientesDbContext.Clientes.Where(p => p.CPF == cpf).FirstOrDefault();
-                _clientesDbContext.Clientes.Remove(cliente);
-                _clientesDbContext.SaveChanges();
-                _logger.LogInformation("Cliente removido com sucesso.");
+                if (_clientesDbContext.Clientes.Any(c => c.CPF == cpf))
+                {
+                    Cliente cliente = _clientesDbContext.Clientes.Where(p => p.CPF == cpf).FirstOrDefault();
+                    _clientesDbContext.Clientes.Remove(cliente);
+                    _clientesDbContext.SaveChanges();
+                    _logger.LogInformation("Cliente removido com sucesso.");
+                    return true;
+                }
+                else
+                {
+                    _logger.LogWarning("Não foi encontrado um cliente com esse CPF na base.");
+                    return false;
+                }
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex.Message, ex);
+                return false;
             }
         }
         #endregion
