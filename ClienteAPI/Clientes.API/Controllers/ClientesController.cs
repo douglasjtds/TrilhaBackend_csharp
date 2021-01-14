@@ -9,14 +9,14 @@ using System.Net.Http;
 
 namespace Clientes.API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/clientes")]
     [ApiController]
-    public class ClienteController : ControllerBase
+    public class ClientesController : ControllerBase
     {
-        private readonly ILogger<ClienteController> _logger;
+        private readonly ILogger<ClientesController> _logger;
         private readonly IClienteRepositorio _clienteRepositorio;
 
-        public ClienteController(ILogger<ClienteController> logger, IClienteRepositorio clienteRepositorio)
+        public ClientesController(ILogger<ClientesController> logger, IClienteRepositorio clienteRepositorio)
         {
             _logger = logger;
             _clienteRepositorio = clienteRepositorio;
