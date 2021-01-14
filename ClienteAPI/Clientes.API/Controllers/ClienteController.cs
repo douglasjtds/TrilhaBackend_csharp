@@ -40,7 +40,7 @@ namespace Clientes.API.Controllers
                 var cliente = _clienteRepositorio.Get(cpf);
 
                 if (cliente == null)
-                    return NotFound(new { mensagem = "Cliente não encontrado." });
+                    return NotFound(new { mensagem = "Não foi encontrado um cliente com esse CPF na base." });
 
                 return Ok(cliente);
             }
@@ -54,7 +54,8 @@ namespace Clientes.API.Controllers
         /// <summary>
         /// Obtém todos os clientes.
         /// </summary>
-        /// <returns></returns>
+        /// /// <response code="200">Clientes obtidos com sucesso.</response>
+        /// <response code="500">Ocorreu um erro ao obter os clientes.</response>
         [HttpGet]
         [ProducesResponseType(typeof(IEnumerable<Cliente>), 200)]
         [ProducesResponseType(404)]
@@ -75,8 +76,9 @@ namespace Clientes.API.Controllers
         /// <summary>
         /// Adiciona um novo cliente.
         /// </summary>
-        /// <param name="cliente"></param>
-        /// <returns></returns>
+        /// <param name="cliente">json com as informações do novo cliente</param>
+        /// <response code="200">Cliente adicionado com sucesso.</response>
+        /// <response code="500">Ocorreu um erro ao adicionar o cliente.</response>
         [HttpPost]
         [ProducesResponseType(200)]
         [ProducesResponseType(500)]
@@ -97,9 +99,11 @@ namespace Clientes.API.Controllers
         /// <summary>
         /// Atualiza os dados de um cliente existente.
         /// </summary>
-        /// <param name="cpf"></param>
-        /// <param name="cliente"></param>
-        /// <returns></returns>
+        /// <param name="cpf">CPF do cliente que deseja atualizar.</param>
+        /// <param name="cliente">json com as informações do cliente que deseja atualizar</param>
+        /// <response code="200">Cliente atualizado com sucesso.</response>
+        /// <response code="404">Não foi encontrado um cliente com o CPF especificado.</response>
+        /// <response code="500">Ocorreu um erro ao atualizar o cliente.</response>
         [HttpPut("{cpf}")]
         [ProducesResponseType(200)]
         [ProducesResponseType(404)]
@@ -122,8 +126,10 @@ namespace Clientes.API.Controllers
         /// <summary>
         /// Exclui um cliente da base de dados.
         /// </summary>
-        /// <param name="cpf"></param>
-        /// <returns></returns>
+        /// <param name="cpf">CPF do cliente que deseja excluir.</param>
+        /// <response code="200">Cliente excluído com sucesso.</response>
+        /// <response code="404">Não foi encontrado um cliente com o CPF especificado.</response>
+        /// <response code="500">Ocorreu um erro ao excluír o cliente.</response>
         [HttpDelete("{cpf}")]
         [ProducesResponseType(200)]
         [ProducesResponseType(404)]
@@ -132,8 +138,12 @@ namespace Clientes.API.Controllers
         {
             try
             {
-                _clienteRepositorio.Excluir(cpf);
-                return Ok();
+                var clienteParaExcluir = _clienteRepositorio.Excluir(cpf);
+
+                if (clienteParaExcluir == false)
+                    return NotFound(new { mensagem = "Não foi encontrado um cliente com esse CPF na base." });
+
+                return Ok(clienteParaExcluir);
             }
             catch (Exception ex)
             {
