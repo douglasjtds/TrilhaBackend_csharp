@@ -9,6 +9,7 @@ using System.Net.Http;
 
 namespace Clientes.API.Controllers
 {
+    [Route("api/[controller]")]
     [ApiController]
     public class ClienteController : ControllerBase
     {
@@ -21,7 +22,7 @@ namespace Clientes.API.Controllers
             _clienteRepositorio = clienteRepositorio;
         }
 
-        [HttpGet("{cpf}/v1/clientes")]
+        [HttpGet("{cpf}")]
         public IActionResult Get([FromRoute] string cpf)
         {
             try
@@ -35,7 +36,7 @@ namespace Clientes.API.Controllers
             }
         }
 
-        [HttpGet("/v1/clientes")]
+        [HttpGet]
         public IActionResult GetAll()
         {
             try
@@ -49,7 +50,7 @@ namespace Clientes.API.Controllers
             }
         }
 
-        [HttpPost("/v1/create/cliente")]
+        [HttpPost]
         public IActionResult Post(Cliente cliente)
         {
             try
@@ -64,7 +65,7 @@ namespace Clientes.API.Controllers
             }
         }
 
-        [HttpPut("{cpf}/v1/update/cliente")]
+        [HttpPut("{cpf}")]
         public IActionResult Put([FromRoute] string cpf, [FromBody] Cliente cliente)
         {
             try
@@ -79,7 +80,7 @@ namespace Clientes.API.Controllers
             }
         }
 
-        [HttpDelete("{cpf}/v1/delete/cliente")]
+        [HttpDelete("{cpf}")]
         public IActionResult Delete([FromRoute] string cpf)
         {
             try
