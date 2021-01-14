@@ -50,11 +50,11 @@ namespace Clientes.Infraestrutura.EntityFramework.Repositorios
             }
         }
 
-        public IEnumerable<Cliente> GetAll()
+        public IList<Cliente> GetAll()
         {
             try
             {
-                return _clientesDbContext.Clientes;
+                return _clientesDbContext.Clientes.ToList();
             }
             catch (Exception ex)
             {

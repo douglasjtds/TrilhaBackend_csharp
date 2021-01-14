@@ -1,11 +1,10 @@
-﻿using System;
+﻿using Clientes.Dominio.Entidades;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Clientes.Application.UseCases
 {
     public interface IBuscarClienteUseCase
     {
-        void Execute();
+        IList<Cliente> Execute(string cpf);
     }
 }

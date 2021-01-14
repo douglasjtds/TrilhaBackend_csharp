@@ -1,4 +1,4 @@
-﻿namespace Clientes.Application
+﻿namespace Clientes.Application.UseCases
 {
     public interface ISalvarClienteUseCase
     {

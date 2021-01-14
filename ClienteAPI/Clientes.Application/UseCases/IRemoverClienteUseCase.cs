@@ -6,6 +6,6 @@ namespace Clientes.Application.UseCases
 {
     public interface IRemoverClienteUseCase
     {
-        void Execute();
+        bool Execute(string cpf);
     }
 }

@@ -1,3 +1,4 @@
+using Clientes.Application.UseCases;
 using Clientes.Dominio.Repositorios;
 using Clientes.Infraestrutura.Configurations;
 using Clientes.Infraestrutura.EntityFramework.Repositorios;
@@ -27,7 +28,12 @@ namespace Clientes.API
         {
             services.AddControllers();
             services.ConfigureDatabase(Configuration);
+
             services.AddTransient<IClienteRepositorio, ClienteRepositorio>();
+            services.AddTransient<IBuscarClienteUseCase, BuscarClienteUseCase>();
+            services.AddTransient<ISalvarClienteUseCase, SalvarClienteUseCase>();
+            services.AddTransient<IRemoverClienteUseCase, RemoverClienteUseCase>();
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Cliente API", Version = "v1" });

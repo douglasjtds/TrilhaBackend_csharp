@@ -1,11 +1,11 @@
-﻿using Clientes.Dominio.Entidades;
+﻿using Clientes.Application.UseCases;
+using Clientes.Dominio.Entidades;
 using Clientes.Dominio.Repositorios;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Net;
-using System.Net.Http;
 
 namespace Clientes.API.Controllers
 {
@@ -14,12 +14,23 @@ namespace Clientes.API.Controllers
     public class ClientesController : ControllerBase
     {
         private readonly ILogger<ClientesController> _logger;
+
         private readonly IClienteRepositorio _clienteRepositorio;
 
-        public ClientesController(ILogger<ClientesController> logger, IClienteRepositorio clienteRepositorio)
+        private readonly IBuscarClienteUseCase _buscarClienteUseCase;
+        private readonly ISalvarClienteUseCase _salvarClienteUseCase;
+        private readonly IRemoverClienteUseCase _removerClienteUseCase;
+
+
+        public ClientesController(ILogger<ClientesController> logger, IBuscarClienteUseCase buscarClienteUseCase, ISalvarClienteUseCase salvarClienteUseCase, IRemoverClienteUseCase removerClienteUseCase, IClienteRepositorio clienteRepositorio)
         {
             _logger = logger;
+
             _clienteRepositorio = clienteRepositorio;
+
+            _buscarClienteUseCase = buscarClienteUseCase;
+            _salvarClienteUseCase = salvarClienteUseCase;
+            _removerClienteUseCase = removerClienteUseCase;
         }
 
         /// <summary>
@@ -37,7 +48,7 @@ namespace Clientes.API.Controllers
         {
             try
             {
-                var cliente = _clienteRepositorio.Get(cpf);
+                var cliente = _buscarClienteUseCase.Execute(cpf);
 
                 if (cliente == null)
                     return NotFound(new { mensagem = "Não foi encontrado um cliente com esse CPF na base." });
@@ -64,7 +75,7 @@ namespace Clientes.API.Controllers
         {
             try
             {
-                return Ok(_clienteRepositorio.GetAll());
+                return Ok(_buscarClienteUseCase.Execute(""));
             }
             catch (Exception ex)
             {
@@ -138,7 +149,8 @@ namespace Clientes.API.Controllers
         {
             try
             {
-                var clienteParaExcluir = _clienteRepositorio.Excluir(cpf);
+                //var clienteParaExcluir = _clienteRepositorio.Excluir(cpf);
+                var clienteParaExcluir = _removerClienteUseCase.Execute(cpf);
 
                 if (clienteParaExcluir == false)
                     return NotFound(new { mensagem = "Não foi encontrado um cliente com esse CPF na base." });

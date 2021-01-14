@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Clientes.Dominio.Repositorios;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using System;
 
@@ -8,11 +9,13 @@ namespace Clientes.Application.UseCases
     {
         private readonly ILogger<SalvarClienteUseCase> _logger;
         private readonly IConfiguration _configuration;
+        private readonly IClienteRepositorio _clienteRepositorio;
 
-        public SalvarClienteUseCase(ILogger<SalvarClienteUseCase> logger, IConfiguration configuration)
+        public SalvarClienteUseCase(ILogger<SalvarClienteUseCase> logger, IConfiguration configuration, IClienteRepositorio clienteRepositorio)
         {
             _logger = logger;
             _configuration = configuration;
+            _clienteRepositorio = clienteRepositorio;
         }
 
         public void Execute()
