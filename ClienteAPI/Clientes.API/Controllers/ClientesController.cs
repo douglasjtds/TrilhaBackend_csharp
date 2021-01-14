@@ -1,4 +1,4 @@
-﻿using Clientes.Application.UseCases;
+﻿using Clientes.Application.Interfaces;
 using Clientes.Dominio.Entidades;
 using Clientes.Dominio.Repositorios;
 using Microsoft.AspNetCore.Mvc;
@@ -15,7 +15,7 @@ namespace Clientes.API.Controllers
     {
         private readonly ILogger<ClientesController> _logger;
 
-        private readonly IClienteRepositorio _clienteRepositorio;
+        //private readonly IClienteRepositorio _clienteRepositorio;
 
         private readonly IBuscarClienteUseCase _buscarClienteUseCase;
         private readonly ISalvarClienteUseCase _salvarClienteUseCase;
@@ -26,7 +26,7 @@ namespace Clientes.API.Controllers
         {
             _logger = logger;
 
-            _clienteRepositorio = clienteRepositorio;
+            //_clienteRepositorio = clienteRepositorio;
 
             _buscarClienteUseCase = buscarClienteUseCase;
             _salvarClienteUseCase = salvarClienteUseCase;
@@ -97,7 +97,7 @@ namespace Clientes.API.Controllers
         {
             try
             {
-                _clienteRepositorio.Adicionar(cliente);
+                _salvarClienteUseCase.Execute(cliente, "");
                 return Ok();
             }
             catch (Exception ex)
@@ -123,7 +123,7 @@ namespace Clientes.API.Controllers
         {
             try
             {
-                _clienteRepositorio.Atualizar(cpf, cliente);
+                _salvarClienteUseCase.Execute(cliente, cpf);
                 return Ok();
             }
             catch (Exception ex)
@@ -145,21 +145,21 @@ namespace Clientes.API.Controllers
         [ProducesResponseType(200)]
         [ProducesResponseType(404)]
         [ProducesResponseType(500)]
-        public IActionResult Delete([FromRoute] string cpf)
+        public IActionResult Delete([FromRoute] string cpf, out string message)
         {
             try
             {
-                //var clienteParaExcluir = _clienteRepositorio.Excluir(cpf);
-                var clienteParaExcluir = _removerClienteUseCase.Execute(cpf);
+                var clienteRemovido = _removerClienteUseCase.Execute(cpf, out message);
 
-                if (clienteParaExcluir == false)
+                if (clienteRemovido == false)
                     return NotFound(new { mensagem = "Não foi encontrado um cliente com esse CPF na base." });
 
-                return Ok(clienteParaExcluir);
+                return Ok(clienteRemovido);
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex.Message, ex);
+                message = ex.Message;
                 return StatusCode((int)HttpStatusCode.InternalServerError);
             }
         }

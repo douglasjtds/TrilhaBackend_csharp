@@ -1,4 +1,6 @@
-﻿using Clientes.Dominio.Repositorios;
+﻿using Clientes.Application.Interfaces;
+using Clientes.Dominio.Entidades;
+using Clientes.Dominio.Repositorios;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using System;
@@ -18,9 +20,27 @@ namespace Clientes.Application.UseCases
             _clienteRepositorio = clienteRepositorio;
         }
 
-        public void Execute()
+        public void Execute(Cliente cliente, string cpf = "")
         {
-            throw new NotImplementedException();
+            try
+            {
+                if (string.IsNullOrEmpty(cpf))
+                {
+                    _clienteRepositorio.Adicionar(cliente);
+                }
+                else
+                {
+                    if (cpf != cliente.CPF)
+                    {
+                        _logger.LogError("Não é permitido alterar o CPF de um cliente já cadastrado. Já existe um cliente com o CPF: {0}", cpf);
+                    }
+                    _clienteRepositorio.Atualizar(cpf, cliente);
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message, ex);
+            }
         }
     }
 }

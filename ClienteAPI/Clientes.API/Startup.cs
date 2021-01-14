@@ -1,3 +1,4 @@
+using Clientes.Application.Interfaces;
 using Clientes.Application.UseCases;
 using Clientes.Dominio.Repositorios;
 using Clientes.Infraestrutura.Configurations;

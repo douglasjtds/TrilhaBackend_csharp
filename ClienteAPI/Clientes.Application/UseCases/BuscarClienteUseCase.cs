@@ -1,4 +1,5 @@
-﻿using Clientes.Dominio.Entidades;
+﻿using Clientes.Application.Interfaces;
+using Clientes.Dominio.Entidades;
 using Clientes.Dominio.Repositorios;
 using Microsoft.Extensions.Logging;
 using System;
@@ -23,9 +24,11 @@ namespace Clientes.Application.UseCases
             {
                 if (!string.IsNullOrEmpty(cpf))
                 {
-                    List<Cliente> clientes = new List<Cliente>();
-                    var teste = _clienteRepositorio.Get(cpf);
-                    clientes.Add(teste);
+                    var clientes = new List<Cliente>
+                    {
+                        _clienteRepositorio.Get(cpf)
+                    };
+
                     return clientes;
                 }
                 return _clienteRepositorio.GetAll();

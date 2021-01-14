@@ -1,4 +1,5 @@
-﻿using Clientes.Dominio.Repositorios;
+﻿using Clientes.Application.Interfaces;
+using Clientes.Dominio.Repositorios;
 using Microsoft.Extensions.Logging;
 using System;
 
@@ -14,9 +15,27 @@ namespace Clientes.Application.UseCases
             _clienteRepositorio = clienteRepositorio;
         }
 
-        public bool Execute(string cpf)
+        public bool Execute(string cpf, out string message)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var clienteParaExcluir = _clienteRepositorio.Excluir(cpf);
+
+                if (clienteParaExcluir == false)
+                {
+                    message = "Não foi encontrado um cliente com esse CPF na base.";
+                    return false;
+                }
+
+                message = "Cliente removido com sucesso.";
+                return true;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message, ex);
+                message = ex.Message;
+                return false;
+            }
         }
     }
 }
