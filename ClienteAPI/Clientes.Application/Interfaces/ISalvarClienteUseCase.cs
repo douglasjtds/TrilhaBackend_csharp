@@ -4,6 +4,6 @@ namespace Clientes.Application.Interfaces
 {
     public interface ISalvarClienteUseCase
     {
-        void Execute(Cliente cliente, string cpf);
+        bool Execute(Cliente cliente, out string message, string cpf);
     }
 }
