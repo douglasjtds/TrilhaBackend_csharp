@@ -1,6 +1,4 @@
-﻿using FluentValidation;
-
-namespace Clientes.Dominio.Entidades
+﻿namespace Clientes.Dominio.Entidades
 {
     public class Cliente
     {
@@ -29,17 +27,17 @@ namespace Clientes.Dominio.Entidades
         public string Telefone { get; set; }
         public string Endereco { get; set; }
 
-        public class ClienteValidator : AbstractValidator<Cliente>
-        {
-            public ClienteValidator()
-            {
-                RuleFor(cliente => cliente.Nome).NotNull().NotEmpty();
-                RuleFor(cliente => cliente.Idade).NotNull().NotEmpty();
-                RuleFor(cliente => cliente.CPF).NotNull().NotEmpty();
-                RuleFor(cliente => cliente.Email).NotNull().NotEmpty();
-                RuleFor(cliente => cliente.Telefone).NotNull().NotEmpty();
-                RuleFor(cliente => cliente.Endereco).NotNull().NotEmpty();
-            }
-        }
+        //public class ClienteValidator : AbstractValidator<Cliente>
+        //{
+        //    public ClienteValidator()
+        //    {
+        //        RuleFor(cliente => cliente.Nome).NotNull().NotEmpty();
+        //        RuleFor(cliente => cliente.Idade).NotNull().NotEmpty();
+        //        RuleFor(cliente => cliente.CPF).NotNull().NotEmpty();
+        //        RuleFor(cliente => cliente.Email).NotNull().NotEmpty();
+        //        RuleFor(cliente => cliente.Telefone).NotNull().NotEmpty();
+        //        RuleFor(cliente => cliente.Endereco).NotNull().NotEmpty();
+        //    }
+        //}
     }
 }

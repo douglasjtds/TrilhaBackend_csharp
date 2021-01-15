@@ -4,9 +4,6 @@ using Clientes.Dominio.Repositorios;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using System;
-using System.ComponentModel.DataAnnotations;
-using FluentValidation;
-using static Clientes.Dominio.Entidades.Cliente;
 
 namespace Clientes.Application.UseCases
 {
@@ -27,16 +24,16 @@ namespace Clientes.Application.UseCases
         {
             try
             {
+                //não permitir salvar número no nome
+                var isNumeric = int.TryParse(cliente.Nome, out _);
+                if (isNumeric)
+                {
+                    message = "Não é permitido adicionar um número no lugar do nome do cliente.";
+                    return false;
+                }
+
                 if (string.IsNullOrEmpty(cpf))
                 {
-                    //var clienteValidator = new ClienteValidator();
-                    //ValidationResult validationResult;
-                    //validationResult = clienteValidator.Validate(cliente);
-
-                    //if ()
-                    //{
-
-                    //}
                     _clienteRepositorio.Adicionar(cliente);
                     message = "Cliente adicionado com sucesso.";
                     return true;

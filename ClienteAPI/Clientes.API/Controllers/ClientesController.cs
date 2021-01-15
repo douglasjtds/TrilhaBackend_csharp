@@ -59,7 +59,7 @@ namespace Clientes.API.Controllers
         /// <summary>
         /// Obtém todos os clientes.
         /// </summary>
-        /// /// <response code="200">Clientes obtidos com sucesso.</response>
+        /// <response code="200">Clientes obtidos com sucesso.</response>
         /// <response code="500">Ocorreu um erro ao obter os clientes.</response>
         [HttpGet]
         [ProducesResponseType(typeof(IEnumerable<Cliente>), 200)]
@@ -82,54 +82,56 @@ namespace Clientes.API.Controllers
         /// Adiciona um novo cliente.
         /// </summary>
         /// <param name="cliente">json com as informações do novo cliente</param>
-        /// <param name="message"></param>
+        /// <param name="mensagem">Mensagem retornada do UseCase</param>
+        /// <param name="cpf">cpf cliente</param>
         /// <response code="200">Cliente adicionado com sucesso.</response>
         /// <response code="500">Ocorreu um erro ao adicionar o cliente.</response>
-        //[HttpPost]
-        //[ProducesResponseType(200)]
-        //[ProducesResponseType(500)]
-        //public IActionResult Post(Cliente cliente, out string message)
-        //{
-        //    try
-        //    {
-        //        _salvarClienteUseCase.Execute(cliente, out message,"");
-        //        return Ok();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        _logger.LogError(ex.Message, ex);
-        //        message = ex.Message;
-        //        return StatusCode((int)HttpStatusCode.InternalServerError);
-        //    }
-        //}
+        [HttpPost]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(500)]
+        public IActionResult Post([FromBody] Cliente cliente, [FromRoute] string cpf = "")
+        {
+            string mensagem;
+            try
+            {
+                _salvarClienteUseCase.Execute(cliente, out mensagem, cpf);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message, ex);
+                mensagem = ex.Message;
+                return StatusCode((int)HttpStatusCode.InternalServerError);
+            }
+        }
 
         /// <summary>
         /// Atualiza os dados de um cliente existente.
         /// </summary>
         /// <param name="cpf">CPF do cliente que deseja atualizar.</param>
         /// <param name="cliente">json com as informações do cliente que deseja atualizar</param>
-        /// <param name="message"></param>
         /// <response code="200">Cliente atualizado com sucesso.</response>
         /// <response code="404">Não foi encontrado um cliente com o CPF especificado.</response>
         /// <response code="500">Ocorreu um erro ao atualizar o cliente.</response>
-        //[HttpPut("{cpf}")]
-        //[ProducesResponseType(200)]
-        //[ProducesResponseType(404)]
-        //[ProducesResponseType(500)]
-        //public IActionResult Put([FromRoute] string cpf, out string message, [FromBody] Cliente cliente)
-        //{
-        //    try
-        //    {
-        //        _salvarClienteUseCase.Execute(cliente, out message, cpf);
-        //        return Ok();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        _logger.LogError(ex.Message, ex);
-        //        message = ex.Message;
-        //        return StatusCode((int)HttpStatusCode.InternalServerError);
-        //    }
-        //}
+        [HttpPut("{cpf}")]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(404)]
+        [ProducesResponseType(500)]
+        public IActionResult Put([FromRoute] string cpf, [FromBody] Cliente cliente)
+        {
+            string mensagem;
+            try
+            {
+                _salvarClienteUseCase.Execute(cliente, out mensagem, cpf);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message, ex);
+                mensagem = ex.Message;
+                return StatusCode((int)HttpStatusCode.InternalServerError);
+            }
+        }
 
 
         /// <summary>
@@ -144,21 +146,22 @@ namespace Clientes.API.Controllers
         [ProducesResponseType(200)]
         [ProducesResponseType(404)]
         [ProducesResponseType(500)]
-        public IActionResult Delete([FromRoute] string cpf, out string message)
+        public IActionResult Delete([FromRoute] string cpf)
         {
+            string mensagem;
             try
             {
-                var clienteRemovido = _removerClienteUseCase.Execute(cpf, out message);
+                var clienteRemovido = _removerClienteUseCase.Execute(cpf, out mensagem);
 
                 if (clienteRemovido == false)
                     return NotFound(new { mensagem = "Não foi encontrado um cliente com esse CPF na base." });
 
-                return Ok(clienteRemovido);
+                return Ok();
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex.Message, ex);
-                message = ex.Message;
+                mensagem = ex.Message;
                 return StatusCode((int)HttpStatusCode.InternalServerError);
             }
         }
