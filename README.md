@@ -1,12 +1,13 @@
 # TrilhaBackend_csharp
 - Nível Básico
-1. [Desafio 1](https://github.com/douglasjtds/TrilhaBackend_csharp/tree/feature/nivel1/desafio1#desafio-1)
-2. [Desafio 2](https://github.com/douglasjtds/TrilhaBackend_csharp/tree/feature/nivel1/desafio1#desafio-2)
-3. [Desafio 3](https://github.com/douglasjtds/TrilhaBackend_csharp/tree/feature/nivel1/desafio1#desafio-3)
-4. [Desafio 4](https://github.com/douglasjtds/TrilhaBackend_csharp/tree/feature/nivel1/desafio1#desafio-4)
+1. [Desafio 1](https://github.com/douglasjtds/TrilhaBackend_csharp/tree/feature/nivel1/desafio2#desafio-1)
+2. [Desafio 2](https://github.com/douglasjtds/TrilhaBackend_csharp/tree/feature/nivel1/desafio2#desafio-2)
+3. [Desafio 3](https://github.com/douglasjtds/TrilhaBackend_csharp/tree/feature/nivel1/desafio2#desafio-3)
+4. [Desafio 4](https://github.com/douglasjtds/TrilhaBackend_csharp/tree/feature/nivel1/desafio2#desafio-4)
 
 - Nível 1
-1. [Desafio 1](https://github.com/douglasjtds/TrilhaBackend_csharp/tree/feature/nivel1/desafio1#n%C3%ADvel-1---desafio-1)
+1. [Desafio 1](https://github.com/douglasjtds/TrilhaBackend_csharp/tree/feature/nivel1/desafio2#n%C3%ADvel-1---desafio-1)
+2. [Desafio 2](https://github.com/douglasjtds/TrilhaBackend_csharp/tree/feature/nivel1/desafio2#n%C3%ADvel-1---desafio-2)
 
 
 
@@ -100,7 +101,7 @@ Criar um relatório em formato de arquivo txt.
 
 
 ## Nível 1 - Desafio 1
-__Branch:__ /feature/nivel1/desafio1 (__em construção__)
+__Branch:__ /feature/nivel1/desafio1
 
 __Objetivo:__ Criar uma API REST (MVC).
 
@@ -116,3 +117,9 @@ __Objetivo:__ Criar uma API REST (MVC).
 	- A operação de Read   deve permitir visualizar todos os clientes ou um só pelo CPF. (método GET) 
 	- A operação de Update deve permitir alterar um ou mais dos dados de um cliente a partir do CPF dele (O campo CPF não pode ser alterado)(método PUT).
 	- A operação de Delete deve permitir excluir um cliente da estrutura pelo CPF dele (método DELETE).
+
+
+## Nível 1 - Desafio 2
+__Branch:__ /feature/nivel1/desafio2
+
+__Objetivo:__ Implementar o Swagger.
