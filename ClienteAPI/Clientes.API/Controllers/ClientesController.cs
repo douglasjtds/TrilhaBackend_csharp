@@ -93,8 +93,11 @@ namespace Clientes.API.Controllers
             string mensagem;
             try
             {
-                _salvarClienteUseCase.Execute(cliente, out mensagem, cpf);
-                return Ok();
+                var sucesso = _salvarClienteUseCase.Execute(cliente, out mensagem, cpf);
+                if (sucesso)
+                    return Ok();
+                else
+                    return StatusCode((int)HttpStatusCode.UnprocessableEntity);
             }
             catch (Exception ex)
             {
@@ -121,8 +124,11 @@ namespace Clientes.API.Controllers
             string mensagem;
             try
             {
-                _salvarClienteUseCase.Execute(cliente, out mensagem, cpf);
-                return Ok();
+                var sucesso = _salvarClienteUseCase.Execute(cliente, out mensagem, cpf);
+                if (sucesso)
+                    return Ok();
+                else
+                    return StatusCode((int)HttpStatusCode.UnprocessableEntity);
             }
             catch (Exception ex)
             {

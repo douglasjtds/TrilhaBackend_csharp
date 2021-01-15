@@ -1,4 +1,5 @@
 ﻿using Clientes.Application.Interfaces;
+using Clientes.Dominio.Exceptions;
 using Clientes.Dominio.Repositorios;
 using Microsoft.Extensions.Logging;
 using System;
@@ -24,7 +25,7 @@ namespace Clientes.Application.UseCases
                 if (clienteParaExcluir == false)
                 {
                     message = "Não foi encontrado um cliente com esse CPF na base.";
-                    return false;
+                    throw new ClientNotFoundException(message);
                 }
 
                 message = "Cliente removido com sucesso.";

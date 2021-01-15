@@ -1,5 +1,6 @@
 ﻿using Clientes.Application.Interfaces;
 using Clientes.Dominio.Entidades;
+using Clientes.Dominio.Exceptions;
 using Clientes.Dominio.Repositorios;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
@@ -43,7 +44,7 @@ namespace Clientes.Application.UseCases
                         return true;
                     }
                     message = "Campo CPF deve conter apenas dígitos.";
-                    return false;
+                    throw new InvalidCPFException(message);
                 }
                 else
                 {
@@ -51,7 +52,7 @@ namespace Clientes.Application.UseCases
                     {
                         _logger.LogError("Não é permitido alterar o CPF de um cliente já cadastrado. Já existe um cliente com o CPF: {0}", cpf);
                         message = $"Não é permitido alterar o CPF de um cliente já cadastrado. Já existe um cliente com o CPF: {cpf}";
-                        return false;
+                        throw new UpdateCPFException(message);
                     }
                     _clienteRepositorio.Atualizar(cpf, cliente);
                     message = "Cliente atualizado com sucesso.";
