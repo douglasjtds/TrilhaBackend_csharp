@@ -4,6 +4,7 @@ using Clientes.Dominio.Repositorios;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using System;
+using System.Linq;
 
 namespace Clientes.Application.UseCases
 {
@@ -34,9 +35,15 @@ namespace Clientes.Application.UseCases
 
                 if (string.IsNullOrEmpty(cpf))
                 {
-                    _clienteRepositorio.Adicionar(cliente);
-                    message = "Cliente adicionado com sucesso.";
-                    return true;
+                    //não permitir CPF com letras
+                    if (IsDigitsOnly(cliente.CPF))
+                    {
+                        _clienteRepositorio.Adicionar(cliente);
+                        message = "Cliente adicionado com sucesso.";
+                        return true;
+                    }
+                    message = "Campo CPF deve conter apenas dígitos.";
+                    return false;
                 }
                 else
                 {
@@ -57,6 +64,12 @@ namespace Clientes.Application.UseCases
                 message = ex.Message;
                 return false;
             }
+        }
+
+
+        public bool IsDigitsOnly(string str)
+        {
+            return str.All(c => c >= '0' && c <= '9');
         }
     }
 }
