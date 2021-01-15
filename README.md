@@ -123,3 +123,12 @@ __Objetivo:__ Criar uma API REST (MVC).
 __Branch:__ /feature/nivel1/desafio2
 
 __Objetivo:__ Implementar o Swagger.
+
+## Nível 1 - Desafio 3
+(__em construção__) pulamos esse desafio para fazer testes unitários primeiro
+
+## Nível 1 - Desafio 4
+
+__Branch:__ /feature/nivel1/desafio4 (__em construção__)
+
+__Objetivo:__ Implementar testes unitários utilizando xUnit.
