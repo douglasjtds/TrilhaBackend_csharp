@@ -12,13 +12,11 @@ namespace Clientes.Application.UseCases
     public class SalvarClienteUseCase : ISalvarClienteUseCase
     {
         private readonly ILogger<SalvarClienteUseCase> _logger;
-        private readonly IConfiguration _configuration;
         private readonly IClienteRepositorio _clienteRepositorio;
 
-        public SalvarClienteUseCase(ILogger<SalvarClienteUseCase> logger, IConfiguration configuration, IClienteRepositorio clienteRepositorio)
+        public SalvarClienteUseCase(ILogger<SalvarClienteUseCase> logger, IClienteRepositorio clienteRepositorio)
         {
             _logger = logger;
-            _configuration = configuration;
             _clienteRepositorio = clienteRepositorio;
         }
 
