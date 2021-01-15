@@ -10,7 +10,7 @@
 		{
 			"name": "CREATE",
 			"request": {
-				"url": "https://localhost:44301/v1/create/cliente",
+				"url": "https://localhost:44301/api/clientes",
 				"method": "POST",
 				"header": [
 					{
@@ -21,7 +21,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"nome\":\"Fulano\",\n\t\"idade\":60,\n\t\"cpf\":\"12161543\",\n\t\"email\":\"teste@teste\",\n\t\"telefone\":\"31919118196\",\n\t\"endereco\":\"Rua tal...\"\n}"
+					"raw": "{\n\t\"nome\":\"teste post agr\",\n\t\"idade\":60,\n\t\"cpf\":\"12161543\",\n\t\"email\":\"teste@teste\",\n\t\"telefone\":\"31919118196\",\n\t\"endereco\":\"Rua tal...\"\n}"
 				},
 				"description": "POST: create"
 			},
@@ -30,7 +30,7 @@
 		{
 			"name": "READ: get",
 			"request": {
-				"url": "https://localhost:44301/12161543/v1/clientes",
+				"url": "https://localhost:44301/api/clientes/12161543",
 				"method": "GET",
 				"header": [],
 				"body": {},
@@ -41,7 +41,7 @@
 		{
 			"name": "READ: getAll",
 			"request": {
-				"url": "https://localhost:44301/v1/clientes",
+				"url": "https://localhost:44301/api/clientes",
 				"method": "GET",
 				"header": [],
 				"body": {},
@@ -52,7 +52,7 @@
 		{
 			"name": "UPDATE",
 			"request": {
-				"url": "https://localhost:44301/12161543/v1/update/cliente",
+				"url": "https://localhost:44301/api/clientes/12161543",
 				"method": "PUT",
 				"header": [
 					{
@@ -63,7 +63,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"nome\":\"Fulano atualizado no postman\",\n\t\"idade\":21,\n\t\"cpf\":\"12161543\",\n\t\"email\":\"teste@teste\",\n\t\"telefone\":\"31919118196\",\n\t\"endereco\":\"Rua tal...\"\n}"
+					"raw": "{\n\t\"idCliente\": 8,\n\t\"nome\":\"cliente atualizado de novo\",\n\t\"idade\":21,\n\t\"cpf\":\"12161543234\",\n\t\"email\":\"teste@teste\",\n\t\"telefone\":\"31919118196\",\n\t\"endereco\":\"Rua tal...\"\n}"
 				},
 				"description": "PUT: update"
 			},
@@ -72,7 +72,7 @@
 		{
 			"name": "DELETE",
 			"request": {
-				"url": "https://localhost:44301/345347/v1/delete/cliente",
+				"url": "https://localhost:44301/api/clientes/345347",
 				"method": "DELETE",
 				"header": [
 					{
@@ -83,7 +83,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"nome\":\"Teste cachorro\",\n\t\"idade\":60,\"cpf\":\"345345\",\n\t\"email\":\"teste@teste\",\n\t\"telefone\":\"34534\",\n\t\"endereco\":\"Rua ...\"\n}"
+					"raw": "{\n\t\"nome\":\"Teste cachorro\",\n\t\"idade\":60,\n\t\"cpf\":\"345345\",\n\t\"email\":\"teste@teste\",\n\t\"telefone\":\"34534\",\n\t\"endereco\":\"Rua ...\"\n}"
 				},
 				"description": "delete"
 			},

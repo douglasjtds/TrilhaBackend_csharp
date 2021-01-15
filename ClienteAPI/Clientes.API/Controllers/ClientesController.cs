@@ -82,7 +82,6 @@ namespace Clientes.API.Controllers
         /// Adiciona um novo cliente.
         /// </summary>
         /// <param name="cliente">json com as informações do novo cliente</param>
-        /// <param name="mensagem">Mensagem retornada do UseCase</param>
         /// <param name="cpf">cpf cliente</param>
         /// <response code="200">Cliente adicionado com sucesso.</response>
         /// <response code="500">Ocorreu um erro ao adicionar o cliente.</response>
@@ -138,7 +137,6 @@ namespace Clientes.API.Controllers
         /// Exclui um cliente da base de dados.
         /// </summary>
         /// <param name="cpf">CPF do cliente que deseja excluir.</param>
-        /// <param name="message"></param>
         /// <response code="200">Cliente excluído com sucesso.</response>
         /// <response code="404">Não foi encontrado um cliente com o CPF especificado.</response>
         /// <response code="500">Ocorreu um erro ao excluír o cliente.</response>
@@ -161,7 +159,7 @@ namespace Clientes.API.Controllers
             catch (Exception ex)
             {
                 _logger.LogError(ex.Message, ex);
-                mensagem = ex.Message;
+                _ = ex.Message;
                 return StatusCode((int)HttpStatusCode.InternalServerError);
             }
         }
