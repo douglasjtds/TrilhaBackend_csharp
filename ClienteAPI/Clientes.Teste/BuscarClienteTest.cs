@@ -30,7 +30,7 @@ namespace Clientes.Test
 
             var logger = Mock.Of<ILogger<BuscarClienteUseCase>>();
 
-            //mockRepository.Setup(s => s.Get(It.IsAny<string>)).Returns
+            mockRepository.Setup(s => s.Get(It.IsAny<string>));
 
             var useCase = new BuscarClienteUseCase(
                 logger,
