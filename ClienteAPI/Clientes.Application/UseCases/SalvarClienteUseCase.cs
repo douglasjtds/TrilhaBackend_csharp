@@ -48,8 +48,8 @@ namespace Clientes.Application.UseCases
                 {
                     if (cpf != cliente.CPF)
                     {
-                        _logger.LogError("Não é permitido alterar o CPF de um cliente já cadastrado. Já existe um cliente com o CPF: {0}", cpf);
-                        message = $"Não é permitido alterar o CPF de um cliente já cadastrado. Já existe um cliente com o CPF: {cpf}";
+                        _logger.LogError("Não é permitido alterar o CPF de um cliente já cadastrado.");
+                        message = $"Não é permitido alterar o CPF de um cliente já cadastrado.";
                         throw new UpdateCPFException(message);
                     }
                     bool clienteAtualizado = _clienteRepositorio.Atualizar(cpf, cliente);

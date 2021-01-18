@@ -77,5 +77,106 @@ namespace Clientes.Test
             // Assert
             result.Should().BeTrue();
         }
+
+
+        [Fact(DisplayName = "SalvarNovoClienteError: Deve tentar salvar um novo cliente com um número no lugar do nome e dar erro.")]
+        public void SalvarNovoCliente_DeveTentarSalvarUmClienteInvalido_NomeError()
+        {
+            // Arrange
+            var mockRepository = new Mock<IClienteRepositorio>();
+            var cliente = new Cliente
+            {
+                Nome = "666",
+                CPF = "123456",
+                Email = "cliente@cliente.com.br",
+                Idade = 25,
+                Telefone = "91091112535",
+                Endereco = "rua sobradinho, 101"
+            };
+
+            var logger = Mock.Of<ILogger<SalvarClienteUseCase>>();
+
+            mockRepository.Setup(s => s.Adicionar(cliente));
+
+            var useCase = new SalvarClienteUseCase(
+                logger,
+                mockRepository.Object
+            );
+
+            string mensagem;
+
+            // Act
+            var result = useCase.Execute(cliente, out mensagem);
+
+            // Assert
+            result.Should().BeFalse();
+        }
+
+        [Fact(DisplayName = "SalvarNovoClienteError: Deve tentar salvar um novo cliente com uma letra no campo CPF.")]
+        public void SalvarNovoCliente_DeveTentarSalvarUmClienteInvalido_CPFError()
+        {
+            // Arrange
+            var mockRepository = new Mock<IClienteRepositorio>();
+            var cliente = new Cliente
+            {
+                Nome = "teste",
+                CPF = "1234s56",
+                Email = "cliente@cliente.com.br",
+                Idade = 25,
+                Telefone = "91091112535",
+                Endereco = "rua sobradinho, 101"
+            };
+
+            var logger = Mock.Of<ILogger<SalvarClienteUseCase>>();
+
+            mockRepository.Setup(s => s.Adicionar(cliente));
+
+            var useCase = new SalvarClienteUseCase(
+                logger,
+                mockRepository.Object
+            );
+
+            string mensagem;
+
+            // Act
+            var result = useCase.Execute(cliente, out mensagem);
+
+            // Assert
+            result.Should().BeFalse();
+        }
+
+
+        [Fact(DisplayName = "AtualizarClienteError: Deve tentar atualizar o CPF de um cliente existente.")]
+        public void AtualizarCliente_DeveTentarAtualizarOCPFDeUmCliente_CPFError()
+        {
+            // Arrange
+            var mockRepository = new Mock<IClienteRepositorio>();
+            var cliente = new Cliente
+            {
+                Nome = "teste",
+                CPF = "123456",
+                Email = "cliente@cliente.com.br",
+                Idade = 25,
+                Telefone = "91091112535",
+                Endereco = "rua sobradinho, 101"
+            };
+
+            var logger = Mock.Of<ILogger<SalvarClienteUseCase>>();
+
+            mockRepository.Setup(s => s.Atualizar("1234567", cliente)).Returns(false);
+
+            var useCase = new SalvarClienteUseCase(
+                logger,
+                mockRepository.Object
+            );
+
+            string mensagem;
+
+            // Act
+            var result = useCase.Execute(cliente, out mensagem, "1234567");
+
+            // Assert
+            result.Should().BeFalse();
+        }
     }
 }
