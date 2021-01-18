@@ -130,6 +130,6 @@ __Objetivo:__ Implementar o Swagger.
 
 ## Nível 1 - Desafio 4
 
-__Branch:__ /feature/nivel1/desafio4 (__em construção__)
+__Branch:__ /feature/nivel1/desafio4
 
 __Objetivo:__ Implementar testes unitários utilizando xUnit.
