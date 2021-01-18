@@ -1,15 +1,15 @@
 # TrilhaBackend_csharp
 - Nível Básico
-1. [Desafio 1](https://github.com/douglasjtds/TrilhaBackend_csharp/tree/feature/nivel1/desafio4#n%C3%ADvel-b%C3%A1sico---desafio-1)
-2. [Desafio 2](https://github.com/douglasjtds/TrilhaBackend_csharp/tree/feature/nivel1/desafio4#n%C3%ADvel-b%C3%A1sico---desafio-2)
-3. [Desafio 3](https://github.com/douglasjtds/TrilhaBackend_csharp/tree/feature/nivel1/desafio4#n%C3%ADvel-b%C3%A1sico---desafio-3)
-4. [Desafio 4](https://github.com/douglasjtds/TrilhaBackend_csharp/tree/feature/nivel1/desafio4#n%C3%ADvel-b%C3%A1sico---desafio-4)
+1. [Desafio 1](https://github.com/douglasjtds/TrilhaBackend_csharp/tree/feature/nivel1/desafio3#n%C3%ADvel-b%C3%A1sico---desafio-1)
+2. [Desafio 2](https://github.com/douglasjtds/TrilhaBackend_csharp/tree/feature/nivel1/desafio3#n%C3%ADvel-b%C3%A1sico---desafio-2)
+3. [Desafio 3](https://github.com/douglasjtds/TrilhaBackend_csharp/tree/feature/nivel1/desafio3#n%C3%ADvel-b%C3%A1sico---desafio-3)
+4. [Desafio 4](https://github.com/douglasjtds/TrilhaBackend_csharp/tree/feature/nivel1/desafio3#n%C3%ADvel-b%C3%A1sico---desafio-4)
 
 - Nível 1
-1. [Desafio 1](https://github.com/douglasjtds/TrilhaBackend_csharp/tree/feature/nivel1/desafio4#n%C3%ADvel-1---desafio-1)
-2. [Desafio 2](https://github.com/douglasjtds/TrilhaBackend_csharp/tree/feature/nivel1/desafio4#n%C3%ADvel-1---desafio-2)
-3. [Desafio 3](https://github.com/douglasjtds/TrilhaBackend_csharp/tree/feature/nivel1/desafio4#n%C3%ADvel-1---desafio-3)
-4. [Desafio 4](https://github.com/douglasjtds/TrilhaBackend_csharp/tree/feature/nivel1/desafio4#n%C3%ADvel-1---desafio-4)
+1. [Desafio 1](https://github.com/douglasjtds/TrilhaBackend_csharp/tree/feature/nivel1/desafio3#n%C3%ADvel-1---desafio-1)
+2. [Desafio 2](https://github.com/douglasjtds/TrilhaBackend_csharp/tree/feature/nivel1/desafio3#n%C3%ADvel-1---desafio-2)
+3. [Desafio 3](https://github.com/douglasjtds/TrilhaBackend_csharp/tree/feature/nivel1/desafio3#n%C3%ADvel-1---desafio-3)
+4. [Desafio 4](https://github.com/douglasjtds/TrilhaBackend_csharp/tree/feature/nivel1/desafio3#n%C3%ADvel-1---desafio-4)
 
 
 ## Nível Básico - Desafio 1
@@ -126,7 +126,13 @@ __Branch:__ /feature/nivel1/desafio2
 __Objetivo:__ Implementar o Swagger.
 
 ## Nível 1 - Desafio 3
-(__em construção__) pulamos esse desafio para fazer testes unitários primeiro
+__Branch:__ /feature/nivel1/desafio3 (__em construção__)
+
+__Objetivo:__ Criar Integração com API
+
+Geralmente um sistema não vive sozinho, quase sempre temos de implementar integrações com outros sistemas, para buscar ou enviar dados pertinentes ao projeto.
+
+Desenvolva a integração com a API da Marvel, com o serviço (https://developer.marvel.com/docs) /v1/public/comics, usando o System.Net.Http para comunicar com a API. De posse dos dados, persista informações relevantes para o projeto, como id, ean, title, description, entre outros.
 
 ## Nível 1 - Desafio 4
 
