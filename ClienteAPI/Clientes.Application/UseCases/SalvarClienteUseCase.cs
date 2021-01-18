@@ -52,9 +52,9 @@ namespace Clientes.Application.UseCases
                         message = $"Não é permitido alterar o CPF de um cliente já cadastrado. Já existe um cliente com o CPF: {cpf}";
                         throw new UpdateCPFException(message);
                     }
-                    _clienteRepositorio.Atualizar(cpf, cliente);
+                    bool clienteAtualizado = _clienteRepositorio.Atualizar(cpf, cliente);
                     message = "Cliente atualizado com sucesso.";
-                    return true;
+                    return clienteAtualizado;
                 }
             }
             catch (Exception ex)

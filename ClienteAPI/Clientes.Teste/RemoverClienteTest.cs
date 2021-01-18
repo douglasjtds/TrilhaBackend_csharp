@@ -28,6 +28,8 @@ namespace Clientes.Test
 
             var logger = Mock.Of<ILogger<RemoverClienteUseCase>>();
 
+            mockRepository.Setup(s => s.Excluir(It.IsAny<string>())).Returns(true);
+
             var useCase = new RemoverClienteUseCase(
                 logger,
                 mockRepository.Object
@@ -59,6 +61,8 @@ namespace Clientes.Test
             };
 
             var logger = Mock.Of<ILogger<RemoverClienteUseCase>>();
+
+            mockRepository.Setup(s => s.Excluir(It.IsAny<string>())).Returns(false);
 
             var useCase = new RemoverClienteUseCase(
                 logger,

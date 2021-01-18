@@ -28,6 +28,8 @@ namespace Clientes.Test
 
             var logger = Mock.Of<ILogger<SalvarClienteUseCase>>();
 
+            mockRepository.Setup(s => s.Adicionar(cliente));
+
             var useCase = new SalvarClienteUseCase(
                 logger,
                 mockRepository.Object
@@ -59,6 +61,8 @@ namespace Clientes.Test
             };
 
             var logger = Mock.Of<ILogger<SalvarClienteUseCase>>();
+
+            mockRepository.Setup(s => s.Atualizar("123456", cliente)).Returns(true);
 
             var useCase = new SalvarClienteUseCase(
                 logger,
