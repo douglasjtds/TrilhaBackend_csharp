@@ -32,7 +32,7 @@ namespace Clientes.API.Controllers
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
                 string ts = DateTime.Now.Ticks.ToString();
-                string publicKey = config.GetSection("MarvelComicsAPI: PublicKey").Value;
+                string publicKey = config.GetSection("MarvelComicsAPI:PublicKey").Value;
                 string hash = GerarHash(ts, publicKey,
                     config.GetSection("MarvelComicsAPI:PrivateKey").Value);
 
