@@ -22,7 +22,7 @@ namespace Clientes.API.Controllers
         }
 
         [HttpGet]
-        public IActionResult Get([FromServices] IConfiguration config)
+        public IActionResult Get([FromServices] IConfiguration config, string hero)
         {
             Personagem personagem;
 
@@ -38,7 +38,7 @@ namespace Clientes.API.Controllers
 
                 HttpResponseMessage responseMessage = client.GetAsync(config.GetSection("MarvelComicsAPI:BaseURL").Value
                     + $"characters?ts={ts}&apikey={publicKey}&hash={hash}&" +
-                    $"name={Uri.EscapeUriString("Captain America")}").Result;
+                    $"name={Uri.EscapeUriString(hero)}").Result;
 
                 responseMessage.EnsureSuccessStatusCode();
                 string content = responseMessage.Content.ReadAsStringAsync().Result;
