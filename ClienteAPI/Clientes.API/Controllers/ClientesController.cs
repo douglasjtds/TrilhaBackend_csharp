@@ -1,6 +1,5 @@
 ﻿using Clientes.Application.Interfaces;
 using Clientes.Dominio.Entidades;
-using Clientes.Dominio.Repositorios;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -17,7 +16,6 @@ namespace Clientes.API.Controllers
         private readonly IBuscarClienteUseCase _buscarClienteUseCase;
         private readonly ISalvarClienteUseCase _salvarClienteUseCase;
         private readonly IRemoverClienteUseCase _removerClienteUseCase;
-
 
         public ClientesController(ILogger<ClientesController> logger, IBuscarClienteUseCase buscarClienteUseCase, ISalvarClienteUseCase salvarClienteUseCase, IRemoverClienteUseCase removerClienteUseCase)
         {
