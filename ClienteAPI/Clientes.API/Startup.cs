@@ -3,6 +3,7 @@ using Clientes.Application.UseCases;
 using Clientes.Dominio.Repositorios;
 using Clientes.Infraestrutura.Configurations;
 using Clientes.Infraestrutura.EntityFramework.Repositorios;
+using Clientes.Infraestrutura.Repositorio;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -34,6 +35,8 @@ namespace Clientes.API
             services.AddTransient<IBuscarClienteUseCase, BuscarClienteUseCase>();
             services.AddTransient<ISalvarClienteUseCase, SalvarClienteUseCase>();
             services.AddTransient<IRemoverClienteUseCase, RemoverClienteUseCase>();
+            services.AddTransient<IComicRepositorio, ComicRepositorio>();
+            services.AddTransient<IComicUseCase, ComicUseCase>();
 
             services.AddSwaggerGen(c =>
             {
