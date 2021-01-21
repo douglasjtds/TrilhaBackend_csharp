@@ -31,7 +31,6 @@ namespace Clientes.API.Controllers
                 _logger.LogError(ex.Message, ex);
                 return NotFound(ex.Message + " - Herói não encontrado.");
             }
-
         }
     }
 }
