@@ -26,28 +26,29 @@ namespace Clientes.Application.UseCases
             _config = config;
         }
 
-        public void Execute(string hero)
+        public Comic Execute(string hero)
         {
             try
             {
                 var personagem = BuscarPersonagem(hero);
-                var comics = _comicRepositorio.Get(hero);
+                var comic = BuscarComics(personagem.Id);
                 //_comicRepositorio.Salvar(comics);
 
-                //return comics;
+                return comic;
+                //return personagem;
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex.Message, ex);
-                //return null;
+                return null;
             }
         }
 
 
-        private IList<Personagem> BuscarPersonagem(string hero)
+        private Personagem BuscarPersonagem(string hero)
         {
             Personagem personagem;
-            var personagens = new List<Personagem>();
+
             using (var client = new HttpClient())
             {
                 client.DefaultRequestHeaders.Accept.Clear();
@@ -66,19 +67,51 @@ namespace Clientes.Application.UseCases
 
                 dynamic result = JsonConvert.DeserializeObject(content);
 
-                foreach (var item in result.data.results)
+                personagem = new Personagem
                 {
-                    personagem = new Personagem
-                    {
-                        Nome = result.data.results[0].name,
-                        Descricao = result.data.results[0].description,
-                        UrlImagem = result.data.results[0].thumbnail.path + "." + result.data.results[0].thumbnail.extension,
-                        UrlWiki = result.data.results[0].urls[1].url
-                    };
-                    personagens.Add(personagem);
-                }               
+                    Id = result.data.results[0].id,
+                    Nome = result.data.results[0].name,
+                    Descricao = result.data.results[0].description,
+                    UrlImagem = result.data.results[0].thumbnail.path + "." + result.data.results[0].thumbnail.extension,
+                    UrlWiki = result.data.results[0].urls[1].url,
+                    NumberOfComicsAvailable = result.data.results[0].comics.available
+                };
             }
-            return personagens;
+            return personagem;
+        }
+
+        private Comic BuscarComics(int id)
+        {
+            //IList<Comic> comics = new List<Comic>();
+            Comic comic;
+
+            using (var client = new HttpClient())
+            {
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                string ts = DateTime.Now.Ticks.ToString();
+                string publicKey = _config.GetSection("MarvelComicsAPI:PublicKey").Value;
+                string hash = GerarHash(ts, publicKey,
+                    _config.GetSection("MarvelComicsAPI:PrivateKey").Value);
+                HttpResponseMessage responseMessage = client.GetAsync(_config.GetSection("MarvelComicsAPI:BaseURL").Value
+                        + $"characters" + $"/{id}/comics" +
+                        $"?ts={ts}&apikey={publicKey}&hash={hash}&").Result;
+
+                responseMessage.EnsureSuccessStatusCode();
+                string content = responseMessage.Content.ReadAsStringAsync().Result;
+
+                dynamic result = JsonConvert.DeserializeObject(content);
+
+                comic = new Comic()
+                {
+                    Id = result.data.results[0].id,
+                    Title = result.data.results[0].title,
+                    Description = result.data.results[0].description,
+                    Ean = result.data.results[0].ean
+                };
+            }
+            return comic;
         }
 
 

@@ -13,10 +13,12 @@ namespace Clientes.Infraestrutura.EntityFramework
         }
 
         public DbSet<Cliente> Clientes { get; set; }
+        public DbSet<Comic> Comics { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new ClienteMap());
+            modelBuilder.ApplyConfiguration(new ComicMap());
         }
     }
 }

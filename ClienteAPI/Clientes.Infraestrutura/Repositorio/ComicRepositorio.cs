@@ -10,14 +10,14 @@ namespace Clientes.Infraestrutura.Repositorio
 {
     public class ComicRepositorio : IComicRepositorio
     {
-        private readonly ComicDbContext _clientesDbContext;
+        private readonly ClientesDbContext _comicDbContext;
         private readonly ILogger<ComicRepositorio> _logger;
         private readonly IConfiguration _config;
 
-        public ComicRepositorio(ComicDbContext clientesDbContext, ILogger<ComicRepositorio> logger, IConfiguration config)
+        public ComicRepositorio(ClientesDbContext comicDbContext, ILogger<ComicRepositorio> logger, IConfiguration config)
         {
             _logger = logger;
-            _clientesDbContext = clientesDbContext;
+            _comicDbContext = comicDbContext;
             _config = config;
         }
 
@@ -37,8 +37,8 @@ namespace Clientes.Infraestrutura.Repositorio
             {
                 foreach (var comic in comics)
                 {
-                    _clientesDbContext.Comics.Add(comic);
-                    _clientesDbContext.SaveChanges();
+                    _comicDbContext.Comics.Add(comic);
+                    _comicDbContext.SaveChanges();
                     _logger.LogInformation("Quadrinho salvo com sucesso.");
                 }
                 return true;
