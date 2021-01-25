@@ -5,7 +5,7 @@ namespace Clientes.Dominio.Repositorios
 {
     public interface IComicRepositorio
     {
-        IList<Comic> Get(string hero);
+        object Get(string hero);
 
         bool Salvar(IList<Comic> comics);
     }

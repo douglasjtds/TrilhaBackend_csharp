@@ -6,11 +6,10 @@ namespace Clientes.Dominio.Entidades
 {
     public class Comic
     {
-        public int id { get; set; }
-        public string ean { get; set; }
-        public string title { get; set; }
-        public string description { get; set; }
-
-        //id, ean, title, description, entre outros.
+        public int Id { get; set; }
+        public string Ean { get; set; }
+        public string Title { get; set; }
+        public string Description { get; set; }
+        public IList<Personagem> Personagens { get; set; }
     }
 }

@@ -12,20 +12,20 @@ namespace Clientes.Infraestrutura.EntityFramework.Mappers
         public void Configure(EntityTypeBuilder<Comic> builder)
         {
             builder.ToTable("COMIC")
-                .HasKey(o => o.id);
+                .HasKey(o => o.Id);
 
-            builder.Property(p => p.ean)
+            builder.Property(p => p.Ean)
                 .HasColumnName("EAN")
                 .HasColumnType("VARCHAR(100)")
                 .IsRequired();
             
             
-            builder.Property(p => p.title)
+            builder.Property(p => p.Title)
                 .HasColumnName("TITLE")
                 .HasColumnType("VARCHAR(100)")
                 .IsRequired();
 
-            builder.Property(p => p.description)
+            builder.Property(p => p.Description)
                 .HasColumnName("DESCRIPTION")
                 .HasColumnType("VARCHAR(100)")
                 .IsRequired();

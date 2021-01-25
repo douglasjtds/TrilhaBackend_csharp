@@ -5,6 +5,6 @@ namespace Clientes.Application.Interfaces
 {
     public interface IComicUseCase
     {
-        IList<Comic> Execute(string hero);
+        void Execute(string hero);
     }
 }

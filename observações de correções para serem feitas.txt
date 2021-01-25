@@ -1,30 +1,5 @@
-MELHORIAS NA API:
-- não permitir atualizar cpf no put nem id
-
-- ao adicionar, não permitir colocar número no nome
-- um só use case para salvar que vai decidir se vai ser atualizar ou inserir (se tem id é atualizar)
-
-- resolver problema do atualizar, permitir mandar apenas uma propriedade
-
-- retornar mensagem pra camada de aplicação
-- criar projeto do tipo teste xunit test project .netcore
-	- arrange 
-	- act
-	- assert
-- usar moq <PackageReference Include="Moq" Version="4.15.2" />
- <PackageReference Include="WireMock.Net" Version="1.3.10" />
-<PackageReference Include="FluentAssertions" Version="5.10.3" />
-
-mocar a interface:
- var mockRepository = new Mock<IProdutoRiscoRepositorio>();
-
-mockSuitabilityRepository.Setup(s => s.GetSuitabilityProduto(It.IsAny<string>(), It.IsAny<string>())).Returns(Task.FromResult(produtoSuitability));
-
-
-   var useCase = new ProdutoRiscoAtualizarRiscoUseCase(
-                mockRepository.Object,
-                mockSuitabilityRepository.Object,
-                autoMapper
-            );
-
-Xunit C# samples 
+1 - Autenticar
+2 - Buscar quadrinhos
+3 - Buscar personagens dos quadrinhos
+4 - Retorna lista de personagens daquele quadrinho.
+5 - Gravar no banco de dados o quadrinho buscado e todos os seus personagens caso já não tem gravado.

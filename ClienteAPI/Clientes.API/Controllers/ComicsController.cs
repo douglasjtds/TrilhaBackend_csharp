@@ -22,9 +22,10 @@ namespace Clientes.API.Controllers
         {
             try
             {
-                var personagem = _comicUseCase.Execute(hero);
+                //var personagem = _comicUseCase.Execute(hero);
+                _comicUseCase.Execute(hero);
 
-                return Ok(personagem);
+                return Ok();
             }
             catch (Exception ex)
             {
