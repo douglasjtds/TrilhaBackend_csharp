@@ -134,6 +134,24 @@ Geralmente um sistema não vive sozinho, quase sempre temos de implementar integ
 
 Desenvolva a integração com a API da Marvel, com o serviço (https://developer.marvel.com/docs) /v1/public/comics, usando o System.Net.Http para comunicar com a API. De posse dos dados, persista informações relevantes para o projeto, como id, ean, title, description, entre outros.
 
+### How to
+para executar testes com banco de dados, adicione a nova tabela COMIC com o script abaixo e depois faça a chamada com algum Herói válido, como por exemplo:
+	-	Deadpool
+	-	Captain America
+	-	3-D Man
+
+~~~
+USE [dbClientes]
+
+CREATE TABLE COMIC(
+	ID INT PRIMARY KEY,
+	TITLE VARCHAR(100) NOT NULL,
+	EAN VARCHAR(100),
+	DESCRIPTION VARCHAR(200)
+);
+~~~
+
+
 ## Nível 1 - Desafio 4
 
 __Branch:__ /feature/nivel1/desafio4

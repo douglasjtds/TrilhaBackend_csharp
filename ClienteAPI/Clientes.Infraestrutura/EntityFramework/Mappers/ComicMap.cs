@@ -14,21 +14,18 @@ namespace Clientes.Infraestrutura.EntityFramework.Mappers
             builder.ToTable("COMIC")
                 .HasKey(o => o.Id);
 
-            builder.Property(p => p.Ean)
-                .HasColumnName("EAN")
-                .HasColumnType("VARCHAR(100)")
-                .IsRequired();
-            
-            
             builder.Property(p => p.Title)
                 .HasColumnName("TITLE")
                 .HasColumnType("VARCHAR(100)")
                 .IsRequired();
 
+            builder.Property(p => p.Ean)
+                .HasColumnName("EAN")
+                .HasColumnType("VARCHAR(100)");
+
             builder.Property(p => p.Description)
                 .HasColumnName("DESCRIPTION")
-                .HasColumnType("VARCHAR(100)")
-                .IsRequired();
+                .HasColumnType("VARCHAR(200)");
         }
     }
 }

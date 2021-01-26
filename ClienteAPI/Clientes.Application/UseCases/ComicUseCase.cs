@@ -32,10 +32,16 @@ namespace Clientes.Application.UseCases
             {
                 var personagem = BuscarPersonagem(hero);
                 var comic = BuscarComics(personagem.Id);
-                //_comicRepositorio.Salvar(comics);
 
-                return comic;
-                //return personagem;
+                bool saved = false;
+                if (comic != null)
+                    saved = _comicRepositorio.Salvar(comic);
+                
+                if(saved)
+                    return comic;
+                else
+                    _logger.LogError("Erro ao salvar quadrinho");
+                    return null;
             }
             catch (Exception ex)
             {

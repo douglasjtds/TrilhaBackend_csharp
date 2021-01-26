@@ -31,16 +31,14 @@ namespace Clientes.Infraestrutura.Repositorio
 
         //}
 
-        public bool Salvar(IList<Comic> comics)
+        public bool Salvar(Comic comic)
         {
             try
             {
-                foreach (var comic in comics)
-                {
-                    _comicDbContext.Comics.Add(comic);
-                    _comicDbContext.SaveChanges();
-                    _logger.LogInformation("Quadrinho salvo com sucesso.");
-                }
+                _comicDbContext.Comics.Add(comic);
+                _comicDbContext.SaveChanges();
+                _logger.LogInformation("Quadrinho salvo com sucesso.");
+
                 return true;
             }
             catch (Exception ex)

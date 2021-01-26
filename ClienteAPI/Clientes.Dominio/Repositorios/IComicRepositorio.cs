@@ -7,6 +7,6 @@ namespace Clientes.Dominio.Repositorios
     {
         object Get(string hero);
 
-        bool Salvar(IList<Comic> comics);
+        bool Salvar(Comic comic);
     }
 }
