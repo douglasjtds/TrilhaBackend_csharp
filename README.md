@@ -136,9 +136,9 @@ Desenvolva a integração com a API da Marvel, com o serviço (https://developer
 
 ### How to
 para executar testes com banco de dados, adicione a nova tabela COMIC com o script abaixo e depois faça a chamada com algum Herói válido, como por exemplo:
-	-	Deadpool
-	-	Captain America
-	-	3-D Man
+	- Deadpool
+	- Captain America
+	- 3-D Man
 
 ~~~
 USE [dbClientes]
