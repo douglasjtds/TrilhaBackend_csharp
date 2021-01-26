@@ -5,6 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Security.Cryptography;
@@ -25,19 +26,19 @@ namespace Clientes.Application.UseCases
             _config = config;
         }
 
-        public Comic Execute(string hero)
+        public IList<Comic> Execute(string hero)
         {
             try
             {
                 var personagem = BuscarPersonagem(hero);
-                var comic = BuscarComics(personagem.Id);
+                var comics = BuscarComics(personagem.Id);
 
                 bool saved = false;
-                if (comic != null)
-                    saved = _comicRepositorio.Salvar(comic);
+                if (comics != null)
+                    saved = _comicRepositorio.Salvar(comics);
 
                 if (saved)
-                    return comic;
+                    return comics;
                 else
                     _logger.LogError("Erro ao salvar quadrinho");
                 return null;
@@ -85,9 +86,9 @@ namespace Clientes.Application.UseCases
             return personagem;
         }
 
-        private Comic BuscarComics(int id)
+        private IList<Comic> BuscarComics(int id)
         {
-            //IList<Comic> comics = new List<Comic>();
+            IList<Comic> comics = new List<Comic>();
             Comic comic;
 
             using (var client = new HttpClient())
@@ -108,15 +109,21 @@ namespace Clientes.Application.UseCases
 
                 dynamic result = JsonConvert.DeserializeObject(content);
 
-                comic = new Comic()
+                int indice = 0;
+                foreach (var item in result.data.results)
                 {
-                    Id = result.data.results[0].id,
-                    Title = result.data.results[0].title,
-                    Description = result.data.results[0].description,
-                    Ean = result.data.results[0].ean
-                };
+                    comic = new Comic()
+                    {
+                        Id = result.data.results[indice].id,
+                        Title = result.data.results[indice].title,
+                        Description = result.data.results[indice].description,
+                        Ean = result.data.results[indice].ean
+                    };
+                    comics.Add(comic);
+                    indice++;
+                }
             }
-            return comic;
+            return comics;
         }
 
 

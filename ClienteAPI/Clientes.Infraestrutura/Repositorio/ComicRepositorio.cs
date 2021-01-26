@@ -4,6 +4,7 @@ using Clientes.Infraestrutura.EntityFramework;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using System;
+using System.Collections.Generic;
 
 namespace Clientes.Infraestrutura.Repositorio
 {
@@ -18,12 +19,15 @@ namespace Clientes.Infraestrutura.Repositorio
             _comicDbContext = comicDbContext;
         }
 
-        public bool Salvar(Comic comic)
+        public bool Salvar(IList<Comic> comics)
         {
             try
             {
-                _comicDbContext.Comics.Add(comic);
-                _comicDbContext.SaveChanges();
+                foreach (var comic in comics)
+                {
+                    _comicDbContext.Comics.Add(comic);
+                    _comicDbContext.SaveChanges();
+                }
                 _logger.LogInformation("Quadrinho salvo com sucesso.");
 
                 return true;

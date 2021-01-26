@@ -139,6 +139,8 @@ para executar testes com banco de dados, adicione a nova tabela COMIC com o scri
 - Deadpool
 - Captain America
 - 3-D Man
+- Spider-Man
+- https://www.marvel.com/characters (__outros__)
 
 ~~~
 USE [dbClientes]
