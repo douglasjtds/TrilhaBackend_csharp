@@ -2,7 +2,6 @@
 using Clientes.Dominio.Entidades;
 using Clientes.Dominio.Exceptions;
 using Clientes.Dominio.Repositorios;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Linq;

@@ -1,9 +1,6 @@
 ﻿using Clientes.Dominio.Entidades;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Clientes.Infraestrutura.EntityFramework.Mappers
 {
@@ -25,7 +22,7 @@ namespace Clientes.Infraestrutura.EntityFramework.Mappers
 
             builder.Property(p => p.Description)
                 .HasColumnName("DESCRIPTION")
-                .HasColumnType("VARCHAR(200)");
+                .HasColumnType("VARCHAR(500)");
         }
     }
 }

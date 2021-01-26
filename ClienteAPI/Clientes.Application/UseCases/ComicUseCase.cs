@@ -5,7 +5,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Security.Cryptography;
@@ -36,12 +35,12 @@ namespace Clientes.Application.UseCases
                 bool saved = false;
                 if (comic != null)
                     saved = _comicRepositorio.Salvar(comic);
-                
-                if(saved)
+
+                if (saved)
                     return comic;
                 else
                     _logger.LogError("Erro ao salvar quadrinho");
-                    return null;
+                return null;
             }
             catch (Exception ex)
             {

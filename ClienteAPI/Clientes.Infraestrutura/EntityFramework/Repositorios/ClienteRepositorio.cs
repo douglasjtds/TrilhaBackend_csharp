@@ -1,6 +1,5 @@
 ﻿using Clientes.Dominio.Entidades;
 using Clientes.Dominio.Repositorios;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;

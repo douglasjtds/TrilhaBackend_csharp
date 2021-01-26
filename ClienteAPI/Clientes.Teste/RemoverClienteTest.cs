@@ -4,7 +4,6 @@ using Clientes.Dominio.Repositorios;
 using FluentAssertions;
 using Microsoft.Extensions.Logging;
 using Moq;
-using System.Collections.Generic;
 using Xunit;
 
 namespace Clientes.Test

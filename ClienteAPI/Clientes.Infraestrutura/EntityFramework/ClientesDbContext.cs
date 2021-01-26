@@ -1,7 +1,7 @@
 ﻿using Clientes.Dominio.Entidades;
-using Microsoft.EntityFrameworkCore;
 using Clientes.Infraestrutura.EntityFramework.Interfaces;
 using Clientes.Infraestrutura.EntityFramework.Mappers;
+using Microsoft.EntityFrameworkCore;
 
 namespace Clientes.Infraestrutura.EntityFramework
 {

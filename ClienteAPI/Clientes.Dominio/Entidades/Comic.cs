@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Clientes.Dominio.Entidades
+﻿namespace Clientes.Dominio.Entidades
 {
     public class Comic
     {

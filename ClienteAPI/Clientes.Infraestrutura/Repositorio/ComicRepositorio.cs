@@ -4,7 +4,6 @@ using Clientes.Infraestrutura.EntityFramework;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using System;
-using System.Collections.Generic;
 
 namespace Clientes.Infraestrutura.Repositorio
 {
@@ -12,24 +11,12 @@ namespace Clientes.Infraestrutura.Repositorio
     {
         private readonly ClientesDbContext _comicDbContext;
         private readonly ILogger<ComicRepositorio> _logger;
-        private readonly IConfiguration _config;
 
         public ComicRepositorio(ClientesDbContext comicDbContext, ILogger<ComicRepositorio> logger, IConfiguration config)
         {
             _logger = logger;
             _comicDbContext = comicDbContext;
-            _config = config;
         }
-
-        public object Get(string hero)
-        {
-            throw new NotImplementedException();
-        }
-
-        //public IList<Comic> Get(string hero)
-        //{
-
-        //}
 
         public bool Salvar(Comic comic)
         {

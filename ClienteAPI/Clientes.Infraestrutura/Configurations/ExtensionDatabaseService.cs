@@ -1,7 +1,7 @@
 ﻿using Clientes.Infraestrutura.EntityFramework;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.EntityFrameworkCore;
 
 namespace Clientes.Infraestrutura.Configurations
 {
