@@ -2,8 +2,9 @@ using Clientes.Application.Interfaces;
 using Clientes.Application.UseCases;
 using Clientes.Dominio.Repositorios;
 using Clientes.Infraestrutura.Configurations;
+using Clientes.Infraestrutura.Decorator;
 using Clientes.Infraestrutura.EntityFramework.Repositorios;
-using Clientes.Infraestrutura.Repositorio;
+using Clientes.Infraestrutura.Repositorios;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -30,13 +31,16 @@ namespace Clientes.API
         {
             services.AddControllers();
             services.ConfigureDatabase(Configuration);
+            services.ConfigureRedis(Configuration);
 
-            services.AddTransient<IClienteRepositorio, ClienteRepositorio>();
+            services.RegisterRepository();
             services.AddTransient<IBuscarClienteUseCase, BuscarClienteUseCase>();
             services.AddTransient<ISalvarClienteUseCase, SalvarClienteUseCase>();
             services.AddTransient<IRemoverClienteUseCase, RemoverClienteUseCase>();
             services.AddTransient<IComicRepositorio, ComicRepositorio>();
             services.AddTransient<IComicUseCase, ComicUseCase>();
+            services.Configure<CacheDuration>(Configuration.GetSection("Redis:CacheDuration"));
+
 
             services.AddSwaggerGen(c =>
             {

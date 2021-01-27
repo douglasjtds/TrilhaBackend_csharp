@@ -6,7 +6,7 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 
-namespace Clientes.Infraestrutura.Repositorio
+namespace Clientes.Infraestrutura.Repositorios
 {
     public class ComicRepositorio : IComicRepositorio
     {

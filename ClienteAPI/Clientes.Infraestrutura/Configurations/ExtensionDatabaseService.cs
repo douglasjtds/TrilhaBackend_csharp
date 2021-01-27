@@ -11,7 +11,6 @@ namespace Clientes.Infraestrutura.Configurations
         {
             string connectionString = configuration.GetConnectionString("ClientesDatabase");
             service.AddDbContext<ClientesDbContext>(options => options.UseSqlServer(connectionString));
-            //service.AddDbContext<ComicDbContext>(options => options.UseSqlServer(connectionString));
             return service;
         }
     }
