@@ -19,7 +19,7 @@ namespace Clientes.Infraestrutura.Repositorios
         }
 
 
-        public async Task<TModel> PegarCacheAsync(string chave)
+        public async Task<TModel> PegarCacheAsync(string? chave)
         {
             try
             {

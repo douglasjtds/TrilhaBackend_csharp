@@ -55,7 +55,17 @@ namespace Clientes.Infraestrutura.Decorator
 
         public IList<Cliente> GetAll()
         {
-            throw new NotImplementedException();
+            var clientes = _cacheRepositoryList.PegarCacheAsync(null).Result;
+
+            if (!(clientes is null))
+                return clientes;
+
+            clientes = _decorate.GetAll();
+            foreach (var cliente in clientes)
+            {
+                _cacheRepositoryList.GravarCacheAsync(cliente.CPF, clientes, _cacheDuration.Clientes);
+            }
+            return clientes;
         }
     }
 }

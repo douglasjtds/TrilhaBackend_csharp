@@ -10,7 +10,7 @@ namespace Clientes.Infraestrutura.Interfaces
         /// <summary>
         /// Obtém entidade por identificador
         /// </summary>
-        Task<TEntity> PegarCacheAsync(string id);
+        Task<TEntity> PegarCacheAsync(string? id);
 
         /// <summary>
         /// Coloca a entidade em cache
