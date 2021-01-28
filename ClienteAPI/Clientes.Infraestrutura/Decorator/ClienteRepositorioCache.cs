@@ -26,19 +26,32 @@ namespace Clientes.Infraestrutura.Decorator
             _cacheRepositoryList = cacheRepositoryList;
         }
 
-        public void Adicionar(Cliente cliente)
+        public void Adicionar(Cliente cliente) //conferir na mentoria
         {
-            throw new NotImplementedException();
+            _decorate.Adicionar(cliente);
+            _cacheRepository.GravarCacheAsync(cliente.CPF, cliente, _cacheDuration.Clientes);
         }
 
-        public bool Atualizar(string cpf, Cliente cliente)
+        public bool Atualizar(string cpf, Cliente cliente) //conferir na mentoria
         {
-            throw new NotImplementedException();
+            var success = _decorate.Atualizar(cpf, cliente);
+            return success;
         }
 
-        public bool Excluir(string cpf)
+        public bool Excluir(string cpf) //conferir na mentoria
         {
-            throw new NotImplementedException();
+            var cliente = _cacheRepository.PegarCacheAsync(cpf).Result;
+            if ((cliente is null))
+                return false;
+
+            var excluido = _decorate.Excluir(cpf);
+            if (excluido)
+            {
+                _cacheRepository.RemoverCacheAsync(cpf);
+                return true;
+            }
+
+            return false;
         }
 
         public Cliente Get(string cpf)
@@ -53,7 +66,7 @@ namespace Clientes.Infraestrutura.Decorator
             return cliente;
         }
 
-        public IList<Cliente> GetAll()
+        public IList<Cliente> GetAll() //conferir na mentoria
         {
             var clientes = _cacheRepositoryList.PegarCacheAsync(null).Result;
 
