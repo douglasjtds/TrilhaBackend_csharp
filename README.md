@@ -82,10 +82,7 @@ INSERT INTO CLIENTES VALUES ('ciclano', 25, '6666666', 'teste@teste', '666666', 
 INSERT INTO CLIENTES VALUES('Caldeira',37, '07918947622','thiago.teste@teste.com.br','31995541239','rua mercia 280');
 INSERT INTO CLIENTES VALUES('Douglas',25, '123456789',   'douglas.jose@teste.com.br','31995541239','rua monteiro lobato 158');
 INSERT INTO CLIENTES VALUES ('Teste cachorro', 60, '345345', 'teste@teste', '34534', 'Rua ...');
-
-CREATE LOGIN usuarioClientes  WITH PASSWORD = 'SUASENHA@123';  
-CREATE USER usuarioClientes FOR LOGIN usuarioClientes; 
-
+ 
 ~~~
 
 ## Nível Básico - Desafio 4
@@ -159,3 +156,28 @@ CREATE TABLE COMIC(
 __Branch:__ /feature/nivel1/desafio4
 
 __Objetivo:__ Implementar testes unitários utilizando xUnit.
+
+## Nível Extra - Docker/Cache com Redis
+
+__Branch:__ /feature/nivel-extra/docker
+
+__Objetivo:__ Utilizar o banco de dados em uma imagem do Docker e adicionar funcionalidade de cache com o Redis.
+
+### How to
+Esse passo a passo foi seguido de acordo com as instruções em:
+https://www.michalbialecki.com/2020/04/23/set-up-a-sql-server-in-a-docker-container/
+
+Para utilizar o banco de dados em uma imagem do Docker foi utilizado os seguintes comandos:
+
+~~~
+docker pull mcr.microsoft.com/mssql/server:2017-latest
+~~~
+Para baixar a imagem da Microsoft para trabalhar com SQL Server
+
+~~~
+docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=bancoClientes01" -p 1433:1433 --name dbClientes -d mcr.microsoft.com/mssql/server:2017-latest
+~~~
+Para criar e rodar um container do docker para o banco com o nome dbClientes com usuário 'sa' e senha 'bancoClientes01'
+
+Agora, para os testes, deve-se rodar os mesmos scripts do "How to" do Nível Básico - Desafio 3,
+para criarmos uma base igual com a mesma tabela de Clientes.
