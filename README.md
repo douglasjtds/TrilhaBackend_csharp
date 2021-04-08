@@ -10,6 +10,7 @@
 2. [Desafio 2](https://github.com/douglasjtds/TrilhaBackend_csharp/tree/feature/nivel1/desafio3#n%C3%ADvel-1---desafio-2)
 3. [Desafio 3](https://github.com/douglasjtds/TrilhaBackend_csharp/tree/feature/nivel1/desafio3#n%C3%ADvel-1---desafio-3)
 4. [Desafio 4](https://github.com/douglasjtds/TrilhaBackend_csharp/tree/feature/nivel1/desafio3#n%C3%ADvel-1---desafio-4)
+5. [Desafio 5](https://github.com/douglasjtds/TrilhaBackend_csharp/tree/feature/nivel1/desafio3#n%C3%ADvel-1---desafio-5)
 
 
 ## Nível Básico - Desafio 1
@@ -181,3 +182,9 @@ Para criar e rodar um container do docker para o banco com o nome dbClientes com
 
 Agora, para os testes, deve-se rodar os mesmos scripts do "How to" do Nível Básico - Desafio 3,
 para criarmos uma base igual com a mesma tabela de Clientes.
+
+## Nível 1 - Desafio 5
+
+__Objetivo:__ Implementar logs utilizando o Log - Utilize o Illoguer
+
+Obs.: Isso já foi feito em branches anteriores.
